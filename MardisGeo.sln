@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MardisGeo", "MardisGeo\MardisGeo.csproj", "{61B4B10F-5A3F-4AA7-93CE-41BC2312E7ED}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{09A5961E-9B99-4ED0-B01D-1D169AF77588}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Bussiness", "Bussiness", "{9F04E30A-A5F1-4512-B28A-1D1B32C70123}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "web", "web", "{710FE1C2-CFE9-4FE8-A3C0-DF62C1FD90B5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MardisGeo.bussiness", "MardisGeo.bussiness\MardisGeo.bussiness.csproj", "{AF6E17C0-8DC6-44F4-A497-0E6FF077607A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MardisGeo.Data", "MardisGeo.Data\MardisGeo.Data.csproj", "{0B736BF0-224A-4046-9374-FB1ECD572C0F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Model", "Model", "{A7125889-8D73-4A8E-BAB1-E9614651C146}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeoMardis.Model", "GeoMardis.Model\GeoMardis.Model.csproj", "{830C11F4-5A12-4CAC-824F-919E1EAE355C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{61B4B10F-5A3F-4AA7-93CE-41BC2312E7ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61B4B10F-5A3F-4AA7-93CE-41BC2312E7ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61B4B10F-5A3F-4AA7-93CE-41BC2312E7ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61B4B10F-5A3F-4AA7-93CE-41BC2312E7ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF6E17C0-8DC6-44F4-A497-0E6FF077607A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF6E17C0-8DC6-44F4-A497-0E6FF077607A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF6E17C0-8DC6-44F4-A497-0E6FF077607A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF6E17C0-8DC6-44F4-A497-0E6FF077607A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B736BF0-224A-4046-9374-FB1ECD572C0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B736BF0-224A-4046-9374-FB1ECD572C0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B736BF0-224A-4046-9374-FB1ECD572C0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B736BF0-224A-4046-9374-FB1ECD572C0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{830C11F4-5A12-4CAC-824F-919E1EAE355C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{830C11F4-5A12-4CAC-824F-919E1EAE355C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{830C11F4-5A12-4CAC-824F-919E1EAE355C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{830C11F4-5A12-4CAC-824F-919E1EAE355C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{61B4B10F-5A3F-4AA7-93CE-41BC2312E7ED} = {710FE1C2-CFE9-4FE8-A3C0-DF62C1FD90B5}
+		{AF6E17C0-8DC6-44F4-A497-0E6FF077607A} = {9F04E30A-A5F1-4512-B28A-1D1B32C70123}
+		{0B736BF0-224A-4046-9374-FB1ECD572C0F} = {09A5961E-9B99-4ED0-B01D-1D169AF77588}
+		{830C11F4-5A12-4CAC-824F-919E1EAE355C} = {A7125889-8D73-4A8E-BAB1-E9614651C146}
+	EndGlobalSection
+EndGlobal

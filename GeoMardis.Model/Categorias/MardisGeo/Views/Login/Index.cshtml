@@ -1,0 +1,58 @@
+@model GeoMardis.Model.Login.login
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+@using (Html.BeginForm(Html.BeginForm("Index", "Login", FormMethod.Post, new { @class = "form-horizontal" })))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+
+
+        <div class="form-group has-feedback">
+            <div class="col-sm-12  text-form">
+                @Html.LabelFor(model => model.NombreUsuario)
+            </div>
+            <div class="col-sm-12">
+
+                @Html.TextBoxFor(model => model.NombreUsuario, new { @class = "form-control" })
+
+                @Html.ValidationMessageFor(model => model.NombreUsuario)
+            </div>
+
+        </div>
+        <div class="form-group">
+            <div class="col-sm-12  text-form">
+                @Html.LabelFor(model => model.PassUsuario)
+            </div>
+            <div class="col-sm-12">
+                @Html.PasswordFor(model => model.PassUsuario, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.PassUsuario)
+            </div>
+
+        </div>
+        <div class="form-group">
+
+            <div class="col-sm-offset-7 col-sm-2 ">
+                <button type="submit" class="btn btn-primary-M">
+                    <i class="fa fa-sign-in" aria-hidden="true"> Ingresar</i>
+                </button>
+            </div>
+        </div>
+        @{if (ViewBag.msg != "0")
+                {
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-4">
+                        <span class="label label-danger">@ViewBag.msg</span>
+                    </div>
+                </div>
+            }
+        }
+
+    </fieldset>
+            }
+
+

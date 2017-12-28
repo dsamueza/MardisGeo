@@ -1,0 +1,884 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="MardisGEOModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="geo_categoria">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="80" />
+          <Property Name="status_cat" Type="varchar" MaxLength="80" />
+        </EntityType>
+        <EntityType Name="geo_des_foto">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_img" Type="int" />
+        </EntityType>
+        <EntityType Name="geo_foto">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_img_ext" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="url" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="id_geo_cat" Type="int" Nullable="false" />
+          <Property Name="create_date" Type="datetime" />
+          <Property Name="id_geo_des_foto" Type="int" />
+        </EntityType>
+        <EntityType Name="geo_img_ubicacion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="url_img" Type="varchar" MaxLength="500" />
+          <Property Name="name" Type="varchar" MaxLength="200" />
+          <Property Name="create_usr" Type="varchar" MaxLength="200" />
+          <Property Name="create_date" Type="datetime" />
+          <Property Name="id_geo_ubi" Type="int" />
+          <Property Name="value" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="geo_map">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="geo_map_name" Type="varchar" MaxLength="200" />
+          <Property Name="geo_map_descrip" Type="varchar" MaxLength="800" />
+          <Property Name="geo_map_status" Type="char" MaxLength="2" />
+          <Property Name="geo_map_create_date" Type="datetime" />
+          <Property Name="geo_map_usr" Type="varchar" MaxLength="200" />
+          <Property Name="geo_map_link" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="geo_map_account">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="code" Type="int" />
+          <Property Name="idmap" Type="int" />
+          <Property Name="geo_map_account_name" Type="varchar" MaxLength="50" />
+          <Property Name="geo_map_create_date" Type="datetime" />
+          <Property Name="geo_map_usr" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="geo_map_profile">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Idprofile" Type="int" />
+          <Property Name="idmap" Type="int" />
+          <Property Name="geo_map_usr_tpo_decrip" Type="varchar" MaxLength="50" />
+          <Property Name="geo_map_create_date" Type="datetime" />
+          <Property Name="geo_map_usr" Type="varchar" MaxLength="200" />
+          <Property Name="geo_profile_map_status" Type="char" MaxLength="2" />
+        </EntityType>
+        <EntityType Name="geo_profile">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="code" Type="int" />
+          <Property Name="idaccount" Type="int" />
+          <Property Name="geo_profile_name" Type="varchar" MaxLength="50" />
+          <Property Name="geo_create_date" Type="datetime" />
+          <Property Name="geo_create_usr" Type="varchar" MaxLength="200" />
+          <Property Name="geo_profile_status" Type="char" MaxLength="2" />
+          <Property Name="geo_permit" Type="char" MaxLength="2" />
+        </EntityType>
+        <EntityType Name="geo_secuencial">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="sec" Type="int" />
+          <Property Name="id_geo_ub" Type="varchar" MaxLength="100" />
+          <Property Name="create_date" Type="datetime" />
+          <Property Name="id_geo_ubi" Type="int" />
+          <Property Name="number_sec" Type="int" />
+        </EntityType>
+        <EntityType Name="geo_ubicacion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_img" Type="int" Nullable="false" />
+          <Property Name="id_sec" Type="int" Nullable="false" />
+          <Property Name="geo_ubu_des" Type="varchar" MaxLength="300" />
+          <Property Name="create_usr" Type="varchar" MaxLength="200" />
+          <Property Name="create_date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="geo_usr_profile">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Idprofile" Type="int" />
+          <Property Name="iduser" Type="int" />
+          <Property Name="geo_usr_profile_decrip" Type="varchar" MaxLength="500" />
+          <Property Name="geo_map_create_date" Type="datetime" />
+          <Property Name="geo_map_usr" Type="varchar" MaxLength="200" />
+          <Property Name="geo_usr_profile" Type="char" MaxLength="2" />
+          <Property Name="_status" Type="char" MaxLength="2" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="tpo_usr_geo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tpo_usr_geo_name" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="tpo_usr_geo_status" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="create_date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="USER_GEO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="LOGIN" Type="varchar" MaxLength="100" />
+          <Property Name="FULL_NAME" Type="varchar" MaxLength="100" />
+          <Property Name="PASSWORD" Type="varchar" MaxLength="500" />
+          <Property Name="CREATE_DATE" Type="datetime" />
+          <Property Name="idtpo" Type="int" />
+        </EntityType>
+        <Association Name="FK__geo_des_f__id_im__571DF1D5">
+          <End Role="geo_foto" Type="Self.geo_foto" Multiplicity="0..1" />
+          <End Role="geo_des_foto" Type="Self.geo_des_foto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="geo_foto">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="geo_des_foto">
+              <PropertyRef Name="id_img" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__geo_foto__id_geo__5629CD9C">
+          <End Role="geo_categoria" Type="Self.geo_categoria" Multiplicity="1" />
+          <End Role="geo_foto" Type="Self.geo_foto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="geo_categoria">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="geo_foto">
+              <PropertyRef Name="id_geo_cat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__geo_img_u__id_ge__59063A47">
+          <End Role="geo_ubicacion" Type="Self.geo_ubicacion" Multiplicity="0..1" />
+          <End Role="geo_img_ubicacion" Type="Self.geo_img_ubicacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="geo_ubicacion">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="geo_img_ubicacion">
+              <PropertyRef Name="id_geo_ubi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__geo_ubica__id_im__5812160E">
+          <End Role="geo_foto" Type="Self.geo_foto" Multiplicity="1" />
+          <End Role="geo_ubicacion" Type="Self.geo_ubicacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="geo_foto">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="geo_ubicacion">
+              <PropertyRef Name="id_img" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_geo_map_profile">
+          <End Role="geo_map" Type="Self.geo_map" Multiplicity="0..1" />
+          <End Role="geo_map_profile" Type="Self.geo_map_profile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="geo_map">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="geo_map_profile">
+              <PropertyRef Name="idmap" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_geo_profile_account">
+          <End Role="geo_map_account" Type="Self.geo_map_account" Multiplicity="0..1" />
+          <End Role="geo_profile" Type="Self.geo_profile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="geo_map_account">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="geo_profile">
+              <PropertyRef Name="idaccount" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_geo_profile_map">
+          <End Role="geo_profile" Type="Self.geo_profile" Multiplicity="0..1" />
+          <End Role="geo_map_profile" Type="Self.geo_map_profile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="geo_profile">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="geo_map_profile">
+              <PropertyRef Name="Idprofile" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_geo_profile_USER_GEO">
+          <End Role="geo_profile" Type="Self.geo_profile" Multiplicity="0..1" />
+          <End Role="geo_usr_profile" Type="Self.geo_usr_profile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="geo_profile">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="geo_usr_profile">
+              <PropertyRef Name="Idprofile" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_geo_USER_GEO_profile">
+          <End Role="USER_GEO" Type="Self.USER_GEO" Multiplicity="0..1" />
+          <End Role="geo_usr_profile" Type="Self.geo_usr_profile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER_GEO">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="geo_usr_profile">
+              <PropertyRef Name="iduser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Persontipo">
+          <End Role="tpo_usr_geo" Type="Self.tpo_usr_geo" Multiplicity="0..1" />
+          <End Role="USER_GEO" Type="Self.USER_GEO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tpo_usr_geo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="USER_GEO">
+              <PropertyRef Name="idtpo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MardisGEOModelStoreContainer">
+          <EntitySet Name="geo_categoria" EntityType="Self.geo_categoria" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="geo_des_foto" EntityType="Self.geo_des_foto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="geo_foto" EntityType="Self.geo_foto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="geo_img_ubicacion" EntityType="Self.geo_img_ubicacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="geo_map" EntityType="Self.geo_map" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="geo_map_account" EntityType="Self.geo_map_account" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="geo_map_profile" EntityType="Self.geo_map_profile" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="geo_profile" EntityType="Self.geo_profile" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="geo_secuencial" EntityType="Self.geo_secuencial" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="geo_ubicacion" EntityType="Self.geo_ubicacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="geo_usr_profile" EntityType="Self.geo_usr_profile" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tpo_usr_geo" EntityType="Self.tpo_usr_geo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USER_GEO" EntityType="Self.USER_GEO" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__geo_des_f__id_im__571DF1D5" Association="Self.FK__geo_des_f__id_im__571DF1D5">
+            <End Role="geo_foto" EntitySet="geo_foto" />
+            <End Role="geo_des_foto" EntitySet="geo_des_foto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__geo_foto__id_geo__5629CD9C" Association="Self.FK__geo_foto__id_geo__5629CD9C">
+            <End Role="geo_categoria" EntitySet="geo_categoria" />
+            <End Role="geo_foto" EntitySet="geo_foto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__geo_img_u__id_ge__59063A47" Association="Self.FK__geo_img_u__id_ge__59063A47">
+            <End Role="geo_ubicacion" EntitySet="geo_ubicacion" />
+            <End Role="geo_img_ubicacion" EntitySet="geo_img_ubicacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__geo_ubica__id_im__5812160E" Association="Self.FK__geo_ubica__id_im__5812160E">
+            <End Role="geo_foto" EntitySet="geo_foto" />
+            <End Role="geo_ubicacion" EntitySet="geo_ubicacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_geo_map_profile" Association="Self.FK_geo_map_profile">
+            <End Role="geo_map" EntitySet="geo_map" />
+            <End Role="geo_map_profile" EntitySet="geo_map_profile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_geo_profile_account" Association="Self.FK_geo_profile_account">
+            <End Role="geo_map_account" EntitySet="geo_map_account" />
+            <End Role="geo_profile" EntitySet="geo_profile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_geo_profile_map" Association="Self.FK_geo_profile_map">
+            <End Role="geo_profile" EntitySet="geo_profile" />
+            <End Role="geo_map_profile" EntitySet="geo_map_profile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_geo_profile_USER_GEO" Association="Self.FK_geo_profile_USER_GEO">
+            <End Role="geo_profile" EntitySet="geo_profile" />
+            <End Role="geo_usr_profile" EntitySet="geo_usr_profile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_geo_USER_GEO_profile" Association="Self.FK_geo_USER_GEO_profile">
+            <End Role="USER_GEO" EntitySet="USER_GEO" />
+            <End Role="geo_usr_profile" EntitySet="geo_usr_profile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Persontipo" Association="Self.FK_Persontipo">
+            <End Role="tpo_usr_geo" EntitySet="tpo_usr_geo" />
+            <End Role="USER_GEO" EntitySet="USER_GEO" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MardisGEOModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="geo_categoria">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="status_cat" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="geo_foto" Relationship="Self.FK__geo_foto__id_geo__5629CD9C" FromRole="geo_categoria" ToRole="geo_foto" />
+        </EntityType>
+        <EntityType Name="geo_des_foto">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_img" Type="Int32" />
+          <NavigationProperty Name="geo_foto" Relationship="Self.FK__geo_des_f__id_im__571DF1D5" FromRole="geo_des_foto" ToRole="geo_foto" />
+        </EntityType>
+        <EntityType Name="geo_foto">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_img_ext" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="url" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="id_geo_cat" Type="Int32" Nullable="false" />
+          <Property Name="create_date" Type="DateTime" Precision="3" />
+          <Property Name="id_geo_des_foto" Type="Int32" />
+          <NavigationProperty Name="geo_categoria" Relationship="Self.FK__geo_foto__id_geo__5629CD9C" FromRole="geo_foto" ToRole="geo_categoria" />
+          <NavigationProperty Name="geo_des_foto" Relationship="Self.FK__geo_des_f__id_im__571DF1D5" FromRole="geo_foto" ToRole="geo_des_foto" />
+          <NavigationProperty Name="geo_ubicacion" Relationship="Self.FK__geo_ubica__id_im__5812160E" FromRole="geo_foto" ToRole="geo_ubicacion" />
+        </EntityType>
+        <EntityType Name="geo_img_ubicacion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="url_img" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="create_usr" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="create_date" Type="DateTime" Precision="3" />
+          <Property Name="id_geo_ubi" Type="Int32" />
+          <Property Name="value" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="geo_ubicacion" Relationship="Self.FK__geo_img_u__id_ge__59063A47" FromRole="geo_img_ubicacion" ToRole="geo_ubicacion" />
+        </EntityType>
+        <EntityType Name="geo_map">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="geo_map_name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="geo_map_descrip" Type="String" MaxLength="800" FixedLength="false" Unicode="false" />
+          <Property Name="geo_map_status" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="geo_map_create_date" Type="DateTime" Precision="3" />
+          <Property Name="geo_map_usr" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="geo_map_link" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="geo_map_profile" Relationship="Self.FK_geo_map_profile" FromRole="geo_map" ToRole="geo_map_profile" />
+        </EntityType>
+        <EntityType Name="geo_map_account">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="code" Type="Int32" />
+          <Property Name="idmap" Type="Int32" />
+          <Property Name="geo_map_account_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="geo_map_create_date" Type="DateTime" Precision="3" />
+          <Property Name="geo_map_usr" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="geo_profile" Relationship="Self.FK_geo_profile_account" FromRole="geo_map_account" ToRole="geo_profile" />
+        </EntityType>
+        <EntityType Name="geo_map_profile">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Idprofile" Type="Int32" />
+          <Property Name="idmap" Type="Int32" />
+          <Property Name="geo_map_usr_tpo_decrip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="geo_map_create_date" Type="DateTime" Precision="3" />
+          <Property Name="geo_map_usr" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="geo_profile_map_status" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="geo_map" Relationship="Self.FK_geo_map_profile" FromRole="geo_map_profile" ToRole="geo_map" />
+          <NavigationProperty Name="geo_profile" Relationship="Self.FK_geo_profile_map" FromRole="geo_map_profile" ToRole="geo_profile" />
+        </EntityType>
+        <EntityType Name="geo_profile">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="code" Type="Int32" />
+          <Property Name="idaccount" Type="Int32" />
+          <Property Name="geo_profile_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="geo_create_date" Type="DateTime" Precision="3" />
+          <Property Name="geo_create_usr" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="geo_profile_status" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="geo_permit" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="geo_map_account" Relationship="Self.FK_geo_profile_account" FromRole="geo_profile" ToRole="geo_map_account" />
+          <NavigationProperty Name="geo_map_profile" Relationship="Self.FK_geo_profile_map" FromRole="geo_profile" ToRole="geo_map_profile" />
+          <NavigationProperty Name="geo_usr_profile" Relationship="Self.FK_geo_profile_USER_GEO" FromRole="geo_profile" ToRole="geo_usr_profile" />
+        </EntityType>
+        <EntityType Name="geo_secuencial">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="sec" Type="Int32" />
+          <Property Name="id_geo_ub" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="create_date" Type="DateTime" Precision="3" />
+          <Property Name="id_geo_ubi" Type="Int32" />
+          <Property Name="number_sec" Type="Int32" />
+        </EntityType>
+        <EntityType Name="geo_ubicacion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_img" Type="Int32" Nullable="false" />
+          <Property Name="id_sec" Type="Int32" Nullable="false" />
+          <Property Name="geo_ubu_des" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="create_usr" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="create_date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="geo_foto" Relationship="Self.FK__geo_ubica__id_im__5812160E" FromRole="geo_ubicacion" ToRole="geo_foto" />
+          <NavigationProperty Name="geo_img_ubicacion" Relationship="Self.FK__geo_img_u__id_ge__59063A47" FromRole="geo_ubicacion" ToRole="geo_img_ubicacion" />
+        </EntityType>
+        <EntityType Name="geo_usr_profile">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Idprofile" Type="Int32" />
+          <Property Name="iduser" Type="Int32" />
+          <Property Name="geo_usr_profile_decrip" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="geo_map_create_date" Type="DateTime" Precision="3" />
+          <Property Name="geo_map_usr" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="geo_usr_profile1" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="C_status" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="geo_profile" Relationship="Self.FK_geo_profile_USER_GEO" FromRole="geo_usr_profile" ToRole="geo_profile" />
+          <NavigationProperty Name="USER_GEO" Relationship="Self.FK_geo_USER_GEO_profile" FromRole="geo_usr_profile" ToRole="USER_GEO" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tpo_usr_geo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tpo_usr_geo_name" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tpo_usr_geo_status" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="create_date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="USER_GEO" Relationship="Self.FK_Persontipo" FromRole="tpo_usr_geo" ToRole="USER_GEO" />
+        </EntityType>
+        <EntityType Name="USER_GEO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="LOGIN" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FULL_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PASSWORD" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CREATE_DATE" Type="DateTime" Precision="3" />
+          <Property Name="idtpo" Type="Int32" />
+          <NavigationProperty Name="geo_usr_profile" Relationship="Self.FK_geo_USER_GEO_profile" FromRole="USER_GEO" ToRole="geo_usr_profile" />
+          <NavigationProperty Name="tpo_usr_geo" Relationship="Self.FK_Persontipo" FromRole="USER_GEO" ToRole="tpo_usr_geo" />
+        </EntityType>
+        <Association Name="FK__geo_foto__id_geo__5629CD9C">
+          <End Role="geo_categoria" Type="Self.geo_categoria" Multiplicity="1" />
+          <End Role="geo_foto" Type="Self.geo_foto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="geo_categoria">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="geo_foto">
+              <PropertyRef Name="id_geo_cat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__geo_des_f__id_im__571DF1D5">
+          <End Role="geo_foto" Type="Self.geo_foto" Multiplicity="0..1" />
+          <End Role="geo_des_foto" Type="Self.geo_des_foto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="geo_foto">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="geo_des_foto">
+              <PropertyRef Name="id_img" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__geo_ubica__id_im__5812160E">
+          <End Role="geo_foto" Type="Self.geo_foto" Multiplicity="1" />
+          <End Role="geo_ubicacion" Type="Self.geo_ubicacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="geo_foto">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="geo_ubicacion">
+              <PropertyRef Name="id_img" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__geo_img_u__id_ge__59063A47">
+          <End Role="geo_ubicacion" Type="Self.geo_ubicacion" Multiplicity="0..1" />
+          <End Role="geo_img_ubicacion" Type="Self.geo_img_ubicacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="geo_ubicacion">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="geo_img_ubicacion">
+              <PropertyRef Name="id_geo_ubi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_geo_map_profile">
+          <End Role="geo_map" Type="Self.geo_map" Multiplicity="0..1" />
+          <End Role="geo_map_profile" Type="Self.geo_map_profile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="geo_map">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="geo_map_profile">
+              <PropertyRef Name="idmap" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_geo_profile_account">
+          <End Role="geo_map_account" Type="Self.geo_map_account" Multiplicity="0..1" />
+          <End Role="geo_profile" Type="Self.geo_profile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="geo_map_account">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="geo_profile">
+              <PropertyRef Name="idaccount" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_geo_profile_map">
+          <End Role="geo_profile" Type="Self.geo_profile" Multiplicity="0..1" />
+          <End Role="geo_map_profile" Type="Self.geo_map_profile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="geo_profile">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="geo_map_profile">
+              <PropertyRef Name="Idprofile" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_geo_profile_USER_GEO">
+          <End Role="geo_profile" Type="Self.geo_profile" Multiplicity="0..1" />
+          <End Role="geo_usr_profile" Type="Self.geo_usr_profile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="geo_profile">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="geo_usr_profile">
+              <PropertyRef Name="Idprofile" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_geo_USER_GEO_profile">
+          <End Role="USER_GEO" Type="Self.USER_GEO" Multiplicity="0..1" />
+          <End Role="geo_usr_profile" Type="Self.geo_usr_profile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER_GEO">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="geo_usr_profile">
+              <PropertyRef Name="iduser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Persontipo">
+          <End Role="tpo_usr_geo" Type="Self.tpo_usr_geo" Multiplicity="0..1" />
+          <End Role="USER_GEO" Type="Self.USER_GEO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tpo_usr_geo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="USER_GEO">
+              <PropertyRef Name="idtpo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MardisGEOEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="geo_categoria" EntityType="Self.geo_categoria" />
+          <EntitySet Name="geo_des_foto" EntityType="Self.geo_des_foto" />
+          <EntitySet Name="geo_foto" EntityType="Self.geo_foto" />
+          <EntitySet Name="geo_img_ubicacion" EntityType="Self.geo_img_ubicacion" />
+          <EntitySet Name="geo_map" EntityType="Self.geo_map" />
+          <EntitySet Name="geo_map_account" EntityType="Self.geo_map_account" />
+          <EntitySet Name="geo_map_profile" EntityType="Self.geo_map_profile" />
+          <EntitySet Name="geo_profile" EntityType="Self.geo_profile" />
+          <EntitySet Name="geo_secuencial" EntityType="Self.geo_secuencial" />
+          <EntitySet Name="geo_ubicacion" EntityType="Self.geo_ubicacion" />
+          <EntitySet Name="geo_usr_profile" EntityType="Self.geo_usr_profile" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="tpo_usr_geo" EntityType="Self.tpo_usr_geo" />
+          <EntitySet Name="USER_GEO" EntityType="Self.USER_GEO" />
+          <AssociationSet Name="FK__geo_foto__id_geo__5629CD9C" Association="Self.FK__geo_foto__id_geo__5629CD9C">
+            <End Role="geo_categoria" EntitySet="geo_categoria" />
+            <End Role="geo_foto" EntitySet="geo_foto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__geo_des_f__id_im__571DF1D5" Association="Self.FK__geo_des_f__id_im__571DF1D5">
+            <End Role="geo_foto" EntitySet="geo_foto" />
+            <End Role="geo_des_foto" EntitySet="geo_des_foto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__geo_ubica__id_im__5812160E" Association="Self.FK__geo_ubica__id_im__5812160E">
+            <End Role="geo_foto" EntitySet="geo_foto" />
+            <End Role="geo_ubicacion" EntitySet="geo_ubicacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__geo_img_u__id_ge__59063A47" Association="Self.FK__geo_img_u__id_ge__59063A47">
+            <End Role="geo_ubicacion" EntitySet="geo_ubicacion" />
+            <End Role="geo_img_ubicacion" EntitySet="geo_img_ubicacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_geo_map_profile" Association="Self.FK_geo_map_profile">
+            <End Role="geo_map" EntitySet="geo_map" />
+            <End Role="geo_map_profile" EntitySet="geo_map_profile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_geo_profile_account" Association="Self.FK_geo_profile_account">
+            <End Role="geo_map_account" EntitySet="geo_map_account" />
+            <End Role="geo_profile" EntitySet="geo_profile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_geo_profile_map" Association="Self.FK_geo_profile_map">
+            <End Role="geo_profile" EntitySet="geo_profile" />
+            <End Role="geo_map_profile" EntitySet="geo_map_profile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_geo_profile_USER_GEO" Association="Self.FK_geo_profile_USER_GEO">
+            <End Role="geo_profile" EntitySet="geo_profile" />
+            <End Role="geo_usr_profile" EntitySet="geo_usr_profile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_geo_USER_GEO_profile" Association="Self.FK_geo_USER_GEO_profile">
+            <End Role="USER_GEO" EntitySet="USER_GEO" />
+            <End Role="geo_usr_profile" EntitySet="geo_usr_profile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Persontipo" Association="Self.FK_Persontipo">
+            <End Role="tpo_usr_geo" EntitySet="tpo_usr_geo" />
+            <End Role="USER_GEO" EntitySet="USER_GEO" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MardisGEOModelStoreContainer" CdmEntityContainer="MardisGEOEntities">
+          <EntitySetMapping Name="geo_categoria">
+            <EntityTypeMapping TypeName="MardisGEOModel.geo_categoria">
+              <MappingFragment StoreEntitySet="geo_categoria">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="status_cat" ColumnName="status_cat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="geo_des_foto">
+            <EntityTypeMapping TypeName="MardisGEOModel.geo_des_foto">
+              <MappingFragment StoreEntitySet="geo_des_foto">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_img" ColumnName="id_img" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="geo_foto">
+            <EntityTypeMapping TypeName="MardisGEOModel.geo_foto">
+              <MappingFragment StoreEntitySet="geo_foto">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_img_ext" ColumnName="id_img_ext" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="url" ColumnName="url" />
+                <ScalarProperty Name="id_geo_cat" ColumnName="id_geo_cat" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="id_geo_des_foto" ColumnName="id_geo_des_foto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="geo_img_ubicacion">
+            <EntityTypeMapping TypeName="MardisGEOModel.geo_img_ubicacion">
+              <MappingFragment StoreEntitySet="geo_img_ubicacion">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="url_img" ColumnName="url_img" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="create_usr" ColumnName="create_usr" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="id_geo_ubi" ColumnName="id_geo_ubi" />
+                <ScalarProperty Name="value" ColumnName="value" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="geo_map">
+            <EntityTypeMapping TypeName="MardisGEOModel.geo_map">
+              <MappingFragment StoreEntitySet="geo_map">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="geo_map_name" ColumnName="geo_map_name" />
+                <ScalarProperty Name="geo_map_descrip" ColumnName="geo_map_descrip" />
+                <ScalarProperty Name="geo_map_status" ColumnName="geo_map_status" />
+                <ScalarProperty Name="geo_map_create_date" ColumnName="geo_map_create_date" />
+                <ScalarProperty Name="geo_map_usr" ColumnName="geo_map_usr" />
+                <ScalarProperty Name="geo_map_link" ColumnName="geo_map_link" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="geo_map_account">
+            <EntityTypeMapping TypeName="MardisGEOModel.geo_map_account">
+              <MappingFragment StoreEntitySet="geo_map_account">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="idmap" ColumnName="idmap" />
+                <ScalarProperty Name="geo_map_account_name" ColumnName="geo_map_account_name" />
+                <ScalarProperty Name="geo_map_create_date" ColumnName="geo_map_create_date" />
+                <ScalarProperty Name="geo_map_usr" ColumnName="geo_map_usr" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="geo_map_profile">
+            <EntityTypeMapping TypeName="MardisGEOModel.geo_map_profile">
+              <MappingFragment StoreEntitySet="geo_map_profile">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Idprofile" ColumnName="Idprofile" />
+                <ScalarProperty Name="idmap" ColumnName="idmap" />
+                <ScalarProperty Name="geo_map_usr_tpo_decrip" ColumnName="geo_map_usr_tpo_decrip" />
+                <ScalarProperty Name="geo_map_create_date" ColumnName="geo_map_create_date" />
+                <ScalarProperty Name="geo_map_usr" ColumnName="geo_map_usr" />
+                <ScalarProperty Name="geo_profile_map_status" ColumnName="geo_profile_map_status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="geo_profile">
+            <EntityTypeMapping TypeName="MardisGEOModel.geo_profile">
+              <MappingFragment StoreEntitySet="geo_profile">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="idaccount" ColumnName="idaccount" />
+                <ScalarProperty Name="geo_profile_name" ColumnName="geo_profile_name" />
+                <ScalarProperty Name="geo_create_date" ColumnName="geo_create_date" />
+                <ScalarProperty Name="geo_create_usr" ColumnName="geo_create_usr" />
+                <ScalarProperty Name="geo_profile_status" ColumnName="geo_profile_status" />
+                <ScalarProperty Name="geo_permit" ColumnName="geo_permit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="geo_secuencial">
+            <EntityTypeMapping TypeName="MardisGEOModel.geo_secuencial">
+              <MappingFragment StoreEntitySet="geo_secuencial">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="sec" ColumnName="sec" />
+                <ScalarProperty Name="id_geo_ub" ColumnName="id_geo_ub" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="id_geo_ubi" ColumnName="id_geo_ubi" />
+                <ScalarProperty Name="number_sec" ColumnName="number_sec" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="geo_ubicacion">
+            <EntityTypeMapping TypeName="MardisGEOModel.geo_ubicacion">
+              <MappingFragment StoreEntitySet="geo_ubicacion">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_img" ColumnName="id_img" />
+                <ScalarProperty Name="id_sec" ColumnName="id_sec" />
+                <ScalarProperty Name="geo_ubu_des" ColumnName="geo_ubu_des" />
+                <ScalarProperty Name="create_usr" ColumnName="create_usr" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="geo_usr_profile">
+            <EntityTypeMapping TypeName="MardisGEOModel.geo_usr_profile">
+              <MappingFragment StoreEntitySet="geo_usr_profile">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Idprofile" ColumnName="Idprofile" />
+                <ScalarProperty Name="iduser" ColumnName="iduser" />
+                <ScalarProperty Name="geo_usr_profile_decrip" ColumnName="geo_usr_profile_decrip" />
+                <ScalarProperty Name="geo_map_create_date" ColumnName="geo_map_create_date" />
+                <ScalarProperty Name="geo_map_usr" ColumnName="geo_map_usr" />
+                <ScalarProperty Name="geo_usr_profile1" ColumnName="geo_usr_profile" />
+                <ScalarProperty Name="C_status" ColumnName="_status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="MardisGEOModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tpo_usr_geo">
+            <EntityTypeMapping TypeName="MardisGEOModel.tpo_usr_geo">
+              <MappingFragment StoreEntitySet="tpo_usr_geo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="tpo_usr_geo_name" ColumnName="tpo_usr_geo_name" />
+                <ScalarProperty Name="tpo_usr_geo_status" ColumnName="tpo_usr_geo_status" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USER_GEO">
+            <EntityTypeMapping TypeName="MardisGEOModel.USER_GEO">
+              <MappingFragment StoreEntitySet="USER_GEO">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="LOGIN" ColumnName="LOGIN" />
+                <ScalarProperty Name="FULL_NAME" ColumnName="FULL_NAME" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+                <ScalarProperty Name="CREATE_DATE" ColumnName="CREATE_DATE" />
+                <ScalarProperty Name="idtpo" ColumnName="idtpo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f417a9dac8474e10a88da86978a53f23" Name="Diagram1">
+        <EntityTypeShape EntityType="MardisGEOModel.geo_categoria" Width="1.5" PointX="8.75" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MardisGEOModel.geo_des_foto" Width="1.5" PointX="13.25" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MardisGEOModel.geo_foto" Width="1.5" PointX="11" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MardisGEOModel.geo_img_ubicacion" Width="1.5" PointX="15.5" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MardisGEOModel.geo_map" Width="1.5" PointX="6.5" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MardisGEOModel.geo_map_account" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MardisGEOModel.geo_map_profile" Width="1.5" PointX="5.25" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MardisGEOModel.geo_profile" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MardisGEOModel.geo_secuencial" Width="1.5" PointX="0.75" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MardisGEOModel.geo_ubicacion" Width="1.5" PointX="13.25" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MardisGEOModel.geo_usr_profile" Width="1.5" PointX="10" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MardisGEOModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MardisGEOModel.tpo_usr_geo" Width="1.5" PointX="3.75" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="MardisGEOModel.USER_GEO" Width="1.5" PointX="6" PointY="8.75" IsExpanded="true" />
+        <AssociationConnector Association="MardisGEOModel.FK__geo_foto__id_geo__5629CD9C" ManuallyRouted="false" />
+        <AssociationConnector Association="MardisGEOModel.FK__geo_des_f__id_im__571DF1D5" ManuallyRouted="false" />
+        <AssociationConnector Association="MardisGEOModel.FK__geo_ubica__id_im__5812160E" ManuallyRouted="false" />
+        <AssociationConnector Association="MardisGEOModel.FK__geo_img_u__id_ge__59063A47" ManuallyRouted="false" />
+        <AssociationConnector Association="MardisGEOModel.FK_geo_map_profile" ManuallyRouted="false" />
+        <AssociationConnector Association="MardisGEOModel.FK_geo_profile_account" ManuallyRouted="false" />
+        <AssociationConnector Association="MardisGEOModel.FK_geo_profile_map" ManuallyRouted="false" />
+        <AssociationConnector Association="MardisGEOModel.FK_geo_profile_USER_GEO" ManuallyRouted="false" />
+        <AssociationConnector Association="MardisGEOModel.FK_geo_USER_GEO_profile" ManuallyRouted="false" />
+        <AssociationConnector Association="MardisGEOModel.FK_Persontipo" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

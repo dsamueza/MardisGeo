@@ -1,0 +1,251 @@
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Principal.cshtml";
+}
+
+
+       
+
+    
+    @*<table>
+
+           <tr>
+               <td>
+                <label>
+                   <input type="radio" name="fb" value="big" id="1" />
+                   <img src="~/images/logoMardis.png">
+               </label>
+               </td>
+                 <td>
+               <label>
+                   <input type="radio" name="fb" value="big" id="1" />
+                   <img src="~/images/logoMardis.png">
+               </label>
+                 </td>
+               <td>
+                   <label>
+                       <input type="radio" name="fb" value="big"  id="1"/>
+                       <img src= "~/images/Oficinas/myipss.png" />
+                   </label>
+               </td>
+           </tr>
+        </table>*@
+ 
+ 
+ <div id="googgleApi">
+   
+     @Html.Partial("_StreetView")
+        <div class="content-geo">
+            <h1>CODIGO : <small><label id="idsec"></label></small></h1>
+
+      
+       
+            <input type="text" hidden id="secid" value="0"/>
+            <row>
+                
+                
+            </row>
+            <br>
+            <div class="content-geo-imag">
+                @Html.Partial("Categoria")
+            </div>
+            <div class="form-inline">
+                   <div class="form-group">
+                    <div class="col-sm-2 col-md-1 ">
+                        <button type="submit" class="btn btn-success" id="idGuardar" disabled><span class="glyphicon glyphicon-floppy-disk"></span> Guardar</button>
+                    </div>
+
+                </div>
+            </div>
+            <div id="Divtb1">
+                <hr class="lineMardis">
+</div>
+            <div id="Divtb">
+
+                <div class="form-inline">
+                   <table class='table_mardis' id='idtable'></table>
+                </div>
+            </div>  
+</div>
+   
+   
+</div>
+    @section Scripts {
+
+
+        <script type="text/javascript">
+
+            $(document).ready(function () {
+                var loca = '';
+                var img = '';
+                $('#1m').css({ 'opacity': '1' });
+            });
+       
+            $("#idGuardar").click(function () {
+
+                Save($('input:radio[name=geoCAT]:checked').val(), $("#secid").val().toString(), $('input:radio[name=geoimg]:checked').val())
+            });
+
+            function cambiar(x) {
+                var idcategorias = x.id;
+
+                var sec = $("#secid").val();
+                
+                if (sec==0){
+                $("#idsec").empty();
+
+                GenerarNuevoRegistroGeo(1)
+                }
+                $('.idmmardis').css({ 'background-color': 'transparent' });
+                var imgids = '#' + idcategorias + 'mis'
+                $(imgids).css({ 'background-color': '#a50000' });
+            }
+            function GenerarNuevoRegistroGeo(selectcategoria) {
+                htmlimg = ""
+                count = 0;
+            
+                $.ajax({
+                    url: '@Url.Action("Create", "Visualizador")',
+                 type: "POST",
+                 content: "application/json; charset=utf-8",
+
+
+
+                 data: {
+                     selectcategoria
+                 },
+                 success: function (result) {
+                     $("#idsec").append(result[0].sec)
+                     $("#IdCat").prop('disabled', false);
+                     $("#secid").val(result[0].sec)
+                     $("#idGuardar").prop('disabled', false);
+                  
+                 },
+
+                 error: function () {
+                     $("#Divtb").append("<p> NO EXISTE FOTOS PARA ESA CATEGORIA</p > ")
+                 }
+             });
+            }
+
+            $('input:radio[name=geoCAT]').click(function () {
+                selectcategoria = $('input:radio[name=geoCAT]:checked').val();
+                idcategoria = $('input:radio[name=geoCAT]:checked').attr('id');
+                $('.imgcla').css({ 'opacity': '1' });
+                var imgid = '#' + idcategoria+'m'
+                $(imgid).css({ 'opacity' : '0.6' });
+                updateImage(selectcategoria)
+            });
+       
+
+
+          
+
+            function updateImage(selectcategoria) {
+                count = 0;
+
+                htmlimg = '';
+
+                $.ajax({
+                    url:'@Url.Action("Update", "Visualizador")',
+                    type: "POST",
+                    content: "application/json; charset=utf-8",
+
+
+
+                    data: {
+                        selectcategoria
+                    },
+                    success: function (result) {
+                        $("#idtable").empty()
+                        $("#idsec").append(result[0].sec)
+                        $("#IdCat").prop('disabled', false);
+                        $.each(result, function (index, value) {
+                            count++
+                            if (count == 1) { htmlimg += "" }
+
+                            htmlimg += "<td class='tb_mardis'>"
+                                + "<div class='idmmardis'  id=" + result[index].id + "mis>"
+                                + "<label>"
+                                + "<input type='radio' name='geoimg' value=" + (result[index].id) + " id=" + (result[index].id) + " onclick='cambiar(this)'; hidden/>" +
+                                " <img src=" + result[index].text + " class='imgMardis' id=" + result[index].id + "mi >" +
+                                " </label>" +
+                                " </div>" +
+                                "</td >"
+                            if (count == 1) { htmlimg += ""; count = 0 }
+                        });
+
+                        $("#idtable").prepend(htmlimg)
+                        $("#idtable").serialize()
+                    },
+
+                    error: function () {
+                        $("#Divtb").append("<p> NO EXISTE FOTOS PARA ESA CATEGORIA</p > ")
+                    }
+                });
+
+
+            }
+         
+            function Save(selectcategoria, secuencial, idimagen) {
+
+
+
+                var scshop = 'ss';
+
+                var coordenadas = panorama.getPosition() + '';
+                var heading = panorama.getPov().heading + '';
+                var pitch = panorama.getPov().pitch + '';
+
+                if (idimagen !== undefined) {
+                    $.ajax({
+                        url: '@Url.Action("Save", "Visualizador")', 
+                        type: "POST",
+                        content: "application/json; charset=utf-8",
+
+
+
+                        data: {
+                            selectcategoria, secuencial, idimagen, heading, coordenadas, pitch
+                        },
+                        success: function (result) {
+                            if (result == 1) {
+                                $("#idsec").empty();
+                                $("#idtable").empty();
+                                $("#IdCat").prop('disabled', true);
+                                $("#idGuardar").prop('disabled', true);
+                                $("#secid").val(0);
+                                $.toaster({
+                                    priority: 'success',
+                                    title: 'Aviso',
+                                    message: "LA INFORMACION SE GUARDO CORRECTAMENTE",
+                                    settings: {
+                                        timeout: 5500
+                                    }
+                                });
+                            } else {
+                                bootbox.alert("Se registro  un error, comuniquese  con el administrador  ")
+
+                            }
+
+                        },
+                        error: function () {
+                            bootbox.alert("Se registro  un error, comuniquese  con el administrado  ")
+                        }
+                    });
+
+                } else {
+                    bootbox.alert("Seleccione  una imagen ")
+
+
+                }
+            }
+
+     
+
+        </script>
+      
+
+
+    }

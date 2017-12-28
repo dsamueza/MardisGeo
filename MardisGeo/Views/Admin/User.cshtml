@@ -1,0 +1,186 @@
+﻿@model GeoMardis.Model.Admin.Usuario
+
+@{
+    ViewData["Title"] = "User";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+
+<div class="form-mardis">
+    <form asp-action="User" method="post" id="formSave" >
+        <div class="form-horizontal">
+            <h2>Gestión de Clientes <small>Agregar/Editar Clientes</small> </h2>
+            <div class="form-group">
+                <label class="col-md-7 control-label-back">Información General del Usuario</label>
+
+                <label class="col-md-offset-5  col-md-3 control-label-back">Fecha: <small> @ViewBag.fecha</small></label>
+
+            </div>
+            <hr />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="id" class="col-md-2 control-label"></label>
+                <div class="col-md-1">
+                    @if (Model == null)
+                    {
+                        <input asp-for="id" class="form-control " disabled />
+                    }
+                    else
+                    {
+                        <input asp-for="id" class="form-control" />
+
+                    }
+
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="NombreUsuario" class="col-md-2 control-label"></label>
+                <div class="col-md-3">
+                    <input asp-for="NombreUsuario" class="form-control" placeholder="Ingrese el nombre del Usuario" />
+                    <span asp-validation-for="NombreUsuario" class="text-danger"></span>
+                </div>
+                <label asp-for="LoginUsuario" class="col-md-2 control-label"></label>
+                <div class="col-md-3">
+                    <input asp-for="LoginUsuario" class="form-control" placeholder="Ingrese el Login del Usuario" />
+                    <span asp-validation-for="LoginUsuario" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+
+            </div>
+            <div class="form-group">
+                <label asp-for="PassUsuario" class="col-md-2 control-label"></label>
+                <div class="col-md-3">
+                    <input asp-for="PassUsuario" class="form-control" placeholder="Ingrese el Contraseña del Usuario" />
+                    <span asp-validation-for="PassUsuario" class="text-danger"></span>
+                </div>
+                <label asp-for="PassUsuarionew" class="col-md-2 control-label"></label>
+                <div class="col-md-3">
+                    <input asp-for="PassUsuarionew" class="form-control" placeholder="Repita la Contraseña del Usuario" />
+                    <span asp-validation-for="PassUsuarionew" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="TipoUsuario" class="col-md-2 control-label"></label>
+                <div class="col-md-4">
+                    <select asp-for="TipoUsuario" class="form-control" asp-items="@ViewBag.TimeZoneList"></select>
+
+                </div>
+            </div>
+
+            <div class="form-group ">
+                <div class="col-md-offset-10">
+                    <a href="@Url.Action("User", "Admin")" class="  btn btn-success">
+                        Nuevo
+                    </a>
+
+                    <input type="submit" value="Guardar" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+        <hr />
+        <div class="box">
+            <div id="DatosTabla" class="col-xs-10 col-md-8   col-lg-12">
+                <table id="datosCoord" class="display compact" cellspacing="0" width="100%">
+                    <thead>
+                        <tr>
+                            <th> ID </th>
+                            <th>
+                                Nombres
+                            </th>
+                            <th>
+                                Login
+                            </th>
+                            <th>
+                                Fechas de Creación 
+                            </th>
+                            <th>
+                                Tipo de Usuario
+                            </th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+
+
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </form>
+
+</div>
+ @{ Html.RenderPartial("_UserTable");}
+ 
+    
+    @section Scripts {
+<script src="~/Perfil.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                var modal = document.getElementById('myModal');
+
+                // Get the image and insert it inside the modal - use its "alt" text as a caption
+    
+                $('#formSave').submit(function () {
+                  //  alert('test');
+                });
+                generarTabla();
+            });
+   
+                   function generarTabla() {
+
+            var table=  $('#datosCoord').dataTable({
+                "language": {
+                    "url": "@Url.Content("~/js/latin.json")"
+                }
+
+                   ,
+
+                "ajax": {
+                    "url": '@Url.Action("_UserTable", "Admin")',
+                    "type": "GET",
+                    "data": function ( d ) {
+                        return $.extend( {}, d, {
+                            "Id": 0
+                        } );
+                    },
+                    "dataSrc": function (json) {
+
+
+
+                        jQuery.each(json, function (index, value) {
+                            //now you can access properties using dot notation
+
+                            json[index].update = "<a href='@Url.Action("selectUser", "Admin")?Ids=" + value.id + " ' class='glyphicon glyphicon-edit'>";
+                            json[index].delete = "<a href='@Url.Action("DeleteUser", "Admin")?Ids=" + value.id + " ' class='glyphicon glyphicon-trash'>";
+                            json[index].accion = "<a href='#responsive'" + " ' class='	glyphicon glyphicon-plus'  onclick='ModalPerfil(" + value.id + " );'>";
+                        });
+                        return json;
+                    }
+                },
+                "columns": [
+                    { "data": "id" },
+                    { "data": "nombre" },
+                    { "data": "login" },
+                    { "data": "fecha" },
+                    { "data": "tipo" },
+                    { "data": "update" }
+                    ,
+                    { "data": "delete" }
+                    ,
+                    { "data": "accion" }
+                ],
+
+
+
+            });
+
+
+
+        }
+        </script>
+    }
+
+

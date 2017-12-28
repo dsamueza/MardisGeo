@@ -1,0 +1,188 @@
+﻿@model GeoMardis.Model.Perfil.MProfile
+
+@{
+    ViewData["Title"] = "Add";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<div class="form-mardis">
+    <form asp-action="Add">
+        <div class="form-horizontal">
+            <h2>Gestión de Perfiles <small>Agregar/Editar Perfiles</small> </h2>
+            <div class="form-group">
+                <label class="col-md-7 control-label-back">Información General de los Perfiles</label>
+
+                <label class="col-md-offset-5  col-md-3 control-label-back">Fecha: <small> @ViewBag.fecha</small></label>
+
+            </div>
+            <hr />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+
+            <div class="form-group">
+                <label asp-for="Id" class="col-md-2 control-label"></label>
+                <div class="col-md-1">
+                    @if (Model == null)
+                    {
+                        <input asp-for="Id" class="form-control " disabled />
+                    }
+                    else
+                    {
+                        <input asp-for="Id" class="form-control" />
+
+                    }
+
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <label asp-for="code" class="col-md-2 control-label"></label>
+                <div class="col-md-3">
+                    <input asp-for="code" class="form-control" placeholder="Ingrese un código numérico" />
+                    <span asp-validation-for="code" class="text-danger"></span>
+                </div>
+
+                <label asp-for="nombre" class="col-md-2 control-label"></label>
+                <div class="col-md-3">
+                    <input asp-for="nombre" class="form-control"  placeholder="Ingrese nombre del perfil" />
+                    <span asp-validation-for="nombre" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Status_Ac" class="col-md-2 control-label"></label>
+                <div class="col-md-3">
+                    <div class="checkbox checkbox-success">
+
+                        <input asp-for="Status_Ac" id="checkbox1" type="checkbox" checked="" class="form-control">
+                        <label for="checkbox1">
+
+                        </label>
+                        <span asp-validation-for="Status_Ac" class="text-danger"></span>
+                    </div>
+                </div>
+                <label asp-for="idaccount" class="col-md-2 control-label"></label>
+                <div class="col-md-3">
+                   
+                    <select asp-for="idaccount" class="form-control" asp-items="@ViewBag.Account"></select>
+                   
+                </div>
+            </div>
+
+
+            <div class="form-group ">
+                <div class="col-md-offset-10">
+                    <a href="@Url.Action( "AdmMap", "Admin")" class="  btn btn-success">
+                        Nuevo
+                    </a>
+
+                    <input type="submit" value="Guardar" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+        <hr />
+        <div class="box">
+            <div id="DatosTabla" class="col-xs-10 col-md-12 col-lg-12">
+                <table id="datosCoord" class="display compact" cellspacing="0" width="100%">
+                    <thead>
+                        <tr>
+                            <th data-sortable="true"> ID </th>
+                            <th>
+                                Nombres
+                            </th>
+                                <th>
+                                Código
+                                </th>
+                            <th>
+                                Cuenta
+                            </th>
+
+                            <th>
+                                Estado
+                            </th>
+                         
+                            <th>
+                                Fechas de Creación
+                            </th>
+                            <th></th>
+                            <th></th>
+                           
+                        </tr>
+                    </thead>
+
+
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </form>
+ 
+</div>
+
+ 
+
+@section Scripts {
+    <script src="~/lib/Mapa.js"></script>
+    <script type="text/javascript">
+            $(document).ready(function () {
+
+
+                generarTabla();
+            });
+
+                   function generarTabla() {
+
+            var table=  $('#datosCoord').dataTable({
+                "language": {
+                    "url": "@Url.Content("~/js/latin.json")"
+                }
+
+                   ,
+
+                "ajax": {
+                    "url": '@Url.Action("_ProfileTable", "Account")',
+                    "type": "GET",
+                    "data": function ( d ) {
+                        return $.extend( {}, d, {
+                            "Id": 0
+                        } );
+                    },
+                    "dataSrc": function (json) {
+
+
+
+                        jQuery.each(json, function (index, value) {
+                            //now you can access properties using dot notation
+
+                            json[index].update = "<a href='@Url.Action("selectProfile", "Account")?Ids=" + value.id + " ' class='glyphicon glyphicon-edit'>";
+                            json[index].delete = "<a href='@Url.Action("DeleteProfile", "Account")?Ids=" + value.id + " ' class='glyphicon glyphicon-trash'>";
+                        
+                        });
+                        return json;
+                    }
+                },
+                "columns": [
+                    { "data": "id" },
+                    { "data": "nombre" },
+                    { "data": "codigo" },
+                    { "data": "cuenta" },
+                    { "data": "estado" },
+                    { "data": "fecha" },
+                    { "data": "update" }
+                    ,
+                    { "data": "delete" }
+                   
+                ],
+
+
+
+            });
+
+
+
+        }
+    </script>
+}
+

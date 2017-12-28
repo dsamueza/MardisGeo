@@ -1,0 +1,324 @@
+﻿
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="UTF-8">
+    <title>GEO</title>
+    <link href="~/css/mardisGeo.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-mardis">
+            <div class="navbar-header">
+                
+                <a   id="abrir" href="javascript:void(0)" onclick="mostrar()" class="navbar-brand btn  btn-lg">
+                    <span class="glyphicon glyphicon-th-list"></span> 
+                </a>
+                <a id="cerrar" href="javascript:void(0)" onclick="ocultar()" class="navbar-brand btn btn-default btn-lg">
+                    <span class="glyphicon glyphicon-th-list"></span> 
+                </a>
+                <a class="navbar-brand" href="#"><img src="~/images/iso_mardis.png" style=" height:60px; padding-bottom:1px" /></a>
+          
+
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("GeoRating", "Map", "Map", new { area = "" }, new { @class = "navbar-brand", @id = "idnav" })
+                
+            </div>
+            <div class="navbar-collapse collapse">
+
+                <ul class="nav navbar-nav navbar-right">
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            @ViewBag.lgnUsuario  <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+
+                                <a href="@Url.Action("Logout", "Login")">
+                                    <span class="glyphicon glyphicon-log-out"></span> Salir
+                                </a>
+                                <a href="#" onclick='ModalCambio(1)'>
+                                    <span class="glyphicon glyphicon-edit"></span> Cambio de contraseña
+                                </a>
+                            </li>
+                            <li>
+                                 @{ if (ViewBag.lgnUsuario == "Administrador La Favorita") {
+                                                  <a href = "../Data_Censo_Nacional_Sectores_Censales_10112017.xlsx" > 
+                                                 <span class="glyphicon glyphicon-download-alt"></span> Sectores Censales
+                                                 </a>
+                                     }
+                                  }
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+    <div class="body-content-Val">
+        <div id="sidebar" class="sidebar">
+            <a href="#" class="boton-cerrar" onclick="ocultar()">&times;</a>
+            <nav>
+                <ul class="menu">
+                    @{ var aux = "";}
+                    @{   IList<string> array = new List<string>(); }
+@foreach (GeoMardis.Model.Mapa.ModelMap item1 in ViewBag.sltmaps)
+{
+       
+            @if (aux != item1.nameprofile&& !array.Contains(item1.nameprofile) )
+            {
+
+                array.Add(item1.nameprofile);
+
+                            <li class="submenu">
+                                <a id="menuo" href="#"> <span class="glyphicon glyphicon-plus-sign" id="idspan"></span>@item1.nameprofile </a>
+                              @{  var a = @item1.Idprofile; }
+
+                                @foreach (GeoMardis.Model.Mapa.ModelMap item in ViewBag.sltmaps)
+                                {
+                                    if (a == item.Idprofile) { 
+                                    <ul class="children" style="display: none;">
+                                        <li><a href="@Url.Action( "view", "Map" , new { id=item.Id})"><span class="glyphicon glyphicon-globe"></span> @item.geo_map_name </a>  </li>
+                                    </ul>
+                                    }
+
+
+                                }
+                            </li>
+                        }
+
+
+    aux = item1.nameprofile;
+}
+                </ul>
+            </nav>
+
+         
+</div>
+  
+       
+    
+        <div id="contenido">
+            @RenderBody()
+          
+        </div>
+        <div id="mmodal">
+            <div id="cco" class="modal fade" tabindex="-1" data-width="760" style="display: none;">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">  Cambio de contraseña</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+
+                        <div class="col-md-12">
+                        
+                            <fieldset>
+                                <p>
+                                    Contraseña:<input type="password" class="form-control" placeholder="Ingrese nueva contraseña" id="idcc"/>
+                                  
+                                </p>
+                                <p>
+                                    Repita la contraseña: <input type="password"  class="form-control" placeholder="Repita la contraseña " id="idccn" />
+                                    <span class="text-danger"> <label id="lidcc" hidden>La contraseña no coincide</label></span>
+                                </p>
+                                <div id="content-chk">
+                                    <span class="text-success"> <label id="lidccs" hidden>La contraseña fue cambiada con exito</label></span>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+
+                    <button type="button" data-dismiss="modal" class="btn btn-default">Salir</button>
+                    <button type="button"  class="btn btn-primary" id="btnm">Guardar</button>
+                </div>
+            </div>
+        </div>
+
+
+        </div>
+    <footer class="footer-mardis">
+        <p>&copy;Copyright © @DateTime.Now.Year Mardis. All rights reserved.</p>
+    </footer>
+
+    <environment names="Development">
+
+
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+        <script src="~/lib/helper/html2canvas.js"></script>
+        <script src="~/lib/jquery.toaster.js"></script>
+        <script src="~/lib/bootbox.min.js"></script>
+        <script>
+            function ModalCambio(ccos) {
+                $("#idccn").val("");
+                $('#idcc').val("");
+                $("#lidcc").hide();
+                $("#lidccs").hide();
+                $('#cco').modal('show');
+
+            }
+
+            $("#btnm").click(function () {
+                $("#lidcc").hide();
+                $("#lidccs").hide();
+
+                if ($('#idcc').val() == $('#idccn').val()) {
+
+                  
+                    var sec = $("#idccn").val();
+                    $.ajax({
+                        url: '@Url.Action("UpdatePass", "Login")',
+                        type: "GET",
+                        content: "application/json; charset=utf-8",
+                        data: {
+                            newpass: sec
+
+                        },
+                        success: function (data) {
+                            if (data == 1) { 
+                                $("#lidccs").show();
+                                $("#idccn").val("") ;
+                                $('#idcc').val("")  ;
+                            }
+                        },
+
+                        error: function () {
+
+                       
+                        }
+                        
+
+                    });
+
+                } else {
+                    $("#lidcc").show();
+
+                }
+
+
+
+            });
+            function mostrar() {
+                document.getElementById("sidebar").style.width = "220px";
+                document.getElementById("sidebar").style.width = "220px";
+                document.getElementById("contenido").style.marginLeft = "220px";
+                document.getElementById("abrir").style.display = "none";
+                document.getElementById("cerrar").style.display = "inline";
+            }
+
+            function ocultar() {
+                document.getElementById("sidebar").style.width = "0";
+                document.getElementById("contenido").style.marginLeft = "0";
+                document.getElementById("abrir").style.display = "inline";
+                document.getElementById("cerrar").style.display = "none";
+            }
+            $('.submenu').click(function () {
+                $(this).children('.children').slideToggle();
+            });
+        </script>
+    </environment>
+    <environment names="Staging,Production">
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery"
+                crossorigin="anonymous"
+                integrity="sha384-K+ctZQ+LL8q6tP7I94W+qzQsfRV2a+AfHIi9k8z8l9ggpc8X+Ytst4yBo/hH+8Fk">
+        </script>
+
+        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                crossorigin="anonymous"
+                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
+        </script>
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
+        <script src="~/lib/helper/html2canvas.js"></script>
+        <script src="~/lib/jquery.toaster.js"></script>
+        <script src="~/lib/bootbox.min.js"></script>
+        <script>
+                function ModalCambio(ccos) {
+                $("#idccn").val("");
+                $('#idcc').val("");
+                $("#lidcc").hide();
+                $("#lidccs").hide();
+                $('#cco').modal('show');
+
+            }
+
+            $("#btnm").click(function () {
+                $("#lidcc").hide();
+                $("#lidccs").hide();
+
+                if ($('#idcc').val() == $('#idccn').val()) {
+
+
+                    var sec = $("#idccn").val();
+                    $.ajax({
+                        url: '@Url.Action("UpdatePass", "Login")',
+                        type: "GET",
+                        content: "application/json; charset=utf-8",
+                        data: {
+                            newpass: sec
+
+                        },
+                        success: function (data) {
+                            if (data == 1) {
+                                $("#lidccs").show();
+                                $("#idccn").val("") ;
+                                $('#idcc').val("")  ;
+                            }
+                        },
+
+                        error: function () {
+
+
+                        }
+
+
+                    });
+
+                } else {
+                    $("#lidcc").show();
+
+                }
+
+
+
+            });
+            function mostrar() {
+                document.getElementById("sidebar").style.width = "220px";
+                document.getElementById("sidebar").style.width = "220px";
+                document.getElementById("contenido").style.marginLeft = "220px";
+                document.getElementById("abrir").style.display = "none";
+                document.getElementById("cerrar").style.display = "inline";
+            }
+
+            function ocultar() {
+                document.getElementById("sidebar").style.width = "0";
+                document.getElementById("contenido").style.marginLeft = "0";
+                document.getElementById("abrir").style.display = "inline";
+                document.getElementById("cerrar").style.display = "none";
+            }
+            $('.submenu').click(function () {
+                $(this).children('.children').slideToggle();
+            });
+        </script>
+    </environment>
+    @RenderSection("Scripts", required: false)
+</body>
+
+</html>

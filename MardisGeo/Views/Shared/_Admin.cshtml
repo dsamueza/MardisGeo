@@ -1,0 +1,181 @@
+﻿
+<!DOCTYPE html>
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GeoView</title>
+
+    <meta http-equiv="x-ua-compatible" content="IE=11">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title>GEO</title>
+    <link href="~/css/mardisGeo.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/lib/Modal/bootstrap-modal-bs3patch.css" rel="stylesheet" />
+    <link href="~/lib/Modal/bootstrap-modal.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-mardis">
+            <div class="navbar-header">
+
+                <a id="abrir" href="javascript:void(0)" onclick="mostrar()" class="navbar-brand btn  btn-lg">
+                    <span class="glyphicon glyphicon-th-list"></span>
+                </a>
+                <a id="cerrar" href="javascript:void(0)" onclick="ocultar()" class="navbar-brand btn btn-default btn-lg">
+                    <span class="glyphicon glyphicon-th-list"></span>
+                </a>
+                <a class="navbar-brand" href="#"><img src="~/images/iso_mardis.png" style=" height:60px; padding-bottom:1px" /></a>
+
+
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("GeoRating", "Index", "Admin", new { area = "" }, new { @class = "navbar-brand", @id = "idnav" })
+
+            </div>
+            <div class="navbar-collapse collapse">
+
+                <ul class="nav navbar-nav navbar-right">
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            @ViewBag.lgnUsuario  <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="@Url.Action( "Logout", "Login")">
+                                    <span class="glyphicon glyphicon-log-out"></span> Salir
+                                </a>
+                            </li>
+                          
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+    <div class="body-content-Val">
+        <div id="sidebar" class="sidebar">
+            <a href="#" class="boton-cerrar" onclick="ocultar()">&times;</a>
+            <nav>
+                <ul class="menu">
+
+                    <li class="submenu">
+                        <a id="menuo" href="#"> <span class="glyphicon glyphicon-plus-sign" id="idspan"></span>Administracion</a>
+
+                        <ul class="children" style="display: none;">
+                            <li><a href="@Url.Action( "User", "Admin")"><span class="glyphicon glyphicon-user"></span>Usuarios</a>  </li>
+                        </ul>
+
+                        <ul class="children" style="display: none;">
+                            <li><a href="@Url.Action( "AdmMap", "Admin")"><span class="glyphicon glyphicon-globe"></span>Mapas</a>  </li>
+                        </ul>
+                        <ul class="children" style="display: none;">
+                            <li><a href="@Url.Action( "Add", "Account")"><span class="glyphicon glyphicon-briefcase"></span>Perfiles</a>  </li>
+                        </ul>
+
+
+
+                    </li>
+
+                </ul>
+            </nav>
+
+
+        </div>
+
+
+
+        <div id="contenido">
+            @RenderBody()
+        </div>
+
+
+
+
+    </div>
+    <footer class="footer-mardis">
+        <p>&copy;Copyright © @DateTime.Now.Year Mardis. All rights reserved.</p>
+    </footer>
+
+    <environment names="Development">
+
+
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+        <script src="~/lib/helper/html2canvas.js"></script>
+        <script src="~/lib/jquery.toaster.js"></script>
+        <script src="~/lib/bootbox.min.js"></script>
+        <script type="text/javascript" src="http://getbootstrap.com/2.3.2/assets/js/google-code-prettify/prettify.js"></script>
+        <script src="~/lib/Modal/bootstrap-modal.js"></script>
+        <script src="~/lib/Modal/bootstrap-modalmanager.js"></script>
+        <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+        <!--  <script src="~/lib/data-table/js/datatables.min.js"></script>-->
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+
+        <script>
+            function mostrar() {
+                document.getElementById("sidebar").style.width = "220px";
+                document.getElementById("sidebar").style.width = "220px";
+                document.getElementById("contenido").style.marginLeft = "220px";
+                document.getElementById("abrir").style.display = "none";
+                document.getElementById("cerrar").style.display = "inline";
+            }
+
+            function ocultar() {
+                document.getElementById("sidebar").style.width = "0";
+                document.getElementById("contenido").style.marginLeft = "0";
+                document.getElementById("abrir").style.display = "inline";
+                document.getElementById("cerrar").style.display = "none";
+            }
+            $('.submenu').click(function () {
+                $(this).children('.children').slideToggle();
+            });
+        </script>
+    </environment>
+    <environment names="Staging,Production">
+
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+        <script src="~/lib/helper/html2canvas.js"></script>
+        <script src="~/lib/jquery.toaster.js"></script>
+        <script src="~/lib/bootbox.min.js"></script>
+        <script type="text/javascript" src="http://getbootstrap.com/2.3.2/assets/js/google-code-prettify/prettify.js"></script>
+        <script src="~/lib/Modal/bootstrap-modal.js"></script>
+        <script src="~/lib/Modal/bootstrap-modalmanager.js"></script>
+        <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+        <!--  <script src="~/lib/data-table/js/datatables.min.js"></script>-->
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+
+        <script>
+            function mostrar() {
+                document.getElementById("sidebar").style.width = "220px";
+                document.getElementById("sidebar").style.width = "220px";
+                document.getElementById("contenido").style.marginLeft = "220px";
+                document.getElementById("abrir").style.display = "none";
+                document.getElementById("cerrar").style.display = "inline";
+            }
+
+            function ocultar() {
+                document.getElementById("sidebar").style.width = "0";
+                document.getElementById("contenido").style.marginLeft = "0";
+                document.getElementById("abrir").style.display = "inline";
+                document.getElementById("cerrar").style.display = "none";
+            }
+            $('.submenu').click(function () {
+                $(this).children('.children').slideToggle();
+            });
+        </script>
+    </environment>
+    @RenderSection("Scripts", required: false)
+</body>
+
+</html>
+

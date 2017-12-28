@@ -1,0 +1,28 @@
+ 
+    <div id="map" style="width:20%; height:900px;"></div>
+    <div id="pano" style="width:28%; height:900px;"></div>
+    <script>
+        var panorama;
+        function initialize() {
+            
+            var fenway = { lat: -0.165888, lng: -78.479190 };
+            var map = new google.maps.Map(document.getElementById('map'), {
+                center: fenway,
+                zoom: 14
+            });
+             panorama = new google.maps.StreetViewPanorama(
+                document.getElementById('pano'), {
+                    position: fenway,
+                    pov: {
+                        heading: 34,
+                        pitch: 10
+                    }
+                });
+
+            map.setStreetView(panorama);
+            
+        }
+    </script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZYA-xee_bKiCHQakUcDJtfVXagv_rhbA&callback=initialize">
+    </script>

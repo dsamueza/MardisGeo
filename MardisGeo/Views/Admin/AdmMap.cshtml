@@ -1,0 +1,187 @@
+﻿@model GeoMardis.Model.Admin.ModelMap
+@{
+    ViewData["Title"] = "Mapas";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+<div class="form-mardis">
+    <form asp-action="AdmMap">
+        <div class="form-horizontal">
+            <h2>Gestión de Mapas <small>Agregar/Editar Mapas</small> </h2>
+            <div class="form-group">
+                <label class="col-md-7 control-label-back">Información General del Mapas</label>
+
+                <label class="col-md-offset-5  col-md-3 control-label-back">Fecha: <small> @ViewBag.fecha</small></label>
+                
+                </div>
+            <hr />
+          
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+      
+          
+            <div class="form-group">
+                <label asp-for="id" class="col-md-2 control-label"></label>
+                <div class="col-md-1">
+                    @if (Model == null)
+                    {
+                        <input asp-for="id" class="form-control " disabled />
+                    }
+                    else
+                    {
+                        <input asp-for="id" class="form-control" />
+
+                    }
+              
+                </div>
+                
+            </div>
+      
+            <div class="form-group">
+                <label asp-for="Name" class="col-md-2 control-label"></label>
+                <div class="col-md-3">
+                    <input asp-for="Name" class="form-control" placeholder="Ingrese el nombre del Mapa" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <label asp-for="Description" class="col-md-2 control-label"></label>
+                <div class="col-md-3">
+                    <input asp-for="Description" class="form-control" placeholder="Ingrese descripción del Mapa"  />
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+               
+                
+            </div>
+            <div class="form-group">
+                <label asp-for="Link" class="col-md-2 control-label"></label>
+                <div class="col-md-3">
+                    <input asp-for="Link" class="form-control" placeholder="Ingrese el link de visualización" />
+                    <span asp-validation-for="Link" class="text-danger"></span>
+                </div>
+                <label asp-for="Status" class="col-md-2 control-label"></label>
+                <div class="col-md-3">
+                    <div class="checkbox checkbox-success">
+
+                        <input asp-for="Status" id="checkbox1" type="checkbox" checked="" class="form-control">
+                        <label for="checkbox1">
+                      
+                        </label>
+                        <span asp-validation-for="Status" class="text-danger"></span>
+                    </div>
+                    </div>
+            </div>
+           
+                
+           
+            <div class="form-group ">
+                <div class="col-md-offset-10">
+                    <a href="@Url.Action( "AdmMap", "Admin")" class="  btn btn-success">
+                        Nuevo
+                    </a>
+
+                    <input type="submit" value="Guardar" class="btn btn-primary" />
+                </div>
+                </div>
+        </div>
+        <hr />
+        <div class="box">
+            <div id="DatosTabla" class="col-xs-10 col-md-12 col-lg-12">
+                <table id="datosCoord" class="display compact" cellspacing="0" width="100%">
+                    <thead>
+                        <tr>
+                            <th data-sortable="true"  > ID </th>
+                            <th>
+                                Nombres
+                            </th>
+                            <th>
+                                Descripción
+                            </th>
+                            
+                            <th>
+                                Estado
+                            </th>
+                            <th>
+                                Link
+                            </th>
+                            <th>
+                                Fechas de Creación
+                            </th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+
+
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </form>
+    @{ Html.RenderPartial("_UserTable");}
+</div>
+ 
+
+@section Scripts {
+    <script src="~/lib/Mapa.js"></script>
+    <script type="text/javascript">
+            $(document).ready(function () {
+
+
+                generarTabla();
+            });
+
+                   function generarTabla() {
+
+            var table=  $('#datosCoord').dataTable({
+                "language": {
+                    "url": "@Url.Content("~/js/latin.json")"
+                }
+
+                   ,
+
+                "ajax": {
+                    "url": '@Url.Action("_MapTable", "Admin")',
+                    "type": "GET",
+                    "data": function ( d ) {
+                        return $.extend( {}, d, {
+                            "Id": 0
+                        } );
+                    },
+                    "dataSrc": function (json) {
+
+
+
+                        jQuery.each(json, function (index, value) {
+                            //now you can access properties using dot notation
+
+                            json[index].update = "<a href='@Url.Action("selectMap", "Admin")?Ids=" + value.id + " ' class='glyphicon glyphicon-edit'>";
+                            json[index].delete = "<a href='@Url.Action("DeleteMap", "Admin")?Ids=" + value.id + " ' class='glyphicon glyphicon-trash'>";
+                            json[index].accion = "<a href='#responsive'" + " ' class='	glyphicon glyphicon-plus'  onclick='ModalPerfil(" + value.id + " );'>";
+                        });
+                        return json;
+                    }
+                },
+                "columns": [
+                    { "data": "id" },
+                    { "data": "nombre" },
+                    { "data": "descripcion" },
+                    { "data": "estado" },
+                    { "data": "link" },
+                    
+                    { "data": "fecha" },
+                    { "data": "update" }
+                    ,
+                    { "data": "delete" }
+                    ,
+                    { "data": "accion" }
+                ],
+
+
+
+            });
+
+
+
+        }
+    </script>
+}

@@ -1,0 +1,15 @@
+@model GeoMardis.Model.Mapa.ModelMap
+@{
+
+
+    Layout = "~/Views/Shared/_MapLayout.cshtml";
+
+}
+<div class="text-cod">
+    @Model.geo_map_name
+
+</div>
+
+<iframe style="border: none;" class="frame-map" src="@Model.geo_map_link"></iframe>
+
+        

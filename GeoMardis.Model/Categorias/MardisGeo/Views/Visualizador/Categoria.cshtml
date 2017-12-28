@@ -1,0 +1,15 @@
+@model MardisGeo.Views.modelWeb.ListModel
+
+                      <div class="form-horizontal">
+                          <div class="form-group">
+                              <div class="col-sm-2 col-md-1">
+                                  <b>Universidad:</b>
+                              </div>
+                              <div class="col-sm-6 col-md-4">
+                                  @*@Html.DropDownListFor(model => model.Nombre, Model.ActionsList, new { @class = "form-control" })*@
+
+                                  @Html.DropDownList("DpUniversidad", (SelectList)ViewBag.slUniversidad, new { @class = "form-control" })
+                              </div>
+
+                          </div>
+                      </div>                    

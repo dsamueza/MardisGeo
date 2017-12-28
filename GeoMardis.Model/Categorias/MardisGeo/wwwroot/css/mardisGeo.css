@@ -1,0 +1,84 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.body-login {
+    padding-left: 15px;
+    padding-right: 15px;
+    background-color: #f1f1f1;
+    text-align: center;
+}
+
+.content-login {
+    display: inline-table;
+    height: auto;
+    width: 330px;
+    padding: 10px 10px;
+    background-color: #fff;
+    text-align: center;
+    margin-top: 35px;
+}
+
+    .content-login label {
+        color: #72777c;
+        font-size: 14px;
+        font-family: "Open+Sans",sans-serif;
+    }
+
+.text-form {
+    text-align: left;
+}
+
+.progress {
+    margin-top: 25px;
+    display: inline-block;
+}
+
+.btn-primary-M {
+    background-color: #5c5c5c;
+    color: white;
+    border-radius: 0;
+}
+
+    .btn-primary-M:hover {
+        background-color: #5c5c5c;
+        color: white;
+    }
+
+.content-login fieldset {
+    padding: 10px 20px !important;
+}
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.body-content-Val {
+    margin: 80px !important
+}
+
+.imgcargar {
+    display: inline-block;
+    margin: 20px;
+    right: 380px;
+}
+
+.content_excel {
+    display: inline-block !important;
+}
