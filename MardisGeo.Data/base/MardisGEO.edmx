@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="MardisGEOModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="MardisGEOModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="geo_categoria">
           <Key>
             <PropertyRef Name="id" />
@@ -145,6 +145,55 @@
           <Property Name="tpo_usr_geo_name" Type="varchar" MaxLength="500" Nullable="false" />
           <Property Name="tpo_usr_geo_status" Type="char" MaxLength="2" Nullable="false" />
           <Property Name="create_date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="'ue_datos_tabla'">
+          <Key>
+            <PropertyRef Name="IdUE" />
+          </Key>
+          <Property Name="IdUE" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="meta:instanceID" Type="nvarchar" MaxLength="255" />
+          <Property Name="Codigo" Type="float" />
+          <Property Name="Latitud" Type="float" />
+          <Property Name="Longitud" Type="float" />
+          <Property Name="Coordenadas" Type="nvarchar" MaxLength="255" />
+          <Property Name="Parroquia" Type="nvarchar" MaxLength="255" />
+          <Property Name="Zona" Type="nvarchar" MaxLength="255" />
+          <Property Name="Imagen" Type="nvarchar" MaxLength="255" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="255" />
+          <Property Name="Tamaño" Type="nvarchar" MaxLength="255" />
+          <Property Name="Tipo_Obra" Type="nvarchar" MaxLength="255" />
+          <Property Name="Categoria" Type="nvarchar" MaxLength="255" />
+          <Property Name="Esctructura" Type="nvarchar" MaxLength="255" />
+          <Property Name="Mamposteria" Type="nvarchar" MaxLength="255" />
+          <Property Name="Acabados" Type="nvarchar" MaxLength="255" />
+          <Property Name="Tamano Obra" Type="float" />
+          <Property Name="Tipo de Cemento" Type="nvarchar" MaxLength="255" />
+          <Property Name="Cantidad_cemento" Type="float" />
+          <Property Name="Cemento_m3_por_ejecutar" Type="float" />
+          <Property Name="Tipo_mezcla" Type="nvarchar" MaxLength="255" />
+          <Property Name="Avance_Proyecto" Type="nvarchar" MaxLength="255" />
+          <Property Name="Porcentaje_Avance" Type="float" />
+          <Property Name="fecha_inicio" Type="datetime" />
+          <Property Name="fecha_finalizacion" Type="datetime" />
+          <Property Name="Responsable" Type="nvarchar" MaxLength="255" />
+          <Property Name="responsable2" Type="nvarchar" MaxLength="255" />
+          <Property Name="Constructora" Type="nvarchar" MaxLength="255" />
+          <Property Name="marcas_cemento" Type="nvarchar" MaxLength="255" />
+          <Property Name="proveedor" Type="nvarchar" MaxLength="255" />
+          <Property Name="motivo_compra" Type="nvarchar" MaxLength="255" />
+          <Property Name="credito" Type="nvarchar" MaxLength="255" />
+          <Property Name="valor_m2" Type="float" />
+          <Property Name="maposteria_otro" Type="nvarchar" MaxLength="255" />
+          <Property Name="acabados_otro" Type="nvarchar" MaxLength="255" />
+          <Property Name="hormigonera" Type="nvarchar" MaxLength="255" />
+          <Property Name="proveedor_otro" Type="nvarchar" MaxLength="255" />
+          <Property Name="otras_obras" Type="nvarchar" MaxLength="255" />
+          <Property Name="nombre_1" Type="nvarchar" MaxLength="255" />
+          <Property Name="nombre_2" Type="nvarchar" MaxLength="255" />
+          <Property Name="apellido_1" Type="nvarchar" MaxLength="255" />
+          <Property Name="apellido_2" Type="nvarchar" MaxLength="255" />
+          <Property Name="telefono" Type="nvarchar" MaxLength="255" />
+          <Property Name="celular" Type="nvarchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="USER_GEO">
           <Key>
@@ -291,6 +340,7 @@
           <EntitySet Name="geo_usr_profile" EntityType="Self.geo_usr_profile" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tpo_usr_geo" EntityType="Self.tpo_usr_geo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="'ue_datos_tabla'" EntityType="Self.'ue_datos_tabla'" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="USER_GEO" EntityType="Self.USER_GEO" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__geo_des_f__id_im__571DF1D5" Association="Self.FK__geo_des_f__id_im__571DF1D5">
             <End Role="geo_foto" EntitySet="geo_foto" />
@@ -333,8 +383,7 @@
             <End Role="USER_GEO" EntitySet="USER_GEO" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MardisGEOModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -685,7 +734,57 @@
             <End Role="tpo_usr_geo" EntitySet="tpo_usr_geo" />
             <End Role="USER_GEO" EntitySet="USER_GEO" />
           </AssociationSet>
+          <EntitySet Name="C_ue_datos_tabla_" EntityType="MardisGEOModel.C_ue_datos_tabla_" />
         </EntityContainer>
+        <EntityType Name="C_ue_datos_tabla_">
+          <Key>
+            <PropertyRef Name="IdUE" />
+          </Key>
+          <Property Name="IdUE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="meta_instanceID" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Codigo" Type="Double" />
+          <Property Name="Latitud" Type="Double" />
+          <Property Name="Longitud" Type="Double" />
+          <Property Name="Coordenadas" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Parroquia" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Zona" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Imagen" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Tamaño" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Tipo_Obra" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Categoria" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Esctructura" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Mamposteria" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Acabados" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Tamano_Obra" Type="Double" />
+          <Property Name="Tipo_de_Cemento" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Cantidad_cemento" Type="Double" />
+          <Property Name="Cemento_m3_por_ejecutar" Type="Double" />
+          <Property Name="Tipo_mezcla" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Avance_Proyecto" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Porcentaje_Avance" Type="Double" />
+          <Property Name="fecha_inicio" Type="DateTime" Precision="3" />
+          <Property Name="fecha_finalizacion" Type="DateTime" Precision="3" />
+          <Property Name="Responsable" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="responsable2" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Constructora" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="marcas_cemento" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="proveedor" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="motivo_compra" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="credito" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="valor_m2" Type="Double" />
+          <Property Name="maposteria_otro" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="acabados_otro" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="hormigonera" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="proveedor_otro" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="otras_obras" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="nombre_1" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="nombre_2" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="apellido_1" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="apellido_2" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="telefono" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="celular" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -855,6 +954,56 @@
                 <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
                 <ScalarProperty Name="CREATE_DATE" ColumnName="CREATE_DATE" />
                 <ScalarProperty Name="idtpo" ColumnName="idtpo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C_ue_datos_tabla_">
+            <EntityTypeMapping TypeName="MardisGEOModel.C_ue_datos_tabla_">
+              <MappingFragment StoreEntitySet="'ue_datos_tabla'">
+                <ScalarProperty Name="celular" ColumnName="celular" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="apellido_2" ColumnName="apellido_2" />
+                <ScalarProperty Name="apellido_1" ColumnName="apellido_1" />
+                <ScalarProperty Name="nombre_2" ColumnName="nombre_2" />
+                <ScalarProperty Name="nombre_1" ColumnName="nombre_1" />
+                <ScalarProperty Name="otras_obras" ColumnName="otras_obras" />
+                <ScalarProperty Name="proveedor_otro" ColumnName="proveedor_otro" />
+                <ScalarProperty Name="hormigonera" ColumnName="hormigonera" />
+                <ScalarProperty Name="acabados_otro" ColumnName="acabados_otro" />
+                <ScalarProperty Name="maposteria_otro" ColumnName="maposteria_otro" />
+                <ScalarProperty Name="valor_m2" ColumnName="valor_m2" />
+                <ScalarProperty Name="credito" ColumnName="credito" />
+                <ScalarProperty Name="motivo_compra" ColumnName="motivo_compra" />
+                <ScalarProperty Name="proveedor" ColumnName="proveedor" />
+                <ScalarProperty Name="marcas_cemento" ColumnName="marcas_cemento" />
+                <ScalarProperty Name="Constructora" ColumnName="Constructora" />
+                <ScalarProperty Name="responsable2" ColumnName="responsable2" />
+                <ScalarProperty Name="Responsable" ColumnName="Responsable" />
+                <ScalarProperty Name="fecha_finalizacion" ColumnName="fecha_finalizacion" />
+                <ScalarProperty Name="fecha_inicio" ColumnName="fecha_inicio" />
+                <ScalarProperty Name="Porcentaje_Avance" ColumnName="Porcentaje_Avance" />
+                <ScalarProperty Name="Avance_Proyecto" ColumnName="Avance_Proyecto" />
+                <ScalarProperty Name="Tipo_mezcla" ColumnName="Tipo_mezcla" />
+                <ScalarProperty Name="Cemento_m3_por_ejecutar" ColumnName="Cemento_m3_por_ejecutar" />
+                <ScalarProperty Name="Cantidad_cemento" ColumnName="Cantidad_cemento" />
+                <ScalarProperty Name="Tipo_de_Cemento" ColumnName="Tipo de Cemento" />
+                <ScalarProperty Name="Tamano_Obra" ColumnName="Tamano Obra" />
+                <ScalarProperty Name="Acabados" ColumnName="Acabados" />
+                <ScalarProperty Name="Mamposteria" ColumnName="Mamposteria" />
+                <ScalarProperty Name="Esctructura" ColumnName="Esctructura" />
+                <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+                <ScalarProperty Name="Tipo_Obra" ColumnName="Tipo_Obra" />
+                <ScalarProperty Name="Tamaño" ColumnName="Tamaño" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Imagen" ColumnName="Imagen" />
+                <ScalarProperty Name="Zona" ColumnName="Zona" />
+                <ScalarProperty Name="Parroquia" ColumnName="Parroquia" />
+                <ScalarProperty Name="Coordenadas" ColumnName="Coordenadas" />
+                <ScalarProperty Name="Longitud" ColumnName="Longitud" />
+                <ScalarProperty Name="Latitud" ColumnName="Latitud" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="meta_instanceID" ColumnName="meta:instanceID" />
+                <ScalarProperty Name="IdUE" ColumnName="IdUE" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

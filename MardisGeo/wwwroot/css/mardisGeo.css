@@ -467,8 +467,18 @@ textarea {
         padding-top: 10%;
         margin-bottom: 6px;
     }
-}
 
+
+
+}
+@media only screen and (max-width: 1024px) {
+    .body-content-Val {
+        width: 1500px !important;
+    }
+    .footer-mardis {
+        width: 1500px !important;
+    }
+}
 /*ss*/
 .children {
     left: -10px;
@@ -984,5 +994,21 @@ table.dataTable.no-footer {
     #mmodal .modal.fade.in {
         width: 60% !important;
         left: 20% !important;
+    }
+}
+.viz-client-container {
+    width: 1700px !important
+}
+
+
+#tab-dashboard-region {
+    height: 700px !important;
+    width: 1366px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+}
+@media only screen and (max-width: 1200px) {
+    #contenido {
+        height: 2530px !important;
     }
 }

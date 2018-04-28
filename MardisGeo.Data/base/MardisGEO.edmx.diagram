@@ -29,6 +29,7 @@
         <AssociationConnector Association="MardisGEOModel.FK_geo_profile_USER_GEO" ManuallyRouted="false" />
         <AssociationConnector Association="MardisGEOModel.FK_geo_USER_GEO_profile" ManuallyRouted="false" />
         <AssociationConnector Association="MardisGEOModel.FK_Persontipo" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="MardisGEOModel.C_ue_datos_tabla_" Width="1.5" PointX="3.375" PointY="12.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

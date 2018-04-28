@@ -6,7 +6,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="wwwroot\css\mardisGeo.css" />
+    <Content Remove="wwwroot\css\mardisGeo.css" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="wwwroot\Data_Censo_Nacional_Sectores_Censales_10112017.xlsx" />
     <Content Include="wwwroot\images\iso_mardis.png" />
     <Content Include="wwwroot\images\logoMardis.png" />

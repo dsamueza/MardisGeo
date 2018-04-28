@@ -31,7 +31,28 @@ namespace MardisGeo.Controllers
 
             }
         }
-#region Logica de visualizacion Map
+
+        public ActionResult Dashbord()
+        {
+            ValUsuario = HttpContext.Session.GetString("IsUsuario");
+
+            if (ValUsuario != null)
+            {
+
+                ids = int.Parse(HttpContext.Session.GetInt32("Isid").ToString());
+                var sltmap = maps.GetMap(ids);
+                ViewBag.sltmaps = sltmap;
+
+                ViewBag.lgnUsuario = ValUsuario;
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("logout", "Login");
+
+            }
+        }
+        #region Logica de visualizacion Map
         public ActionResult Map()
         {
             ValUsuario = HttpContext.Session.GetString("IsUsuario");

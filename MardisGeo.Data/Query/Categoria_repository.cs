@@ -30,5 +30,26 @@ namespace MardisGeo.Data.Query
                 return null;
             }
         }
+
+        public IList<u> GetUE()
+        {
+
+            try
+            {
+                using (var tran = new MardisGEOEntities())
+                {
+
+                    return tran.geo_categoria.ToList<geo_categoria>();
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                string error;
+                error = ex.ToString();
+                return null;
+            }
+        }
     }
 }
