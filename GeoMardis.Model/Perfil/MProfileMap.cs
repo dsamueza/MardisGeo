@@ -11,6 +11,8 @@ namespace GeoMardis.Model.Perfil
         public int Id { get; set; }
         public int Idprofile { get; set; }
         public int idmap { get; set; }
+
+        public int Iddash { get; set; }
         public string descripcion { get; set; }
         public DateTime fecha_mod { get; set; }
         public string geo_map_usr { get; set; }

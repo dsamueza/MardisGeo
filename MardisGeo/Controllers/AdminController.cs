@@ -13,6 +13,8 @@ using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using MardisGeo.bussiness.Cuenta;
 using MardisGeo.bussiness.Perfil;
+using AutoMapper;
+
 namespace MardisGeo.Controllers
 {
     public class AdminController : Controller
@@ -22,7 +24,7 @@ namespace MardisGeo.Controllers
         private BAccount account = new BAccount();
         private BProfile profile = new BProfile();
         private BMapas bmapas = new BMapas();
-        private Int32 ids = 0;
+       
         // GET: Admin
         private readonly ILogger<HomeController> _logger;
 
@@ -74,6 +76,23 @@ namespace MardisGeo.Controllers
             }
 
         }
+        public JsonResult _UserTableUE(int Id)
+        {
+            ValUsuario = HttpContext.Session.GetString("IsUsuario");
+            if (ValUsuario != null)
+            {
+                var slttipo = userv.AllTypeUser();
+                var rows = account.GetUE();
+                var jsondata = rows.ToArray();
+                return Json(jsondata);
+            }
+            else
+            {
+                return Json("");
+
+            }
+
+        }
         public ActionResult AdmMap()
         {
             ValUsuario = HttpContext.Session.GetString("IsUsuario");
@@ -115,7 +134,6 @@ namespace MardisGeo.Controllers
                 {
                     Model.Usuario = ValUsuario;
                     bmapas.SaveMap(Model);
-
                     ModelState.Clear();
                     ViewBag.lgnUsuario = ValUsuario;
                     return View();
@@ -170,6 +188,8 @@ namespace MardisGeo.Controllers
 
 
         }
+    
+        
         public IActionResult selectMap(string ids)
         {
             ValUsuario = HttpContext.Session.GetString("IsUsuario");
@@ -344,7 +364,53 @@ namespace MardisGeo.Controllers
             }
 
         }
+        [HttpPost]
+        public JsonResult ProfileDash(int id, int idper)
+        {
+            ValUsuario = HttpContext.Session.GetString("IsUsuario");
+            if (ValUsuario != null)
+            {
+                var vaperson = profile.GetPerfilDash(idper);
+                var vaccount = profile.GetPerfilAccountMap(id);
 
+
+                var rows = from x in vaccount
+                           select new
+                           {
+                               idaccount = x.Id,
+                               account = x.nombre,
+                               person = ProfileMDash(x.Id, vaperson)
+                           };
+                var jsondata = rows.ToArray();
+                return Json(jsondata);
+
+
+
+
+            }
+            else
+            {
+                return Json("");
+
+            }
+        }
+
+        public int ProfileMDash(int id, IList<MProfileMap> m)
+        {
+
+            try
+            {
+                var user = m.Where(x => x.Idprofile == id).First().Iddash;
+                return user;
+            }
+            catch (Exception)
+            {
+
+                return 0;
+            }
+
+
+        }
         #endregion
 
         #region Profile
@@ -497,5 +563,221 @@ namespace MardisGeo.Controllers
 
         #endregion
 
+        public IActionResult UE() {
+
+
+            ValUsuario = HttpContext.Session.GetString("IsUsuario");
+
+            if (ValUsuario != null)
+            {
+
+
+          
+           
+
+                var a = account.GetUE();
+                return View(a);
+
+
+            }
+            else
+            {
+                return RedirectToAction("logout", "Login");
+
+            }
+
+           
+        }
+
+        public IActionResult Superior()
+        {
+
+
+            ValUsuario = HttpContext.Session.GetString("IsUsuario");
+
+            if (ValUsuario != null)
+            {
+
+
+
+
+
+                var a = account.GetUE();
+                return View(a);
+
+
+            }
+            else
+            {
+                return RedirectToAction("logout", "Login");
+
+            }
+
+
+        }
+
+        public IActionResult UEL()
+        {
+            var a = account.GetUE();
+            return View(a);
+        }
+        #region Dashboard
+
+        public ActionResult AdmDash()
+        {
+            ValUsuario = HttpContext.Session.GetString("IsUsuario");
+            if (ValUsuario != null)
+            {
+                DateTime localDate = DateTime.Now;
+                ViewBag.lgnUsuario = ValUsuario;
+                ViewBag.fecha = localDate;
+
+
+                var model = TempData["mapmodeldash"];
+                if (model == null)
+                {
+
+                    return View();
+                }
+                model = JsonConvert.DeserializeObject<DashboardModelRegister>(TempData["mapmodeldash"].ToString());
+                ViewBag.fecha = JsonConvert.DeserializeObject<DashboardModelRegister>(TempData["mapmodeldash"].ToString()).FechaUsuario;
+                TempData["mapmodeldash"] = null;
+                ViewBag.lgnUsuario = ValUsuario;
+                return View(model);
+            }
+            else
+            {
+                return RedirectToAction("logout", "Login");
+
+            }
+
+        }
+        [HttpPost]
+        public ActionResult AdmDash(DashboardModelRegister Model)
+        {
+            ValUsuario = HttpContext.Session.GetString("IsUsuario");
+
+            if (ValUsuario != null)
+            {
+                typeUserView();
+                if (ModelState.IsValid)
+                {
+                    Model.Usuario = ValUsuario;
+                    bmapas.SaveDashBoard(Model);
+
+                    ModelState.Clear();
+                    ViewBag.lgnUsuario = ValUsuario;
+                    return View();
+                }
+
+            }
+            else
+            {
+                return RedirectToAction("logout", "Login");
+
+            }
+            return View(Model);
+        }
+        public ActionResult DeleteDash(string ids)
+        {
+            ValUsuario = HttpContext.Session.GetString("IsUsuario");
+            if (ValUsuario != null)
+            {
+                if (bmapas.RemoveDash(int.Parse(ids)) != 1)
+                {
+                }
+                return RedirectToAction("AdmDash");
+            }
+            else
+            {
+                return RedirectToAction("logout", "Login");
+
+            }
+
+
+        }
+        public JsonResult _MapTableDash(int Id)
+        {
+            ValUsuario = HttpContext.Session.GetString("IsUsuario");
+            if (ValUsuario != null)
+            {
+
+                var rows = from x in bmapas.AllDashboard()
+                           select new
+                           {
+                               id = x.id,
+                               Nombre = x.Name,
+                               Descripcion = x.Description,
+                               Link = x.Link,
+                               fecha = x.FechaUsuario,
+                               Estado = x.estado,
+                               Linkmobil = x.LinkModel,
+                               Accion = "",
+                               update = "",
+                               delete = ""
+
+                           };
+                var jsondata = rows.ToArray();
+                return Json(jsondata);
+            }
+            else
+            {
+                return Json("");
+
+            }
+
+        }
+
+        public IActionResult selectDash(string ids)
+        {
+            ValUsuario = HttpContext.Session.GetString("IsUsuario");
+
+            if (ValUsuario != null)
+            {
+
+
+                var mMap = bmapas.GetDashboaarSig(int.Parse(ids));
+
+                TempData["mapmodeldash"] = JsonConvert.SerializeObject(mMap);
+
+
+                return RedirectToAction("AdmDash", "Admin");
+
+
+            }
+            else
+            {
+                return RedirectToAction("logout", "Login");
+
+            }
+
+
+        }
+        public JsonResult saveprofileDashBoard(int id, int idper)
+        {
+            ValUsuario = HttpContext.Session.GetString("IsUsuario");
+
+            if (ValUsuario != null)
+            {
+
+                MProfileMap profilemap = new MProfileMap { Idprofile = id, Iddash = idper, status = "A", geo_map_usr = ValUsuario, descripcion = "Mapa nuevo" };
+                profile.AddRemovePerfildash(profilemap);
+
+
+                return Json("");
+
+
+
+
+            }
+            else
+            {
+                return Json("");
+
+            }
+
+        }
+
+        #endregion
     }
 }

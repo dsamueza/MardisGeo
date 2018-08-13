@@ -22,9 +22,9 @@ namespace MardisGeo.Controllers
         private BAccount account = new BAccount();
         private BProfile profile = new BProfile();
         private BMapas bmapas = new BMapas();
-        private Int32 ids = 0;
+
         // GET: Admin
-        private readonly ILogger<HomeController> _logger;
+    
 
     
         public ActionResult Index()

@@ -8,21 +8,21 @@
     <title>GEO</title>
     <link href="~/css/mardisGeo.css" rel="stylesheet" />
     <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
-
+    <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container-mardis">
             <div class="navbar-header">
-                
-                <a   id="abrir" href="javascript:void(0)" onclick="mostrar()" class="navbar-brand btn  btn-lg">
-                    <span class="glyphicon glyphicon-th-list"></span> 
+
+                <a id="abrir" href="javascript:void(0)" onclick="mostrar()" class="navbar-brand btn  btn-lg">
+                    <span class="glyphicon glyphicon-th-list"></span>
                 </a>
                 <a id="cerrar" href="javascript:void(0)" onclick="ocultar()" class="navbar-brand btn btn-default btn-lg">
-                    <span class="glyphicon glyphicon-th-list"></span> 
+                    <span class="glyphicon glyphicon-th-list"></span>
                 </a>
                 <a class="navbar-brand" href="#"><img src="~/images/iso_mardis.png" style=" height:60px; padding-bottom:1px" /></a>
-          
+
 
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
@@ -30,7 +30,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 @Html.ActionLink("GeoRating", "Map", "Map", new { area = "" }, new { @class = "navbar-brand", @id = "idnav" })
-                
+
             </div>
             <div class="navbar-collapse collapse">
 
@@ -53,19 +53,19 @@
                             <li>
                                 @{ if (ViewBag.lgnUsuario == "Administrador Corporación Favorita")
                                     {
-                            <a href="../Data_Censo_Nacional_Sectores_Censales_10112017.xlsx">
-                                <span class="glyphicon glyphicon-download-alt"></span> Sectores Censales
-                            </a>
-}
+                                        <a href="../Data_Censo_Nacional_Sectores_Censales_10112017.xlsx">
+                                            <span class="glyphicon glyphicon-download-alt"></span> Sectores Censales
+                                        </a>
+                                    }
                                 }
 
                                 @*@{ if (ViewBag.lgnUsuario == "Unacem Ecuador")
-                                    {
-                            <a href="@Url.Action("Dashbord", "Map")">
-                                <span class="glyphicon glyphicon-map-marker"></span> Dashboard
-                            </a>
-}
-                                }*@
+                                                                        {
+                                                                <a href="@Url.Action("Dashbord", "Map")">
+                                                                    <span class="glyphicon glyphicon-map-marker"></span> Dashboard
+                                                                </a>
+                                    }
+                                                                    }*@
                             </li>
                         </ul>
                     </li>
@@ -113,28 +113,82 @@ aux = item1.nameprofile;
 
 }
 
+                    @if (ViewBag.lgnUsuario == "Holcim")
+    {
+                <li class="submenu">
+                    <a id="menuo" href="#"> <span class="glyphicon glyphicon-plus-sign" id="idspan"></span>DashBoard </a>
+                    <ul class="children" style="display: none;">
+                        <li><a href="@Url.Action("Dashbord_holcim", "Map")"><span class="glyphicon glyphicon-map-marker"></span> Censo Holcim </a>  </li>
+
+                    </ul>
+                </li>
+}
+
                     @if (ViewBag.lgnUsuario == "Unacem Ecuador")
     {
                 <li class="submenu">
-                    <a id="menuo" href="#"> <span class="glyphicon glyphicon-plus-sign" id="idspan"></span>DasbBoard </a>
+                    <a id="menuo" href="#"> <span class="glyphicon glyphicon-plus-sign" id="idspan"></span>DashBoard </a>
                     <ul class="children" style="display: none;">
                         <li><a href="@Url.Action("Dashbord", "Map")"><span class="glyphicon glyphicon-map-marker"></span> Obras </a>  </li>
+                        <li><a href="@Url.Action("Dashbord_UE", "Map")"><span class="glyphicon glyphicon-map-marker"></span> Censo Unacem </a>  </li>
+                        <li><a href="@Url.Action("UE", "Map")"><span class="glyphicon glyphicon-map-marker"></span> Datos Obras </a>  </li>
+                        <li><a href="@Url.Action("UEAvance", "Map")"><span class="glyphicon glyphicon-map-marker"></span> Unacem Avance </a>  </li>
                     </ul>
                 </li>
-                    }
-            
+}
+
+                    @if (ViewBag.lgnUsuario == "Store Audit User1")
+    {
+                <li class="submenu">
+                    <a id="menuo" href="#"> <span class="glyphicon glyphicon-plus-sign" id="idspan"></span>DashBoard </a>
+                    <ul class="children" style="display: none;">
+                        <li><a href="@Url.Action("Dashbord_store", "Map")"><span class="glyphicon glyphicon-map-marker"></span> Dashboard CN </a>  </li>
+
+                    </ul>
+                </li>
+}
+
+                    @if (ViewBag.lgnUsuario == "Papelesa")
+    {
+                <li class="submenu">
+                    <a id="menuo" href="#"> <span class="glyphicon glyphicon-plus-sign" id="idspan"></span>DashBoard </a>
+                    <ul class="children" style="display: none;">
+                        <li><a href="@Url.Action("Dashbord_Papelesa", "Map")"><span class="glyphicon glyphicon-map-marker"></span> Dashboard Papelesa </a>  </li>
+
+                    </ul>
+                </li>
+}
+                    @if (ViewBag.lgnUsuario == "Administrador Grupo Superior")
+    {
+                <li class="submenu">
+                    <a id="menuo" href="#"> <span class="glyphicon glyphicon-plus-sign" id="idspan"></span>DashBoard </a>
+                    <ul class="children" style="display: none;">
+                        <li><a href="@Url.Action("Dashbord_Spr", "Map")"><span class="glyphicon glyphicon-map-marker"></span> Superior Quito </a>  </li>
+
+                    </ul>
+                    <ul class="children" style="display: none;">
+                        <li><a href="@Url.Action("Dashbord_Spr_gya", "Map")"><span class="glyphicon glyphicon-map-marker"></span> Superior Guayaquil </a>  </li>
+
+                    </ul>
+                    <ul class="children" style="display: none;">
+                        <li><a href="@Url.Action("Dashbord_Spr_UIO_panaderia", "Map")"><span class="glyphicon glyphicon-map-marker"></span> Panaderias QUito </a>  </li>
+
+                    </ul>
+                </li>
+}
+
                 </ul>
 
-                </nav>
+            </nav>
 
-         
-</div>
-  
-       
-    
+
+        </div>
+
+
+
         <div id="contenido" style="padding-top: 5px;">
             @RenderBody()
-          
+
         </div>
         <div id="mmodal">
             <div id="cco" class="modal fade" tabindex="-1" data-width="760" style="display: none;">
@@ -146,14 +200,14 @@ aux = item1.nameprofile;
                     <div class="row">
 
                         <div class="col-md-12">
-                        
+
                             <fieldset>
                                 <p>
-                                    Contraseña:<input type="password" class="form-control" placeholder="Ingrese nueva contraseña" id="idcc"/>
-                                  
+                                    Contraseña:<input type="password" class="form-control" placeholder="Ingrese nueva contraseña" id="idcc" />
+
                                 </p>
                                 <p>
-                                    Repita la contraseña: <input type="password"  class="form-control" placeholder="Repita la contraseña " id="idccn" />
+                                    Repita la contraseña: <input type="password" class="form-control" placeholder="Repita la contraseña " id="idccn" />
                                     <span class="text-danger"> <label id="lidcc" hidden>La contraseña no coincide</label></span>
                                 </p>
                                 <div id="content-chk">
@@ -166,13 +220,13 @@ aux = item1.nameprofile;
                 <div class="modal-footer">
 
                     <button type="button" data-dismiss="modal" class="btn btn-default">Salir</button>
-                    <button type="button"  class="btn btn-primary" id="btnm">Guardar</button>
+                    <button type="button" class="btn btn-primary" id="btnm">Guardar</button>
                 </div>
             </div>
         </div>
 
 
-        </div>
+    </div>
     <footer class="footer-mardis">
         <p>&copy;Copyright © @DateTime.Now.Year Mardis. All rights reserved.</p>
     </footer>
@@ -186,6 +240,11 @@ aux = item1.nameprofile;
         <script src="~/lib/helper/html2canvas.js"></script>
         <script src="~/lib/jquery.toaster.js"></script>
         <script src="~/lib/bootbox.min.js"></script>
+
+        <script src="~/lib/data-table/js/jquery.dataTables.min.js"></script>
+
+
+
         <script>
             function ModalCambio(ccos) {
                 $("#idccn").val("");
@@ -202,7 +261,7 @@ aux = item1.nameprofile;
 
                 if ($('#idcc').val() == $('#idccn').val()) {
 
-                  
+
                     var sec = $("#idccn").val();
                     $.ajax({
                         url: '@Url.Action("UpdatePass", "Login")',
@@ -213,7 +272,7 @@ aux = item1.nameprofile;
 
                         },
                         success: function (data) {
-                            if (data == 1) { 
+                            if (data == 1) {
                                 $("#lidccs").show();
                                 $("#idccn").val("") ;
                                 $('#idcc').val("")  ;
@@ -222,9 +281,9 @@ aux = item1.nameprofile;
 
                         error: function () {
 
-                       
+
                         }
-                        
+
 
                     });
 
@@ -256,12 +315,13 @@ aux = item1.nameprofile;
         </script>
     </environment>
     <environment names="Staging,Production">
- 
+
         <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
                 asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
                 asp-fallback-test="window.jQuery"
                 crossorigin="anonymous"
                 integrity="sha384-K+ctZQ+LL8q6tP7I94W+qzQsfRV2a+AfHIi9k8z8l9ggpc8X+Ytst4yBo/hH+8Fk">
+
         </script>
 
         <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
@@ -274,6 +334,7 @@ aux = item1.nameprofile;
         <script src="~/lib/helper/html2canvas.js"></script>
         <script src="~/lib/jquery.toaster.js"></script>
         <script src="~/lib/bootbox.min.js"></script>
+        <script src="~/lib/data-table/js/jquery.dataTables.min.js"></script>
         <script>
                 function ModalCambio(ccos) {
                 $("#idccn").val("");

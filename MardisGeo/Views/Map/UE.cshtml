@@ -1,0 +1,209 @@
+@model IEnumerable<GeoMardis.Model.Admin.UE>
+
+@{
+    ViewData["Title"] = "UE";
+    Layout = "~/Views/Shared/_MapLayout.cshtml";
+}
+
+<h2>Censo Obras</h2>
+
+
+<div id="DatosTabla" class="col-xs-10 col-md-12 col-lg-12" style="overflow: auto; width: 100%;">
+    <table id="datosCoord" class="display nowrap" style="width:100%">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.meta_instanceID)
+                </th>
+
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Codigo)
+                </th>
+
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Latitud)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Longitud)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Coordenadas)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Parroquia)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Zona)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Dirección)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Imagen)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Nombre_de_la_obra)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Tipo_Obra)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Categoria)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Esctructura)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Tamano_Obra_m2)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Hormigon_total_m3)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Porcentaje_Avance)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Hormigon_por_ejecutar_m3)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Tipo_mezcla)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.fecha_inicio)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.fecha_finalizacion)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Constructora)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.marcas_cemento)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.hormigonera__Hormigon_premezclado_)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.proveedor__sacos_)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Tipo_de_Responsable)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Responsable)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nombre)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.celular)
+                </th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+         
+        </tbody>
+    </table>
+</div>
+@section Scripts {
+    <script type="text/javascript">
+        @*var table=  $('#datosCoord').dataTable({
+        "language": {
+        "url": "@Url.Content("~/js/latin.json")"
+            },
+            "pageLength": 25,
+            "scrollX": true
+             });
+        </script>*@
+        var table
+        $(document).ready(function () {
+                var modal = document.getElementById('myModal');
+
+                // Get the image and insert it inside the modal - use its "alt" text as a caption
+
+                $('#formSave').submit(function () {
+                  //  alert('test');
+                });
+            generarTabla();
+
+        })
+        function generarTabla() {
+
+             table = $('#datosCoord').dataTable({
+                "language": {
+                    "url": "@Url.Content("~/js/latin.json")"
+                },
+                 "pageLength": 25,  
+                 "order": [[8, "asc"]],
+                "ajax": {
+                    "url": '@Url.Action("_UserTableUE", "Admin")',
+                    "type": "GET",
+                    "data": function (d) {
+                        return $.extend({}, d, {
+                            "Id": 0
+                        });
+                    },
+                    "dataSrc": function (json) {
+                        console.log(json)
+                             jQuery.each(json, function (index, value) {
+                            //now you can access properties using dot notation
+
+                                 json[index].imagen = "<a href='" + value.imagen + " '  target='_blank' class='glyphicon glyphicon-eye-open'/>";
+                          
+                        });
+                        return json;
+                    }
+                },
+                "columns": [
+                    { "data": "meta_instanceID" },
+                    { "data": "codigo" },
+                    { "data": "latitud" },
+                    { "data": "longitud" },
+                    { "data": "coordenadas" },
+                    { "data": "parroquia" },
+                    { "data": "zona" },
+                    { "data": "dirección" },
+                    { "data": "imagen" },
+                    { "data": "nombre_de_la_obra" },
+                    { "data": "tipo_Obra" },
+                    { "data": "categoria" },
+                    { "data": "esctructura" },
+                    { "data": "tamano_Obra_m2" },
+                    { "data": "hormigon_total_m3" },
+                    { "data": "porcentaje_Avance" },
+                    { "data": "hormigon_por_ejecutar_m3" },
+                    { "data": "tipo_mezcla" },
+                    { "data": "fecha_inicio" },
+                    { "data": "fecha_finalizacion" },
+                    { "data": "constructora" },
+                    { "data": "marcas_cemento" },
+                    { "data": "hormigonera__Hormigon_premezclado_" },
+                    { "data": "proveedor__sacos_" },
+                    { "data": "tipo_de_Responsable" },
+                    { "data": "responsable" },
+                    { "data": "nombre" },
+                    { "data": "celular" }
+
+
+
+
+                ],
+
+               
+
+            } 
+                );
+        }
+    </script>
+
+
+}   

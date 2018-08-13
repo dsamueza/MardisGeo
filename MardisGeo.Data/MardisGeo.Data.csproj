@@ -49,62 +49,119 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="base\AspNetRoleClaims.cs">
+      <DependentUpon>MardisGEOEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="base\AspNetRoles.cs">
+      <DependentUpon>MardisGEOEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="base\AspNetUserClaims.cs">
+      <DependentUpon>MardisGEOEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="base\AspNetUserLogins.cs">
+      <DependentUpon>MardisGEOEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="base\AspNetUsers.cs">
+      <DependentUpon>MardisGEOEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="base\AspNetUserTokens.cs">
+      <DependentUpon>MardisGEOEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="base\censo_obras.cs">
+      <DependentUpon>MardisGEOEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="base\censo_obra_UE.cs">
+      <DependentUpon>MardisGEOEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="base\CodigosDesactivados_Topsy.cs">
+      <DependentUpon>MardisGEOEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="base\C_ue_datos_tabla_.cs">
+      <DependentUpon>MardisGEOEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="base\C__EFMigrationsHistory.cs">
+      <DependentUpon>MardisGEOEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="base\geo_categoria.cs">
-      <DependentUpon>MardisGEO.tt</DependentUpon>
+      <DependentUpon>MardisGEOEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="base\geo_dashboard.cs">
+      <DependentUpon>MardisGEOEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="base\geo_datos.cs">
+      <DependentUpon>MardisGEOEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="base\geo_des_foto.cs">
-      <DependentUpon>MardisGEO.tt</DependentUpon>
+      <DependentUpon>MardisGEOEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="base\geo_foto.cs">
-      <DependentUpon>MardisGEO.tt</DependentUpon>
+      <DependentUpon>MardisGEOEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="base\geo_img_ubicacion.cs">
-      <DependentUpon>MardisGEO.tt</DependentUpon>
+      <DependentUpon>MardisGEOEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="base\geo_manage.cs">
+      <DependentUpon>MardisGEOEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="base\geo_map.cs">
-      <DependentUpon>MardisGEO.tt</DependentUpon>
+      <DependentUpon>MardisGEOEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="base\geo_map_account.cs">
-      <DependentUpon>MardisGEO.tt</DependentUpon>
+      <DependentUpon>MardisGEOEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="base\geo_map_profile.cs">
-      <DependentUpon>MardisGEO.tt</DependentUpon>
+      <DependentUpon>MardisGEOEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="base\geo_profile.cs">
-      <DependentUpon>MardisGEO.tt</DependentUpon>
+      <DependentUpon>MardisGEOEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="base\geo_secuencial.cs">
-      <DependentUpon>MardisGEO.tt</DependentUpon>
+      <DependentUpon>MardisGEOEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="base\geo_ubicacion.cs">
-      <DependentUpon>MardisGEO.tt</DependentUpon>
+      <DependentUpon>MardisGEOEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="base\geo_usr_profile.cs">
-      <DependentUpon>MardisGEO.tt</DependentUpon>
+      <DependentUpon>MardisGEOEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="base\MardisGEO.Context.cs">
+    <Compile Include="base\MardisGEOEntities.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>MardisGEO.Context.tt</DependentUpon>
+      <DependentUpon>MardisGEOEntities.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="base\MardisGEO.cs">
+    <Compile Include="base\MardisGEOEntities.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>MardisGEO.tt</DependentUpon>
+      <DependentUpon>MardisGEOEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="base\MardisGEO.Designer.cs">
+    <Compile Include="base\MardisGEOEntities.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>MardisGEO.edmx</DependentUpon>
+      <DependentUpon>MardisGEOEntities.edmx</DependentUpon>
     </Compile>
-    <Compile Include="base\sysdiagrams.cs">
-      <DependentUpon>MardisGEO.tt</DependentUpon>
+    <Compile Include="base\Query.cs">
+      <DependentUpon>MardisGEOEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="base\respaldo_UE.cs">
+      <DependentUpon>MardisGEOEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="base\si_opc_apl.cs">
+      <DependentUpon>MardisGEOEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="base\si_opc_apl_usr_tipo.cs">
+      <DependentUpon>MardisGEOEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="base\si_persona.cs">
+      <DependentUpon>MardisGEOEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="base\si_tpo_usuario.cs">
+      <DependentUpon>MardisGEOEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="base\tpo_usr_geo.cs">
-      <DependentUpon>MardisGEO.tt</DependentUpon>
+      <DependentUpon>MardisGEOEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="base\USER_GEO.cs">
-      <DependentUpon>MardisGEO.tt</DependentUpon>
+      <DependentUpon>MardisGEOEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -118,12 +175,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
-    <EntityDeploy Include="base\MardisGEO.edmx">
+    <EntityDeploy Include="base\MardisGEOEntities.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>MardisGEO.Designer.cs</LastGenOutput>
+      <LastGenOutput>MardisGEOEntities.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="base\MardisGEO.edmx.diagram">
-      <DependentUpon>MardisGEO.edmx</DependentUpon>
+    <None Include="base\MardisGEOEntities.edmx.diagram">
+      <DependentUpon>MardisGEOEntities.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
@@ -137,15 +194,15 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="base\MardisGEO.Context.tt">
+    <Content Include="base\MardisGEOEntities.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>MardisGEO.edmx</DependentUpon>
-      <LastGenOutput>MardisGEO.Context.cs</LastGenOutput>
+      <DependentUpon>MardisGEOEntities.edmx</DependentUpon>
+      <LastGenOutput>MardisGEOEntities.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="base\MardisGEO.tt">
+    <Content Include="base\MardisGEOEntities.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>MardisGEO.edmx</DependentUpon>
-      <LastGenOutput>MardisGEO.cs</LastGenOutput>
+      <DependentUpon>MardisGEOEntities.edmx</DependentUpon>
+      <LastGenOutput>MardisGEOEntities.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -189,7 +189,7 @@ public  class Usuario
                 error = ex.ToString();
                 return 0;
             }
-            return 0;
+      
         }
 
         public int UpdateUser(IList<GeoMardis.Model.Admin.Usuario> sltUser) {

@@ -17,5 +17,6 @@ namespace GeoMardis.Model.Mapa
         public string Idprofile { get; set; }
         public string nameprofile { get; set; }
         public string iduser { get; set; }
+        public int tipo { get; set; }
     }
 }

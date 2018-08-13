@@ -1,0 +1,2303 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="MardisGEOModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__EFMigrationsHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetRoleClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="450" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="450" Nullable="false" />
+          <Property Name="ConcurrencyStamp" Type="nvarchar(max)" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" />
+          <Property Name="NormalizedName" Type="nvarchar" MaxLength="256" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="450" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="450" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="450" Nullable="false" />
+          <Property Name="ProviderDisplayName" Type="nvarchar(max)" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="450" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="450" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="450" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="450" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="ConcurrencyStamp" Type="nvarchar(max)" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEnd" Type="datetimeoffset" Precision="7" />
+          <Property Name="NormalizedEmail" Type="nvarchar" MaxLength="256" />
+          <Property Name="NormalizedUserName" Type="nvarchar" MaxLength="256" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" />
+        </EntityType>
+        <EntityType Name="AspNetUserTokens">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="450" Nullable="false" />
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="450" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="450" Nullable="false" />
+          <Property Name="Value" Type="nvarchar(max)" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'MardisGEO.dbo.'censo obras final_MIG'' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="'censo obras final_MIG'">
+          <Property Name="fecha_inicio" Type="datetime" />
+          <Property Name="fecha_finalizacion" Type="datetime" />
+          <Property Name="meta:instanceID" Type="nvarchar" MaxLength="255" />
+          <Property Name="Codigo" Type="nvarchar" MaxLength="255" />
+          <Property Name="Latitud" Type="float" />
+          <Property Name="Longitud" Type="float" />
+          <Property Name="Coordenadas" Type="nvarchar" MaxLength="255" />
+          <Property Name="Parroquia" Type="nvarchar" MaxLength="255" />
+          <Property Name="Zona" Type="nvarchar" MaxLength="255" />
+          <Property Name="Dirección" Type="nvarchar" MaxLength="255" />
+          <Property Name="Imagen" Type="nvarchar" MaxLength="255" />
+          <Property Name="Nombre de la obra" Type="nvarchar" MaxLength="255" />
+          <Property Name="Tipo_Obra" Type="nvarchar" MaxLength="255" />
+          <Property Name="Categoria" Type="nvarchar" MaxLength="255" />
+          <Property Name="Esctructura" Type="nvarchar" MaxLength="255" />
+          <Property Name="Tamano Obra m2" Type="float" />
+          <Property Name="Hormigon_total_m3" Type="float" />
+          <Property Name="Porcentaje_Avance" Type="float" />
+          <Property Name="Hormigon_por_ejecutar_m3" Type="float" />
+          <Property Name="Tipo_mezcla" Type="nvarchar" MaxLength="255" />
+          <Property Name="Constructora" Type="nvarchar" MaxLength="255" />
+          <Property Name="marcas_cemento" Type="nvarchar" MaxLength="255" />
+          <Property Name="hormigonera_(Hormigon premezclado)" Type="nvarchar" MaxLength="255" />
+          <Property Name="proveedor_(sacos)" Type="nvarchar" MaxLength="255" />
+          <Property Name="Tipo de Responsable" Type="nvarchar" MaxLength="255" />
+          <Property Name="Responsable" Type="nvarchar" MaxLength="255" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="255" />
+          <Property Name="celular" Type="nvarchar" MaxLength="255" />
+        </EntityType>-->
+        <EntityType Name="censo_obra_UE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="meta:instanceID" Type="nvarchar" MaxLength="255" />
+          <Property Name="Codigo" Type="nvarchar" MaxLength="255" />
+          <Property Name="Latitud" Type="float" />
+          <Property Name="Longitud" Type="float" />
+          <Property Name="Coordenadas" Type="nvarchar" MaxLength="255" />
+          <Property Name="Parroquia" Type="nvarchar" MaxLength="255" />
+          <Property Name="Zona" Type="nvarchar" MaxLength="255" />
+          <Property Name="Dirección" Type="nvarchar" MaxLength="255" />
+          <Property Name="Imagen" Type="nvarchar" MaxLength="255" />
+          <Property Name="Nombre de la obra" Type="nvarchar" MaxLength="255" />
+          <Property Name="Tipo_Obra" Type="nvarchar" MaxLength="255" />
+          <Property Name="Categoria" Type="nvarchar" MaxLength="255" />
+          <Property Name="Esctructura" Type="nvarchar" MaxLength="255" />
+          <Property Name="Tamano Obra m2" Type="float" />
+          <Property Name="Hormigon_total_m3" Type="float" />
+          <Property Name="Porcentaje_Avance" Type="float" />
+          <Property Name="Hormigon_por_ejecutar_m3" Type="float" />
+          <Property Name="Tipo_mezcla" Type="nvarchar" MaxLength="255" />
+          <Property Name="fecha_inicio" Type="datetime" />
+          <Property Name="fecha_finalizacion" Type="datetime" />
+          <Property Name="Constructora" Type="nvarchar" MaxLength="255" />
+          <Property Name="marcas_cemento" Type="nvarchar" MaxLength="255" />
+          <Property Name="hormigonera_(Hormigon premezclado)" Type="nvarchar" MaxLength="255" />
+          <Property Name="proveedor_(sacos)" Type="nvarchar" MaxLength="255" />
+          <Property Name="Tipo de Responsable" Type="nvarchar" MaxLength="255" />
+          <Property Name="Responsable" Type="nvarchar" MaxLength="255" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="255" />
+          <Property Name="celular" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="censo_obras">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="meta:instanceID" Type="nvarchar" MaxLength="255" />
+          <Property Name="Codigo" Type="nvarchar" MaxLength="255" />
+          <Property Name="Latitud" Type="float" />
+          <Property Name="Longitud" Type="float" />
+          <Property Name="Coordenadas" Type="nvarchar" MaxLength="255" />
+          <Property Name="Parroquia" Type="nvarchar" MaxLength="255" />
+          <Property Name="Zona" Type="nvarchar" MaxLength="255" />
+          <Property Name="Dirección" Type="nvarchar" MaxLength="255" />
+          <Property Name="Imagen" Type="nvarchar" MaxLength="255" />
+          <Property Name="Nombre de la obra" Type="nvarchar" MaxLength="255" />
+          <Property Name="Tipo_Obra" Type="nvarchar" MaxLength="255" />
+          <Property Name="Categoria" Type="nvarchar" MaxLength="255" />
+          <Property Name="Esctructura" Type="nvarchar" MaxLength="255" />
+          <Property Name="Tamano Obra m2" Type="float" />
+          <Property Name="Hormigon_total_m3" Type="float" />
+          <Property Name="Porcentaje_Avance" Type="float" />
+          <Property Name="Hormigon_por_ejecutar_m3" Type="float" />
+          <Property Name="Tipo_mezcla" Type="nvarchar" MaxLength="255" />
+          <Property Name="fecha_inicio" Type="datetime" />
+          <Property Name="fecha_finalizacion" Type="datetime" />
+          <Property Name="Constructora" Type="nvarchar" MaxLength="255" />
+          <Property Name="marcas_cemento" Type="nvarchar" MaxLength="255" />
+          <Property Name="hormigonera_(Hormigon premezclado)" Type="nvarchar" MaxLength="255" />
+          <Property Name="proveedor_(sacos)" Type="nvarchar" MaxLength="255" />
+          <Property Name="Tipo de Responsable" Type="nvarchar" MaxLength="255" />
+          <Property Name="Responsable" Type="nvarchar" MaxLength="255" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="255" />
+          <Property Name="celular" Type="nvarchar" MaxLength="255" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CodigosDesactivados_Topsy">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="URI" Type="varchar" MaxLength="200" />
+          <Property Name="OBSERVACION" Type="varchar" MaxLength="200" />
+          <Property Name="FECHA_DESACTIVACION" Type="datetime" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'MardisGEO.dbo.'con marca$'' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="'con marca$'">
+          <Property Name="meta:instanceID" Type="nvarchar" MaxLength="255" />
+          <Property Name="Codigo" Type="float" />
+          <Property Name="Latitud" Type="float" />
+          <Property Name="Longitud" Type="float" />
+          <Property Name="Coordenadas" Type="nvarchar" MaxLength="255" />
+          <Property Name="Parroquia" Type="nvarchar" MaxLength="255" />
+          <Property Name="Zona" Type="nvarchar" MaxLength="255" />
+          <Property Name="Imagen" Type="nvarchar" MaxLength="255" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="255" />
+          <Property Name="Tamaño" Type="nvarchar" MaxLength="255" />
+          <Property Name="Tipo_Obra" Type="nvarchar" MaxLength="255" />
+          <Property Name="Categoria" Type="nvarchar" MaxLength="255" />
+          <Property Name="Esctructura" Type="nvarchar" MaxLength="255" />
+          <Property Name="Mamposteria" Type="nvarchar" MaxLength="255" />
+          <Property Name="Acabados" Type="nvarchar" MaxLength="255" />
+          <Property Name="Tamano Obra" Type="float" />
+          <Property Name="Tipo de Cemento" Type="nvarchar" MaxLength="255" />
+          <Property Name="Cantidad_cemento" Type="float" />
+          <Property Name="Cemento_m3_por_ejecutar" Type="float" />
+          <Property Name="Tipo_mezcla" Type="nvarchar" MaxLength="255" />
+          <Property Name="Avance_Proyecto" Type="nvarchar" MaxLength="255" />
+          <Property Name="Porcentaje_Avance" Type="float" />
+          <Property Name="fecha_inicio" Type="datetime" />
+          <Property Name="fecha_finalizacion" Type="datetime" />
+          <Property Name="Responsable" Type="nvarchar" MaxLength="255" />
+          <Property Name="responsable2" Type="nvarchar" MaxLength="255" />
+          <Property Name="Constructora" Type="nvarchar" MaxLength="255" />
+          <Property Name="marcas_cemento" Type="nvarchar" MaxLength="255" />
+          <Property Name="proveedor" Type="nvarchar" MaxLength="255" />
+          <Property Name="motivo_compra" Type="nvarchar" MaxLength="255" />
+          <Property Name="credito" Type="nvarchar" MaxLength="255" />
+          <Property Name="valor_m2" Type="float" />
+          <Property Name="maposteria_otro" Type="nvarchar" MaxLength="255" />
+          <Property Name="acabados_otro" Type="nvarchar" MaxLength="255" />
+          <Property Name="hormigonera" Type="nvarchar" MaxLength="255" />
+          <Property Name="proveedor_otro" Type="nvarchar" MaxLength="255" />
+          <Property Name="otras_obras" Type="nvarchar" MaxLength="255" />
+          <Property Name="nombre_1" Type="nvarchar" MaxLength="255" />
+          <Property Name="nombre_2" Type="nvarchar" MaxLength="255" />
+          <Property Name="apellido_1" Type="nvarchar" MaxLength="255" />
+          <Property Name="apellido_2" Type="nvarchar" MaxLength="255" />
+          <Property Name="telefono" Type="nvarchar" MaxLength="255" />
+          <Property Name="celular" Type="nvarchar" MaxLength="255" />
+        </EntityType>-->
+        <EntityType Name="geo_categoria">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="80" />
+          <Property Name="status_cat" Type="varchar" MaxLength="80" />
+        </EntityType>
+        <EntityType Name="geo_dashboard">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="geo_dashboard_name" Type="varchar" MaxLength="200" />
+          <Property Name="geo_dashboard_descrip" Type="varchar" MaxLength="800" />
+          <Property Name="geo_dashboard_status" Type="char" MaxLength="2" />
+          <Property Name="geo_dashboard_create_date" Type="datetime" />
+          <Property Name="geo_dashboard_usr" Type="varchar" MaxLength="200" />
+          <Property Name="geo_dashboard_link" Type="varchar" MaxLength="500" />
+          <Property Name="geo_dashboard_link_mobil" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="geo_datos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="question" Type="varchar" MaxLength="500" />
+          <Property Name="lat" Type="float" />
+          <Property Name="lng" Type="float" />
+          <Property Name="qrn" Type="varchar" MaxLength="500" />
+          <Property Name="description" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="geo_des_foto">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_img" Type="int" />
+        </EntityType>
+        <EntityType Name="geo_foto">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_img_ext" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="url" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="id_geo_cat" Type="int" Nullable="false" />
+          <Property Name="create_date" Type="datetime" />
+          <Property Name="id_geo_des_foto" Type="int" />
+        </EntityType>
+        <EntityType Name="geo_img_ubicacion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="url_img" Type="varchar" MaxLength="500" />
+          <Property Name="name" Type="varchar" MaxLength="200" />
+          <Property Name="create_usr" Type="varchar" MaxLength="200" />
+          <Property Name="create_date" Type="datetime" />
+          <Property Name="id_geo_ubi" Type="int" />
+          <Property Name="value" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="geo_manage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="varchar" MaxLength="100" />
+          <Property Name="Geo_latitud" Type="varchar" MaxLength="100" />
+          <Property Name="Geo_longitud" Type="varchar" MaxLength="100" />
+          <Property Name="Value" Type="varchar(max)" />
+          <Property Name="Description" Type="varchar" MaxLength="500" />
+          <Property Name="dateCreation" Type="datetime" />
+          <Property Name="usr_web" Type="varchar" MaxLength="80" />
+          <Property Name="host_web" Type="varchar" MaxLength="80" />
+          <Property Name="imei_id" Type="varchar" MaxLength="500" />
+          <Property Name="Route" Type="varchar" MaxLength="500" />
+          <Property Name="idcat" Type="int" />
+          <Property Name="imagen" Type="varbinary(max)" />
+          <Property Name="uri" Type="varchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="geo_map">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="geo_map_name" Type="varchar" MaxLength="200" />
+          <Property Name="geo_map_descrip" Type="varchar" MaxLength="800" />
+          <Property Name="geo_map_status" Type="char" MaxLength="2" />
+          <Property Name="geo_map_create_date" Type="datetime" />
+          <Property Name="geo_map_usr" Type="varchar" MaxLength="200" />
+          <Property Name="geo_map_link" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="geo_map_account">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="code" Type="int" />
+          <Property Name="idmap" Type="int" />
+          <Property Name="geo_map_account_name" Type="varchar" MaxLength="50" />
+          <Property Name="geo_map_create_date" Type="datetime" />
+          <Property Name="geo_map_usr" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="geo_map_profile">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Idprofile" Type="int" />
+          <Property Name="idmap" Type="int" />
+          <Property Name="geo_map_usr_tpo_decrip" Type="varchar" MaxLength="50" />
+          <Property Name="geo_map_create_date" Type="datetime" />
+          <Property Name="geo_map_usr" Type="varchar" MaxLength="200" />
+          <Property Name="geo_profile_map_status" Type="char" MaxLength="2" />
+          <Property Name="IdDashboard" Type="int" />
+        </EntityType>
+        <EntityType Name="geo_profile">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="code" Type="int" />
+          <Property Name="idaccount" Type="int" />
+          <Property Name="geo_profile_name" Type="varchar" MaxLength="50" />
+          <Property Name="geo_create_date" Type="datetime" />
+          <Property Name="geo_create_usr" Type="varchar" MaxLength="200" />
+          <Property Name="geo_profile_status" Type="char" MaxLength="2" />
+          <Property Name="geo_permit" Type="char" MaxLength="2" />
+        </EntityType>
+        <EntityType Name="geo_secuencial">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="sec" Type="int" />
+          <Property Name="id_geo_ub" Type="varchar" MaxLength="100" />
+          <Property Name="create_date" Type="datetime" />
+          <Property Name="id_geo_ubi" Type="int" />
+          <Property Name="number_sec" Type="int" />
+        </EntityType>
+        <EntityType Name="geo_ubicacion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_img" Type="int" Nullable="false" />
+          <Property Name="id_sec" Type="int" Nullable="false" />
+          <Property Name="geo_ubu_des" Type="varchar" MaxLength="300" />
+          <Property Name="create_usr" Type="varchar" MaxLength="200" />
+          <Property Name="create_date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="geo_usr_profile">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Idprofile" Type="int" />
+          <Property Name="iduser" Type="int" />
+          <Property Name="geo_usr_profile_decrip" Type="varchar" MaxLength="500" />
+          <Property Name="geo_map_create_date" Type="datetime" />
+          <Property Name="geo_map_usr" Type="varchar" MaxLength="200" />
+          <Property Name="geo_usr_profile" Type="char" MaxLength="2" />
+          <Property Name="_status" Type="char" MaxLength="2" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'MardisGEO.dbo.Query' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="Query">
+          <Key>
+            <PropertyRef Name="_URI" />
+            <PropertyRef Name="_CREATOR_URI_USER" />
+            <PropertyRef Name="_CREATION_DATE" />
+            <PropertyRef Name="_LAST_UPDATE_DATE" />
+            <PropertyRef Name="VALUE" />
+          </Key>
+          <Property Name="_URI" Type="date" Nullable="false" />
+          <Property Name="_CREATOR_URI_USER" Type="date" Nullable="false" />
+          <Property Name="_CREATION_DATE" Type="date" Nullable="false" />
+          <Property Name="_LAST_UPDATE_URI_USER" Type="date" />
+          <Property Name="_LAST_UPDATE_DATE" Type="date" Nullable="false" />
+          <Property Name="_TOP_LEVEL_AURI" Type="date" />
+          <Property Name="VALUE" Type="varbinary(max)" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'MardisGEO.dbo.respaldo_UE' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="respaldo_UE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="meta:instanceID" Type="nvarchar" MaxLength="255" />
+          <Property Name="Codigo" Type="nvarchar" MaxLength="255" />
+          <Property Name="Latitud" Type="float" />
+          <Property Name="Longitud" Type="float" />
+          <Property Name="Coordenadas" Type="nvarchar" MaxLength="255" />
+          <Property Name="Parroquia" Type="nvarchar" MaxLength="255" />
+          <Property Name="Zona" Type="nvarchar" MaxLength="255" />
+          <Property Name="Dirección" Type="nvarchar" MaxLength="255" />
+          <Property Name="Imagen" Type="nvarchar" MaxLength="255" />
+          <Property Name="Nombre de la obra" Type="nvarchar" MaxLength="255" />
+          <Property Name="Tipo_Obra" Type="nvarchar" MaxLength="255" />
+          <Property Name="Categoria" Type="nvarchar" MaxLength="255" />
+          <Property Name="Esctructura" Type="nvarchar" MaxLength="255" />
+          <Property Name="Tamano Obra m2" Type="float" />
+          <Property Name="Hormigon_total_m3" Type="float" />
+          <Property Name="Porcentaje_Avance" Type="float" />
+          <Property Name="Hormigon_por_ejecutar_m3" Type="float" />
+          <Property Name="Tipo_mezcla" Type="nvarchar" MaxLength="255" />
+          <Property Name="fecha_inicio" Type="datetime" />
+          <Property Name="fecha_finalizacion" Type="datetime" />
+          <Property Name="Constructora" Type="nvarchar" MaxLength="255" />
+          <Property Name="marcas_cemento" Type="nvarchar" MaxLength="255" />
+          <Property Name="hormigonera_(Hormigon premezclado)" Type="nvarchar" MaxLength="255" />
+          <Property Name="proveedor_(sacos)" Type="nvarchar" MaxLength="255" />
+          <Property Name="Tipo de Responsable" Type="nvarchar" MaxLength="255" />
+          <Property Name="Responsable" Type="nvarchar" MaxLength="255" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="255" />
+          <Property Name="celular" Type="nvarchar" MaxLength="255" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="si_opc_apl">
+          <Key>
+            <PropertyRef Name="si_opc_apl_cod" />
+          </Key>
+          <Property Name="si_opc_apl_cod" Type="int" Nullable="false" />
+          <Property Name="si__si_opc_apl_cod" Type="int" />
+          <Property Name="si_opc_apl_id" Type="varchar" MaxLength="240" Nullable="false" />
+          <Property Name="si_opc_apl_nom_menu" Type="varchar" MaxLength="240" />
+          <Property Name="si_opc_apl_nom_ventana" Type="varchar" MaxLength="240" />
+          <Property Name="si_opc_apl_action" Type="varchar" MaxLength="240" />
+          <Property Name="si_opc_apl_controller" Type="varchar" MaxLength="240" />
+          <Property Name="si_opc_apl_glifos" Type="varchar" MaxLength="240" />
+          <Property Name="usr_hos_web" Type="varchar" MaxLength="80" />
+          <Property Name="usr_cmb_web" Type="varchar" MaxLength="80" />
+        </EntityType>
+        <EntityType Name="si_opc_apl_usr_tipo">
+          <Key>
+            <PropertyRef Name="si_opc_apl_cod" />
+            <PropertyRef Name="si_tpo_usr_cod" />
+          </Key>
+          <Property Name="si_opc_apl_cod" Type="int" Nullable="false" />
+          <Property Name="si_tpo_usr_cod" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="si_persona">
+          <Key>
+            <PropertyRef Name="si_prs_cod" />
+          </Key>
+          <Property Name="si_prs_cod" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="si_tpo_usr_cod" Type="int" />
+          <Property Name="si_prs_nom" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="si_prs_pri_nom" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="si_prs_pri_ape" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="si_prs_lgn" Type="varchar" MaxLength="100" />
+          <Property Name="si_prs_pass" Type="varchar" MaxLength="100" />
+          <Property Name="si_prs_ced" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="usr_hos_web" Type="varchar" MaxLength="80" />
+          <Property Name="usr_cmb_web" Type="varchar" MaxLength="80" />
+        </EntityType>
+        <EntityType Name="si_tpo_usuario">
+          <Key>
+            <PropertyRef Name="si_tpo_usr_cod" />
+          </Key>
+          <Property Name="si_tpo_usr_cod" Type="int" Nullable="false" />
+          <Property Name="si_tpo_usr_nom" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="usr_hos_web" Type="varchar" MaxLength="80" />
+          <Property Name="usr_cmb_web" Type="varchar" MaxLength="80" />
+        </EntityType>
+        <EntityType Name="tpo_usr_geo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tpo_usr_geo_name" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="tpo_usr_geo_status" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="create_date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="'ue_datos_tabla'">
+          <Key>
+            <PropertyRef Name="IdUE" />
+          </Key>
+          <Property Name="IdUE" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="meta:instanceID" Type="nvarchar" MaxLength="255" />
+          <Property Name="Latitud" Type="float" />
+          <Property Name="Longitud" Type="float" />
+          <Property Name="Coordenadas" Type="nvarchar" MaxLength="255" />
+          <Property Name="Parroquia" Type="nvarchar" MaxLength="255" />
+          <Property Name="Zona" Type="nvarchar" MaxLength="255" />
+          <Property Name="Imagen" Type="nvarchar" MaxLength="255" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="255" />
+          <Property Name="Tamaño" Type="nvarchar" MaxLength="255" />
+          <Property Name="Tipo_Obra" Type="nvarchar" MaxLength="255" />
+          <Property Name="Categoria" Type="nvarchar" MaxLength="255" />
+          <Property Name="Esctructura" Type="nvarchar" MaxLength="255" />
+          <Property Name="Mamposteria" Type="nvarchar" MaxLength="255" />
+          <Property Name="Acabados" Type="nvarchar" MaxLength="255" />
+          <Property Name="Tamano Obra" Type="float" />
+          <Property Name="Tipo de Cemento" Type="nvarchar" MaxLength="255" />
+          <Property Name="Cantidad_cemento" Type="float" />
+          <Property Name="Cemento_m3_por_ejecutar" Type="float" />
+          <Property Name="Tipo_mezcla" Type="nvarchar" MaxLength="255" />
+          <Property Name="Avance_Proyecto" Type="nvarchar" MaxLength="255" />
+          <Property Name="Porcentaje_Avance" Type="float" />
+          <Property Name="fecha_inicio" Type="datetime" />
+          <Property Name="fecha_finalizacion" Type="datetime" />
+          <Property Name="Responsable" Type="nvarchar" MaxLength="255" />
+          <Property Name="responsable2" Type="nvarchar" MaxLength="255" />
+          <Property Name="Constructora" Type="nvarchar" MaxLength="255" />
+          <Property Name="marcas_cemento" Type="nvarchar" MaxLength="255" />
+          <Property Name="proveedor" Type="nvarchar" MaxLength="255" />
+          <Property Name="motivo_compra" Type="nvarchar" MaxLength="255" />
+          <Property Name="credito" Type="nvarchar" MaxLength="255" />
+          <Property Name="valor_m2" Type="float" />
+          <Property Name="maposteria_otro" Type="nvarchar" MaxLength="255" />
+          <Property Name="acabados_otro" Type="nvarchar" MaxLength="255" />
+          <Property Name="hormigonera" Type="nvarchar" MaxLength="255" />
+          <Property Name="proveedor_otro" Type="nvarchar" MaxLength="255" />
+          <Property Name="otras_obras" Type="nvarchar" MaxLength="255" />
+          <Property Name="nombre_1" Type="nvarchar" MaxLength="255" />
+          <Property Name="nombre_2" Type="nvarchar" MaxLength="255" />
+          <Property Name="apellido_1" Type="nvarchar" MaxLength="255" />
+          <Property Name="apellido_2" Type="nvarchar" MaxLength="255" />
+          <Property Name="telefono" Type="nvarchar" MaxLength="255" />
+          <Property Name="celular" Type="nvarchar" MaxLength="255" />
+          <Property Name="Codigo" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="USER_GEO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="LOGIN" Type="varchar" MaxLength="100" />
+          <Property Name="FULL_NAME" Type="varchar" MaxLength="100" />
+          <Property Name="PASSWORD" Type="varchar" MaxLength="500" />
+          <Property Name="CREATE_DATE" Type="datetime" />
+          <Property Name="idtpo" Type="int" />
+        </EntityType>
+        <Association Name="FK__geo_des_f__id_im__571DF1D5">
+          <End Role="geo_foto" Type="Self.geo_foto" Multiplicity="0..1" />
+          <End Role="geo_des_foto" Type="Self.geo_des_foto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="geo_foto">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="geo_des_foto">
+              <PropertyRef Name="id_img" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__geo_foto__id_geo__5629CD9C">
+          <End Role="geo_categoria" Type="Self.geo_categoria" Multiplicity="1" />
+          <End Role="geo_foto" Type="Self.geo_foto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="geo_categoria">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="geo_foto">
+              <PropertyRef Name="id_geo_cat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__geo_img_u__id_ge__59063A47">
+          <End Role="geo_ubicacion" Type="Self.geo_ubicacion" Multiplicity="0..1" />
+          <End Role="geo_img_ubicacion" Type="Self.geo_img_ubicacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="geo_ubicacion">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="geo_img_ubicacion">
+              <PropertyRef Name="id_geo_ubi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__geo_ubica__id_im__5812160E">
+          <End Role="geo_foto" Type="Self.geo_foto" Multiplicity="1" />
+          <End Role="geo_ubicacion" Type="Self.geo_ubicacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="geo_foto">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="geo_ubicacion">
+              <PropertyRef Name="id_img" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AspNetRoleClaims_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetRoleClaims" Type="Self.AspNetRoleClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetRoleClaims">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AspNetUserClaims_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AspNetUserLogins_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AspNetUserRoles_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AspNetUserRoles_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AspNetUserTokens_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserTokens" Type="Self.AspNetUserTokens" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserTokens">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_geo_map_profile">
+          <End Role="geo_map" Type="Self.geo_map" Multiplicity="0..1" />
+          <End Role="geo_map_profile" Type="Self.geo_map_profile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="geo_map">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="geo_map_profile">
+              <PropertyRef Name="idmap" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_geo_map_profile_dasboard">
+          <End Role="geo_dashboard" Type="Self.geo_dashboard" Multiplicity="0..1" />
+          <End Role="geo_map_profile" Type="Self.geo_map_profile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="geo_dashboard">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="geo_map_profile">
+              <PropertyRef Name="IdDashboard" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_geo_profile_account">
+          <End Role="geo_map_account" Type="Self.geo_map_account" Multiplicity="0..1" />
+          <End Role="geo_profile" Type="Self.geo_profile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="geo_map_account">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="geo_profile">
+              <PropertyRef Name="idaccount" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_geo_profile_map">
+          <End Role="geo_profile" Type="Self.geo_profile" Multiplicity="0..1" />
+          <End Role="geo_map_profile" Type="Self.geo_map_profile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="geo_profile">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="geo_map_profile">
+              <PropertyRef Name="Idprofile" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_geo_profile_USER_GEO">
+          <End Role="geo_profile" Type="Self.geo_profile" Multiplicity="0..1" />
+          <End Role="geo_usr_profile" Type="Self.geo_usr_profile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="geo_profile">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="geo_usr_profile">
+              <PropertyRef Name="Idprofile" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_geo_USER_GEO_profile">
+          <End Role="USER_GEO" Type="Self.USER_GEO" Multiplicity="0..1" />
+          <End Role="geo_usr_profile" Type="Self.geo_usr_profile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER_GEO">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="geo_usr_profile">
+              <PropertyRef Name="iduser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Persontipo">
+          <End Role="tpo_usr_geo" Type="Self.tpo_usr_geo" Multiplicity="0..1" />
+          <End Role="USER_GEO" Type="Self.USER_GEO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tpo_usr_geo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="USER_GEO">
+              <PropertyRef Name="idtpo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MardisGEOModelStoreContainer">
+          <EntitySet Name="__EFMigrationsHistory" EntityType="Self.__EFMigrationsHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetRoleClaims" EntityType="Self.AspNetRoleClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserTokens" EntityType="Self.AspNetUserTokens" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="censo_obra_UE" EntityType="Self.censo_obra_UE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="censo_obras" EntityType="Self.censo_obras" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CodigosDesactivados_Topsy" EntityType="Self.CodigosDesactivados_Topsy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="geo_categoria" EntityType="Self.geo_categoria" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="geo_dashboard" EntityType="Self.geo_dashboard" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="geo_datos" EntityType="Self.geo_datos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="geo_des_foto" EntityType="Self.geo_des_foto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="geo_foto" EntityType="Self.geo_foto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="geo_img_ubicacion" EntityType="Self.geo_img_ubicacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="geo_manage" EntityType="Self.geo_manage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="geo_map" EntityType="Self.geo_map" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="geo_map_account" EntityType="Self.geo_map_account" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="geo_map_profile" EntityType="Self.geo_map_profile" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="geo_profile" EntityType="Self.geo_profile" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="geo_secuencial" EntityType="Self.geo_secuencial" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="geo_ubicacion" EntityType="Self.geo_ubicacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="geo_usr_profile" EntityType="Self.geo_usr_profile" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="si_opc_apl" EntityType="Self.si_opc_apl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="si_opc_apl_usr_tipo" EntityType="Self.si_opc_apl_usr_tipo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="si_persona" EntityType="Self.si_persona" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="si_tpo_usuario" EntityType="Self.si_tpo_usuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tpo_usr_geo" EntityType="Self.tpo_usr_geo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="'ue_datos_tabla'" EntityType="Self.'ue_datos_tabla'" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USER_GEO" EntityType="Self.USER_GEO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Query" EntityType="Self.Query" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Query].[_URI] AS [_URI], 
+    [Query].[_CREATOR_URI_USER] AS [_CREATOR_URI_USER], 
+    [Query].[_CREATION_DATE] AS [_CREATION_DATE], 
+    [Query].[_LAST_UPDATE_URI_USER] AS [_LAST_UPDATE_URI_USER], 
+    [Query].[_LAST_UPDATE_DATE] AS [_LAST_UPDATE_DATE], 
+    [Query].[_TOP_LEVEL_AURI] AS [_TOP_LEVEL_AURI], 
+    [Query].[VALUE] AS [VALUE]
+    FROM [dbo].[Query] AS [Query]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="respaldo_UE" EntityType="Self.respaldo_UE" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [respaldo_UE].[meta:instanceID] AS [meta:instanceID], 
+    [respaldo_UE].[Codigo] AS [Codigo], 
+    [respaldo_UE].[Latitud] AS [Latitud], 
+    [respaldo_UE].[Longitud] AS [Longitud], 
+    [respaldo_UE].[Coordenadas] AS [Coordenadas], 
+    [respaldo_UE].[Parroquia] AS [Parroquia], 
+    [respaldo_UE].[Zona] AS [Zona], 
+    [respaldo_UE].[Dirección] AS [Dirección], 
+    [respaldo_UE].[Imagen] AS [Imagen], 
+    [respaldo_UE].[Nombre de la obra] AS [Nombre de la obra], 
+    [respaldo_UE].[Tipo_Obra] AS [Tipo_Obra], 
+    [respaldo_UE].[Categoria] AS [Categoria], 
+    [respaldo_UE].[Esctructura] AS [Esctructura], 
+    [respaldo_UE].[Tamano Obra m2] AS [Tamano Obra m2], 
+    [respaldo_UE].[Hormigon_total_m3] AS [Hormigon_total_m3], 
+    [respaldo_UE].[Porcentaje_Avance] AS [Porcentaje_Avance], 
+    [respaldo_UE].[Hormigon_por_ejecutar_m3] AS [Hormigon_por_ejecutar_m3], 
+    [respaldo_UE].[Tipo_mezcla] AS [Tipo_mezcla], 
+    [respaldo_UE].[fecha_inicio] AS [fecha_inicio], 
+    [respaldo_UE].[fecha_finalizacion] AS [fecha_finalizacion], 
+    [respaldo_UE].[Constructora] AS [Constructora], 
+    [respaldo_UE].[marcas_cemento] AS [marcas_cemento], 
+    [respaldo_UE].[hormigonera_(Hormigon premezclado)] AS [hormigonera_(Hormigon premezclado)], 
+    [respaldo_UE].[proveedor_(sacos)] AS [proveedor_(sacos)], 
+    [respaldo_UE].[Tipo de Responsable] AS [Tipo de Responsable], 
+    [respaldo_UE].[Responsable] AS [Responsable], 
+    [respaldo_UE].[Nombre] AS [Nombre], 
+    [respaldo_UE].[celular] AS [celular], 
+    [respaldo_UE].[ID] AS [ID]
+    FROM [dbo].[respaldo_UE] AS [respaldo_UE]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__geo_des_f__id_im__571DF1D5" Association="Self.FK__geo_des_f__id_im__571DF1D5">
+            <End Role="geo_foto" EntitySet="geo_foto" />
+            <End Role="geo_des_foto" EntitySet="geo_des_foto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__geo_foto__id_geo__5629CD9C" Association="Self.FK__geo_foto__id_geo__5629CD9C">
+            <End Role="geo_categoria" EntitySet="geo_categoria" />
+            <End Role="geo_foto" EntitySet="geo_foto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__geo_img_u__id_ge__59063A47" Association="Self.FK__geo_img_u__id_ge__59063A47">
+            <End Role="geo_ubicacion" EntitySet="geo_ubicacion" />
+            <End Role="geo_img_ubicacion" EntitySet="geo_img_ubicacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__geo_ubica__id_im__5812160E" Association="Self.FK__geo_ubica__id_im__5812160E">
+            <End Role="geo_foto" EntitySet="geo_foto" />
+            <End Role="geo_ubicacion" EntitySet="geo_ubicacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AspNetRoleClaims_AspNetRoles_RoleId" Association="Self.FK_AspNetRoleClaims_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetRoleClaims" EntitySet="AspNetRoleClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AspNetUserClaims_AspNetUsers_UserId" Association="Self.FK_AspNetUserClaims_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AspNetUserLogins_AspNetUsers_UserId" Association="Self.FK_AspNetUserLogins_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AspNetUserRoles_AspNetRoles_RoleId" Association="Self.FK_AspNetUserRoles_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AspNetUserRoles_AspNetUsers_UserId" Association="Self.FK_AspNetUserRoles_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AspNetUserTokens_AspNetUsers_UserId" Association="Self.FK_AspNetUserTokens_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserTokens" EntitySet="AspNetUserTokens" />
+          </AssociationSet>
+          <AssociationSet Name="FK_geo_map_profile" Association="Self.FK_geo_map_profile">
+            <End Role="geo_map" EntitySet="geo_map" />
+            <End Role="geo_map_profile" EntitySet="geo_map_profile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_geo_map_profile_dasboard" Association="Self.FK_geo_map_profile_dasboard">
+            <End Role="geo_dashboard" EntitySet="geo_dashboard" />
+            <End Role="geo_map_profile" EntitySet="geo_map_profile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_geo_profile_account" Association="Self.FK_geo_profile_account">
+            <End Role="geo_map_account" EntitySet="geo_map_account" />
+            <End Role="geo_profile" EntitySet="geo_profile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_geo_profile_map" Association="Self.FK_geo_profile_map">
+            <End Role="geo_profile" EntitySet="geo_profile" />
+            <End Role="geo_map_profile" EntitySet="geo_map_profile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_geo_profile_USER_GEO" Association="Self.FK_geo_profile_USER_GEO">
+            <End Role="geo_profile" EntitySet="geo_profile" />
+            <End Role="geo_usr_profile" EntitySet="geo_usr_profile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_geo_USER_GEO_profile" Association="Self.FK_geo_USER_GEO_profile">
+            <End Role="USER_GEO" EntitySet="USER_GEO" />
+            <End Role="geo_usr_profile" EntitySet="geo_usr_profile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Persontipo" Association="Self.FK_Persontipo">
+            <End Role="tpo_usr_geo" EntitySet="tpo_usr_geo" />
+            <End Role="USER_GEO" EntitySet="USER_GEO" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MardisGEOModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C__EFMigrationsHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+          </Key>
+          <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetRoleClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RoleId" Type="String" MaxLength="450" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetRoles" Relationship="Self.FK_AspNetRoleClaims_AspNetRoles_RoleId" FromRole="AspNetRoleClaims" ToRole="AspNetRoles" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="450" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ConcurrencyStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="NormalizedName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetRoleClaims" Relationship="Self.FK_AspNetRoleClaims_AspNetRoles_RoleId" FromRole="AspNetRoles" ToRole="AspNetRoleClaims" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="String" MaxLength="450" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_AspNetUserClaims_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" MaxLength="450" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProviderKey" Type="String" MaxLength="450" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProviderDisplayName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="String" MaxLength="450" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_AspNetUserLogins_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="450" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="ConcurrencyStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEnd" Type="DateTimeOffset" Precision="7" />
+          <Property Name="NormalizedEmail" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="NormalizedUserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_AspNetUserClaims_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_AspNetUserLogins_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+          <NavigationProperty Name="AspNetUserTokens" Relationship="Self.FK_AspNetUserTokens_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserTokens" />
+          <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+        </EntityType>
+        <EntityType Name="AspNetUserTokens">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="UserId" Type="String" MaxLength="450" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LoginProvider" Type="String" MaxLength="450" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="450" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Value" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_AspNetUserTokens_AspNetUsers_UserId" FromRole="AspNetUserTokens" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="censo_obra_UE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="meta_instanceID" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Codigo" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Latitud" Type="Double" />
+          <Property Name="Longitud" Type="Double" />
+          <Property Name="Coordenadas" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Parroquia" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Zona" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Dirección" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Imagen" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Nombre_de_la_obra" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Tipo_Obra" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Categoria" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Esctructura" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Tamano_Obra_m2" Type="Double" />
+          <Property Name="Hormigon_total_m3" Type="Double" />
+          <Property Name="Porcentaje_Avance" Type="Double" />
+          <Property Name="Hormigon_por_ejecutar_m3" Type="Double" />
+          <Property Name="Tipo_mezcla" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="fecha_inicio" Type="DateTime" Precision="3" />
+          <Property Name="fecha_finalizacion" Type="DateTime" Precision="3" />
+          <Property Name="Constructora" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="marcas_cemento" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="hormigonera__Hormigon_premezclado_" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="proveedor__sacos_" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Tipo_de_Responsable" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Responsable" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="celular" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="censo_obras">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="meta_instanceID" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Codigo" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Latitud" Type="Double" />
+          <Property Name="Longitud" Type="Double" />
+          <Property Name="Coordenadas" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Parroquia" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Zona" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Dirección" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Imagen" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Nombre_de_la_obra" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Tipo_Obra" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Categoria" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Esctructura" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Tamano_Obra_m2" Type="Double" />
+          <Property Name="Hormigon_total_m3" Type="Double" />
+          <Property Name="Porcentaje_Avance" Type="Double" />
+          <Property Name="Hormigon_por_ejecutar_m3" Type="Double" />
+          <Property Name="Tipo_mezcla" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="fecha_inicio" Type="DateTime" Precision="3" />
+          <Property Name="fecha_finalizacion" Type="DateTime" Precision="3" />
+          <Property Name="Constructora" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="marcas_cemento" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="hormigonera__Hormigon_premezclado_" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="proveedor__sacos_" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Tipo_de_Responsable" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Responsable" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="celular" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="CodigosDesactivados_Topsy">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="URI" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="OBSERVACION" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="FECHA_DESACTIVACION" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="geo_categoria">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="status_cat" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="geo_foto" Relationship="Self.FK__geo_foto__id_geo__5629CD9C" FromRole="geo_categoria" ToRole="geo_foto" />
+        </EntityType>
+        <EntityType Name="geo_dashboard">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="geo_dashboard_name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="geo_dashboard_descrip" Type="String" MaxLength="800" FixedLength="false" Unicode="false" />
+          <Property Name="geo_dashboard_status" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="geo_dashboard_create_date" Type="DateTime" Precision="3" />
+          <Property Name="geo_dashboard_usr" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="geo_dashboard_link" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="geo_dashboard_link_mobil" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="geo_map_profile" Relationship="Self.FK_geo_map_profile_dasboard" FromRole="geo_dashboard" ToRole="geo_map_profile" />
+        </EntityType>
+        <EntityType Name="geo_datos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="question" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="lat" Type="Double" />
+          <Property Name="lng" Type="Double" />
+          <Property Name="qrn" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="geo_des_foto">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_img" Type="Int32" />
+          <NavigationProperty Name="geo_foto" Relationship="Self.FK__geo_des_f__id_im__571DF1D5" FromRole="geo_des_foto" ToRole="geo_foto" />
+        </EntityType>
+        <EntityType Name="geo_foto">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_img_ext" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="url" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="id_geo_cat" Type="Int32" Nullable="false" />
+          <Property Name="create_date" Type="DateTime" Precision="3" />
+          <Property Name="id_geo_des_foto" Type="Int32" />
+          <NavigationProperty Name="geo_categoria" Relationship="Self.FK__geo_foto__id_geo__5629CD9C" FromRole="geo_foto" ToRole="geo_categoria" />
+          <NavigationProperty Name="geo_des_foto" Relationship="Self.FK__geo_des_f__id_im__571DF1D5" FromRole="geo_foto" ToRole="geo_des_foto" />
+          <NavigationProperty Name="geo_ubicacion" Relationship="Self.FK__geo_ubica__id_im__5812160E" FromRole="geo_foto" ToRole="geo_ubicacion" />
+        </EntityType>
+        <EntityType Name="geo_img_ubicacion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="url_img" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="create_usr" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="create_date" Type="DateTime" Precision="3" />
+          <Property Name="id_geo_ubi" Type="Int32" />
+          <Property Name="value" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="geo_ubicacion" Relationship="Self.FK__geo_img_u__id_ge__59063A47" FromRole="geo_img_ubicacion" ToRole="geo_ubicacion" />
+        </EntityType>
+        <EntityType Name="geo_manage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Geo_latitud" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Geo_longitud" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Value" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="dateCreation" Type="DateTime" Precision="3" />
+          <Property Name="usr_web" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="host_web" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="imei_id" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Route" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="idcat" Type="Int32" />
+          <Property Name="imagen" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="uri" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="geo_map">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="geo_map_name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="geo_map_descrip" Type="String" MaxLength="800" FixedLength="false" Unicode="false" />
+          <Property Name="geo_map_status" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="geo_map_create_date" Type="DateTime" Precision="3" />
+          <Property Name="geo_map_usr" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="geo_map_link" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="geo_map_profile" Relationship="Self.FK_geo_map_profile" FromRole="geo_map" ToRole="geo_map_profile" />
+        </EntityType>
+        <EntityType Name="geo_map_account">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="code" Type="Int32" />
+          <Property Name="idmap" Type="Int32" />
+          <Property Name="geo_map_account_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="geo_map_create_date" Type="DateTime" Precision="3" />
+          <Property Name="geo_map_usr" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="geo_profile" Relationship="Self.FK_geo_profile_account" FromRole="geo_map_account" ToRole="geo_profile" />
+        </EntityType>
+        <EntityType Name="geo_map_profile">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Idprofile" Type="Int32" />
+          <Property Name="idmap" Type="Int32" />
+          <Property Name="geo_map_usr_tpo_decrip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="geo_map_create_date" Type="DateTime" Precision="3" />
+          <Property Name="geo_map_usr" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="geo_profile_map_status" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="IdDashboard" Type="Int32" />
+          <NavigationProperty Name="geo_dashboard" Relationship="Self.FK_geo_map_profile_dasboard" FromRole="geo_map_profile" ToRole="geo_dashboard" />
+          <NavigationProperty Name="geo_map" Relationship="Self.FK_geo_map_profile" FromRole="geo_map_profile" ToRole="geo_map" />
+          <NavigationProperty Name="geo_profile" Relationship="Self.FK_geo_profile_map" FromRole="geo_map_profile" ToRole="geo_profile" />
+        </EntityType>
+        <EntityType Name="geo_profile">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="code" Type="Int32" />
+          <Property Name="idaccount" Type="Int32" />
+          <Property Name="geo_profile_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="geo_create_date" Type="DateTime" Precision="3" />
+          <Property Name="geo_create_usr" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="geo_profile_status" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="geo_permit" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="geo_map_account" Relationship="Self.FK_geo_profile_account" FromRole="geo_profile" ToRole="geo_map_account" />
+          <NavigationProperty Name="geo_map_profile" Relationship="Self.FK_geo_profile_map" FromRole="geo_profile" ToRole="geo_map_profile" />
+          <NavigationProperty Name="geo_usr_profile" Relationship="Self.FK_geo_profile_USER_GEO" FromRole="geo_profile" ToRole="geo_usr_profile" />
+        </EntityType>
+        <EntityType Name="geo_secuencial">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="sec" Type="Int32" />
+          <Property Name="id_geo_ub" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="create_date" Type="DateTime" Precision="3" />
+          <Property Name="id_geo_ubi" Type="Int32" />
+          <Property Name="number_sec" Type="Int32" />
+        </EntityType>
+        <EntityType Name="geo_ubicacion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_img" Type="Int32" Nullable="false" />
+          <Property Name="id_sec" Type="Int32" Nullable="false" />
+          <Property Name="geo_ubu_des" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="create_usr" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="create_date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="geo_foto" Relationship="Self.FK__geo_ubica__id_im__5812160E" FromRole="geo_ubicacion" ToRole="geo_foto" />
+          <NavigationProperty Name="geo_img_ubicacion" Relationship="Self.FK__geo_img_u__id_ge__59063A47" FromRole="geo_ubicacion" ToRole="geo_img_ubicacion" />
+        </EntityType>
+        <EntityType Name="geo_usr_profile">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Idprofile" Type="Int32" />
+          <Property Name="iduser" Type="Int32" />
+          <Property Name="geo_usr_profile_decrip" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="geo_map_create_date" Type="DateTime" Precision="3" />
+          <Property Name="geo_map_usr" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="geo_usr_profile1" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="C_status" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="geo_profile" Relationship="Self.FK_geo_profile_USER_GEO" FromRole="geo_usr_profile" ToRole="geo_profile" />
+          <NavigationProperty Name="USER_GEO" Relationship="Self.FK_geo_USER_GEO_profile" FromRole="geo_usr_profile" ToRole="USER_GEO" />
+        </EntityType>
+        <EntityType Name="si_opc_apl">
+          <Key>
+            <PropertyRef Name="si_opc_apl_cod" />
+          </Key>
+          <Property Name="si_opc_apl_cod" Type="Int32" Nullable="false" />
+          <Property Name="si__si_opc_apl_cod" Type="Int32" />
+          <Property Name="si_opc_apl_id" Type="String" MaxLength="240" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="si_opc_apl_nom_menu" Type="String" MaxLength="240" FixedLength="false" Unicode="false" />
+          <Property Name="si_opc_apl_nom_ventana" Type="String" MaxLength="240" FixedLength="false" Unicode="false" />
+          <Property Name="si_opc_apl_action" Type="String" MaxLength="240" FixedLength="false" Unicode="false" />
+          <Property Name="si_opc_apl_controller" Type="String" MaxLength="240" FixedLength="false" Unicode="false" />
+          <Property Name="si_opc_apl_glifos" Type="String" MaxLength="240" FixedLength="false" Unicode="false" />
+          <Property Name="usr_hos_web" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="usr_cmb_web" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="si_opc_apl_usr_tipo">
+          <Key>
+            <PropertyRef Name="si_opc_apl_cod" />
+            <PropertyRef Name="si_tpo_usr_cod" />
+          </Key>
+          <Property Name="si_opc_apl_cod" Type="Int32" Nullable="false" />
+          <Property Name="si_tpo_usr_cod" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="si_persona">
+          <Key>
+            <PropertyRef Name="si_prs_cod" />
+          </Key>
+          <Property Name="si_prs_cod" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="si_tpo_usr_cod" Type="Int32" />
+          <Property Name="si_prs_nom" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="si_prs_pri_nom" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="si_prs_pri_ape" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="si_prs_lgn" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="si_prs_pass" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="si_prs_ced" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="usr_hos_web" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="usr_cmb_web" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="si_tpo_usuario">
+          <Key>
+            <PropertyRef Name="si_tpo_usr_cod" />
+          </Key>
+          <Property Name="si_tpo_usr_cod" Type="Int32" Nullable="false" />
+          <Property Name="si_tpo_usr_nom" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="usr_hos_web" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="usr_cmb_web" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tpo_usr_geo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tpo_usr_geo_name" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tpo_usr_geo_status" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="create_date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="USER_GEO" Relationship="Self.FK_Persontipo" FromRole="tpo_usr_geo" ToRole="USER_GEO" />
+        </EntityType>
+        <EntityType Name="C_ue_datos_tabla_">
+          <Key>
+            <PropertyRef Name="IdUE" />
+          </Key>
+          <Property Name="IdUE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="meta_instanceID" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Latitud" Type="Double" />
+          <Property Name="Longitud" Type="Double" />
+          <Property Name="Coordenadas" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Parroquia" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Zona" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Imagen" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Tamaño" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Tipo_Obra" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Categoria" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Esctructura" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Mamposteria" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Acabados" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Tamano_Obra" Type="Double" />
+          <Property Name="Tipo_de_Cemento" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Cantidad_cemento" Type="Double" />
+          <Property Name="Cemento_m3_por_ejecutar" Type="Double" />
+          <Property Name="Tipo_mezcla" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Avance_Proyecto" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Porcentaje_Avance" Type="Double" />
+          <Property Name="fecha_inicio" Type="DateTime" Precision="3" />
+          <Property Name="fecha_finalizacion" Type="DateTime" Precision="3" />
+          <Property Name="Responsable" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="responsable2" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Constructora" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="marcas_cemento" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="proveedor" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="motivo_compra" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="credito" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="valor_m2" Type="Double" />
+          <Property Name="maposteria_otro" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="acabados_otro" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="hormigonera" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="proveedor_otro" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="otras_obras" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="nombre_1" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="nombre_2" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="apellido_1" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="apellido_2" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="telefono" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="celular" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Codigo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="USER_GEO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="LOGIN" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FULL_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PASSWORD" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CREATE_DATE" Type="DateTime" Precision="3" />
+          <Property Name="idtpo" Type="Int32" />
+          <NavigationProperty Name="geo_usr_profile" Relationship="Self.FK_geo_USER_GEO_profile" FromRole="USER_GEO" ToRole="geo_usr_profile" />
+          <NavigationProperty Name="tpo_usr_geo" Relationship="Self.FK_Persontipo" FromRole="USER_GEO" ToRole="tpo_usr_geo" />
+        </EntityType>
+        <EntityType Name="Query">
+          <Key>
+            <PropertyRef Name="C_URI" />
+            <PropertyRef Name="C_CREATOR_URI_USER" />
+            <PropertyRef Name="C_CREATION_DATE" />
+            <PropertyRef Name="C_LAST_UPDATE_DATE" />
+            <PropertyRef Name="VALUE" />
+          </Key>
+          <Property Name="C_URI" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="C_CREATOR_URI_USER" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="C_CREATION_DATE" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="C_LAST_UPDATE_URI_USER" Type="DateTime" Precision="0" />
+          <Property Name="C_LAST_UPDATE_DATE" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="C_TOP_LEVEL_AURI" Type="DateTime" Precision="0" />
+          <Property Name="VALUE" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="respaldo_UE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="meta_instanceID" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Codigo" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Latitud" Type="Double" />
+          <Property Name="Longitud" Type="Double" />
+          <Property Name="Coordenadas" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Parroquia" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Zona" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Dirección" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Imagen" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Nombre_de_la_obra" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Tipo_Obra" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Categoria" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Esctructura" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Tamano_Obra_m2" Type="Double" />
+          <Property Name="Hormigon_total_m3" Type="Double" />
+          <Property Name="Porcentaje_Avance" Type="Double" />
+          <Property Name="Hormigon_por_ejecutar_m3" Type="Double" />
+          <Property Name="Tipo_mezcla" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="fecha_inicio" Type="DateTime" Precision="3" />
+          <Property Name="fecha_finalizacion" Type="DateTime" Precision="3" />
+          <Property Name="Constructora" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="marcas_cemento" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="hormigonera__Hormigon_premezclado_" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="proveedor__sacos_" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Tipo_de_Responsable" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Responsable" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="celular" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <Association Name="FK_AspNetRoleClaims_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetRoleClaims" Type="Self.AspNetRoleClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetRoleClaims">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AspNetUserClaims_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AspNetUserLogins_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AspNetUserTokens_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserTokens" Type="Self.AspNetUserTokens" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserTokens">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__geo_foto__id_geo__5629CD9C">
+          <End Role="geo_categoria" Type="Self.geo_categoria" Multiplicity="1" />
+          <End Role="geo_foto" Type="Self.geo_foto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="geo_categoria">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="geo_foto">
+              <PropertyRef Name="id_geo_cat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_geo_map_profile_dasboard">
+          <End Role="geo_dashboard" Type="Self.geo_dashboard" Multiplicity="0..1" />
+          <End Role="geo_map_profile" Type="Self.geo_map_profile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="geo_dashboard">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="geo_map_profile">
+              <PropertyRef Name="IdDashboard" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__geo_des_f__id_im__571DF1D5">
+          <End Role="geo_foto" Type="Self.geo_foto" Multiplicity="0..1" />
+          <End Role="geo_des_foto" Type="Self.geo_des_foto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="geo_foto">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="geo_des_foto">
+              <PropertyRef Name="id_img" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__geo_ubica__id_im__5812160E">
+          <End Role="geo_foto" Type="Self.geo_foto" Multiplicity="1" />
+          <End Role="geo_ubicacion" Type="Self.geo_ubicacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="geo_foto">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="geo_ubicacion">
+              <PropertyRef Name="id_img" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__geo_img_u__id_ge__59063A47">
+          <End Role="geo_ubicacion" Type="Self.geo_ubicacion" Multiplicity="0..1" />
+          <End Role="geo_img_ubicacion" Type="Self.geo_img_ubicacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="geo_ubicacion">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="geo_img_ubicacion">
+              <PropertyRef Name="id_geo_ubi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_geo_map_profile">
+          <End Role="geo_map" Type="Self.geo_map" Multiplicity="0..1" />
+          <End Role="geo_map_profile" Type="Self.geo_map_profile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="geo_map">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="geo_map_profile">
+              <PropertyRef Name="idmap" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_geo_profile_account">
+          <End Role="geo_map_account" Type="Self.geo_map_account" Multiplicity="0..1" />
+          <End Role="geo_profile" Type="Self.geo_profile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="geo_map_account">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="geo_profile">
+              <PropertyRef Name="idaccount" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_geo_profile_map">
+          <End Role="geo_profile" Type="Self.geo_profile" Multiplicity="0..1" />
+          <End Role="geo_map_profile" Type="Self.geo_map_profile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="geo_profile">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="geo_map_profile">
+              <PropertyRef Name="Idprofile" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_geo_profile_USER_GEO">
+          <End Role="geo_profile" Type="Self.geo_profile" Multiplicity="0..1" />
+          <End Role="geo_usr_profile" Type="Self.geo_usr_profile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="geo_profile">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="geo_usr_profile">
+              <PropertyRef Name="Idprofile" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_geo_USER_GEO_profile">
+          <End Role="USER_GEO" Type="Self.USER_GEO" Multiplicity="0..1" />
+          <End Role="geo_usr_profile" Type="Self.geo_usr_profile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER_GEO">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="geo_usr_profile">
+              <PropertyRef Name="iduser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Persontipo">
+          <End Role="tpo_usr_geo" Type="Self.tpo_usr_geo" Multiplicity="0..1" />
+          <End Role="USER_GEO" Type="Self.USER_GEO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tpo_usr_geo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="USER_GEO">
+              <PropertyRef Name="idtpo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="*" />
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="MardisGEOEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__EFMigrationsHistory" EntityType="Self.C__EFMigrationsHistory" />
+          <EntitySet Name="AspNetRoleClaims" EntityType="Self.AspNetRoleClaims" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" />
+          <EntitySet Name="AspNetUserTokens" EntityType="Self.AspNetUserTokens" />
+          <EntitySet Name="censo_obra_UE" EntityType="Self.censo_obra_UE" />
+          <EntitySet Name="censo_obras" EntityType="Self.censo_obras" />
+          <EntitySet Name="CodigosDesactivados_Topsy" EntityType="Self.CodigosDesactivados_Topsy" />
+          <EntitySet Name="geo_categoria" EntityType="Self.geo_categoria" />
+          <EntitySet Name="geo_dashboard" EntityType="Self.geo_dashboard" />
+          <EntitySet Name="geo_datos" EntityType="Self.geo_datos" />
+          <EntitySet Name="geo_des_foto" EntityType="Self.geo_des_foto" />
+          <EntitySet Name="geo_foto" EntityType="Self.geo_foto" />
+          <EntitySet Name="geo_img_ubicacion" EntityType="Self.geo_img_ubicacion" />
+          <EntitySet Name="geo_manage" EntityType="Self.geo_manage" />
+          <EntitySet Name="geo_map" EntityType="Self.geo_map" />
+          <EntitySet Name="geo_map_account" EntityType="Self.geo_map_account" />
+          <EntitySet Name="geo_map_profile" EntityType="Self.geo_map_profile" />
+          <EntitySet Name="geo_profile" EntityType="Self.geo_profile" />
+          <EntitySet Name="geo_secuencial" EntityType="Self.geo_secuencial" />
+          <EntitySet Name="geo_ubicacion" EntityType="Self.geo_ubicacion" />
+          <EntitySet Name="geo_usr_profile" EntityType="Self.geo_usr_profile" />
+          <EntitySet Name="si_opc_apl" EntityType="Self.si_opc_apl" />
+          <EntitySet Name="si_opc_apl_usr_tipo" EntityType="Self.si_opc_apl_usr_tipo" />
+          <EntitySet Name="si_persona" EntityType="Self.si_persona" />
+          <EntitySet Name="si_tpo_usuario" EntityType="Self.si_tpo_usuario" />
+          <EntitySet Name="tpo_usr_geo" EntityType="Self.tpo_usr_geo" />
+          <EntitySet Name="C_ue_datos_tabla_" EntityType="Self.C_ue_datos_tabla_" />
+          <EntitySet Name="USER_GEO" EntityType="Self.USER_GEO" />
+          <EntitySet Name="Query" EntityType="Self.Query" />
+          <EntitySet Name="respaldo_UE" EntityType="Self.respaldo_UE" />
+          <AssociationSet Name="FK_AspNetRoleClaims_AspNetRoles_RoleId" Association="Self.FK_AspNetRoleClaims_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetRoleClaims" EntitySet="AspNetRoleClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AspNetUserClaims_AspNetUsers_UserId" Association="Self.FK_AspNetUserClaims_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AspNetUserLogins_AspNetUsers_UserId" Association="Self.FK_AspNetUserLogins_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AspNetUserTokens_AspNetUsers_UserId" Association="Self.FK_AspNetUserTokens_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserTokens" EntitySet="AspNetUserTokens" />
+          </AssociationSet>
+          <AssociationSet Name="FK__geo_foto__id_geo__5629CD9C" Association="Self.FK__geo_foto__id_geo__5629CD9C">
+            <End Role="geo_categoria" EntitySet="geo_categoria" />
+            <End Role="geo_foto" EntitySet="geo_foto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_geo_map_profile_dasboard" Association="Self.FK_geo_map_profile_dasboard">
+            <End Role="geo_dashboard" EntitySet="geo_dashboard" />
+            <End Role="geo_map_profile" EntitySet="geo_map_profile" />
+          </AssociationSet>
+          <AssociationSet Name="FK__geo_des_f__id_im__571DF1D5" Association="Self.FK__geo_des_f__id_im__571DF1D5">
+            <End Role="geo_foto" EntitySet="geo_foto" />
+            <End Role="geo_des_foto" EntitySet="geo_des_foto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__geo_ubica__id_im__5812160E" Association="Self.FK__geo_ubica__id_im__5812160E">
+            <End Role="geo_foto" EntitySet="geo_foto" />
+            <End Role="geo_ubicacion" EntitySet="geo_ubicacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__geo_img_u__id_ge__59063A47" Association="Self.FK__geo_img_u__id_ge__59063A47">
+            <End Role="geo_ubicacion" EntitySet="geo_ubicacion" />
+            <End Role="geo_img_ubicacion" EntitySet="geo_img_ubicacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_geo_map_profile" Association="Self.FK_geo_map_profile">
+            <End Role="geo_map" EntitySet="geo_map" />
+            <End Role="geo_map_profile" EntitySet="geo_map_profile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_geo_profile_account" Association="Self.FK_geo_profile_account">
+            <End Role="geo_map_account" EntitySet="geo_map_account" />
+            <End Role="geo_profile" EntitySet="geo_profile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_geo_profile_map" Association="Self.FK_geo_profile_map">
+            <End Role="geo_profile" EntitySet="geo_profile" />
+            <End Role="geo_map_profile" EntitySet="geo_map_profile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_geo_profile_USER_GEO" Association="Self.FK_geo_profile_USER_GEO">
+            <End Role="geo_profile" EntitySet="geo_profile" />
+            <End Role="geo_usr_profile" EntitySet="geo_usr_profile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_geo_USER_GEO_profile" Association="Self.FK_geo_USER_GEO_profile">
+            <End Role="USER_GEO" EntitySet="USER_GEO" />
+            <End Role="geo_usr_profile" EntitySet="geo_usr_profile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Persontipo" Association="Self.FK_Persontipo">
+            <End Role="tpo_usr_geo" EntitySet="tpo_usr_geo" />
+            <End Role="USER_GEO" EntitySet="USER_GEO" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MardisGEOModelStoreContainer" CdmEntityContainer="MardisGEOEntities">
+          <EntitySetMapping Name="C__EFMigrationsHistory">
+            <EntityTypeMapping TypeName="MardisGEOModel.C__EFMigrationsHistory">
+              <MappingFragment StoreEntitySet="__EFMigrationsHistory">
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetRoleClaims">
+            <EntityTypeMapping TypeName="MardisGEOModel.AspNetRoleClaims">
+              <MappingFragment StoreEntitySet="AspNetRoleClaims">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="MardisGEOModel.AspNetRoles">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ConcurrencyStamp" ColumnName="ConcurrencyStamp" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="NormalizedName" ColumnName="NormalizedName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="MardisGEOModel.AspNetUserClaims">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="MardisGEOModel.AspNetUserLogins">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="ProviderDisplayName" ColumnName="ProviderDisplayName" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="MardisGEOModel.AspNetUsers">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="ConcurrencyStamp" ColumnName="ConcurrencyStamp" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="LockoutEnd" ColumnName="LockoutEnd" />
+                <ScalarProperty Name="NormalizedEmail" ColumnName="NormalizedEmail" />
+                <ScalarProperty Name="NormalizedUserName" ColumnName="NormalizedUserName" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserTokens">
+            <EntityTypeMapping TypeName="MardisGEOModel.AspNetUserTokens">
+              <MappingFragment StoreEntitySet="AspNetUserTokens">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="censo_obra_UE">
+            <EntityTypeMapping TypeName="MardisGEOModel.censo_obra_UE">
+              <MappingFragment StoreEntitySet="censo_obra_UE">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="meta_instanceID" ColumnName="meta:instanceID" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Latitud" ColumnName="Latitud" />
+                <ScalarProperty Name="Longitud" ColumnName="Longitud" />
+                <ScalarProperty Name="Coordenadas" ColumnName="Coordenadas" />
+                <ScalarProperty Name="Parroquia" ColumnName="Parroquia" />
+                <ScalarProperty Name="Zona" ColumnName="Zona" />
+                <ScalarProperty Name="Dirección" ColumnName="Dirección" />
+                <ScalarProperty Name="Imagen" ColumnName="Imagen" />
+                <ScalarProperty Name="Nombre_de_la_obra" ColumnName="Nombre de la obra" />
+                <ScalarProperty Name="Tipo_Obra" ColumnName="Tipo_Obra" />
+                <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+                <ScalarProperty Name="Esctructura" ColumnName="Esctructura" />
+                <ScalarProperty Name="Tamano_Obra_m2" ColumnName="Tamano Obra m2" />
+                <ScalarProperty Name="Hormigon_total_m3" ColumnName="Hormigon_total_m3" />
+                <ScalarProperty Name="Porcentaje_Avance" ColumnName="Porcentaje_Avance" />
+                <ScalarProperty Name="Hormigon_por_ejecutar_m3" ColumnName="Hormigon_por_ejecutar_m3" />
+                <ScalarProperty Name="Tipo_mezcla" ColumnName="Tipo_mezcla" />
+                <ScalarProperty Name="fecha_inicio" ColumnName="fecha_inicio" />
+                <ScalarProperty Name="fecha_finalizacion" ColumnName="fecha_finalizacion" />
+                <ScalarProperty Name="Constructora" ColumnName="Constructora" />
+                <ScalarProperty Name="marcas_cemento" ColumnName="marcas_cemento" />
+                <ScalarProperty Name="hormigonera__Hormigon_premezclado_" ColumnName="hormigonera_(Hormigon premezclado)" />
+                <ScalarProperty Name="proveedor__sacos_" ColumnName="proveedor_(sacos)" />
+                <ScalarProperty Name="Tipo_de_Responsable" ColumnName="Tipo de Responsable" />
+                <ScalarProperty Name="Responsable" ColumnName="Responsable" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="celular" ColumnName="celular" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="censo_obras">
+            <EntityTypeMapping TypeName="MardisGEOModel.censo_obras">
+              <MappingFragment StoreEntitySet="censo_obras">
+                <ScalarProperty Name="meta_instanceID" ColumnName="meta:instanceID" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Latitud" ColumnName="Latitud" />
+                <ScalarProperty Name="Longitud" ColumnName="Longitud" />
+                <ScalarProperty Name="Coordenadas" ColumnName="Coordenadas" />
+                <ScalarProperty Name="Parroquia" ColumnName="Parroquia" />
+                <ScalarProperty Name="Zona" ColumnName="Zona" />
+                <ScalarProperty Name="Dirección" ColumnName="Dirección" />
+                <ScalarProperty Name="Imagen" ColumnName="Imagen" />
+                <ScalarProperty Name="Nombre_de_la_obra" ColumnName="Nombre de la obra" />
+                <ScalarProperty Name="Tipo_Obra" ColumnName="Tipo_Obra" />
+                <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+                <ScalarProperty Name="Esctructura" ColumnName="Esctructura" />
+                <ScalarProperty Name="Tamano_Obra_m2" ColumnName="Tamano Obra m2" />
+                <ScalarProperty Name="Hormigon_total_m3" ColumnName="Hormigon_total_m3" />
+                <ScalarProperty Name="Porcentaje_Avance" ColumnName="Porcentaje_Avance" />
+                <ScalarProperty Name="Hormigon_por_ejecutar_m3" ColumnName="Hormigon_por_ejecutar_m3" />
+                <ScalarProperty Name="Tipo_mezcla" ColumnName="Tipo_mezcla" />
+                <ScalarProperty Name="fecha_inicio" ColumnName="fecha_inicio" />
+                <ScalarProperty Name="fecha_finalizacion" ColumnName="fecha_finalizacion" />
+                <ScalarProperty Name="Constructora" ColumnName="Constructora" />
+                <ScalarProperty Name="marcas_cemento" ColumnName="marcas_cemento" />
+                <ScalarProperty Name="hormigonera__Hormigon_premezclado_" ColumnName="hormigonera_(Hormigon premezclado)" />
+                <ScalarProperty Name="proveedor__sacos_" ColumnName="proveedor_(sacos)" />
+                <ScalarProperty Name="Tipo_de_Responsable" ColumnName="Tipo de Responsable" />
+                <ScalarProperty Name="Responsable" ColumnName="Responsable" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="celular" ColumnName="celular" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CodigosDesactivados_Topsy">
+            <EntityTypeMapping TypeName="MardisGEOModel.CodigosDesactivados_Topsy">
+              <MappingFragment StoreEntitySet="CodigosDesactivados_Topsy">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="URI" ColumnName="URI" />
+                <ScalarProperty Name="OBSERVACION" ColumnName="OBSERVACION" />
+                <ScalarProperty Name="FECHA_DESACTIVACION" ColumnName="FECHA_DESACTIVACION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="geo_categoria">
+            <EntityTypeMapping TypeName="MardisGEOModel.geo_categoria">
+              <MappingFragment StoreEntitySet="geo_categoria">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="status_cat" ColumnName="status_cat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="geo_dashboard">
+            <EntityTypeMapping TypeName="MardisGEOModel.geo_dashboard">
+              <MappingFragment StoreEntitySet="geo_dashboard">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="geo_dashboard_name" ColumnName="geo_dashboard_name" />
+                <ScalarProperty Name="geo_dashboard_descrip" ColumnName="geo_dashboard_descrip" />
+                <ScalarProperty Name="geo_dashboard_status" ColumnName="geo_dashboard_status" />
+                <ScalarProperty Name="geo_dashboard_create_date" ColumnName="geo_dashboard_create_date" />
+                <ScalarProperty Name="geo_dashboard_usr" ColumnName="geo_dashboard_usr" />
+                <ScalarProperty Name="geo_dashboard_link" ColumnName="geo_dashboard_link" />
+                <ScalarProperty Name="geo_dashboard_link_mobil" ColumnName="geo_dashboard_link_mobil" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="geo_datos">
+            <EntityTypeMapping TypeName="MardisGEOModel.geo_datos">
+              <MappingFragment StoreEntitySet="geo_datos">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="question" ColumnName="question" />
+                <ScalarProperty Name="lat" ColumnName="lat" />
+                <ScalarProperty Name="lng" ColumnName="lng" />
+                <ScalarProperty Name="qrn" ColumnName="qrn" />
+                <ScalarProperty Name="description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="geo_des_foto">
+            <EntityTypeMapping TypeName="MardisGEOModel.geo_des_foto">
+              <MappingFragment StoreEntitySet="geo_des_foto">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_img" ColumnName="id_img" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="geo_foto">
+            <EntityTypeMapping TypeName="MardisGEOModel.geo_foto">
+              <MappingFragment StoreEntitySet="geo_foto">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_img_ext" ColumnName="id_img_ext" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="url" ColumnName="url" />
+                <ScalarProperty Name="id_geo_cat" ColumnName="id_geo_cat" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="id_geo_des_foto" ColumnName="id_geo_des_foto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="geo_img_ubicacion">
+            <EntityTypeMapping TypeName="MardisGEOModel.geo_img_ubicacion">
+              <MappingFragment StoreEntitySet="geo_img_ubicacion">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="url_img" ColumnName="url_img" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="create_usr" ColumnName="create_usr" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="id_geo_ubi" ColumnName="id_geo_ubi" />
+                <ScalarProperty Name="value" ColumnName="value" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="geo_manage">
+            <EntityTypeMapping TypeName="MardisGEOModel.geo_manage">
+              <MappingFragment StoreEntitySet="geo_manage">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Geo_latitud" ColumnName="Geo_latitud" />
+                <ScalarProperty Name="Geo_longitud" ColumnName="Geo_longitud" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="dateCreation" ColumnName="dateCreation" />
+                <ScalarProperty Name="usr_web" ColumnName="usr_web" />
+                <ScalarProperty Name="host_web" ColumnName="host_web" />
+                <ScalarProperty Name="imei_id" ColumnName="imei_id" />
+                <ScalarProperty Name="Route" ColumnName="Route" />
+                <ScalarProperty Name="idcat" ColumnName="idcat" />
+                <ScalarProperty Name="imagen" ColumnName="imagen" />
+                <ScalarProperty Name="uri" ColumnName="uri" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="geo_map">
+            <EntityTypeMapping TypeName="MardisGEOModel.geo_map">
+              <MappingFragment StoreEntitySet="geo_map">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="geo_map_name" ColumnName="geo_map_name" />
+                <ScalarProperty Name="geo_map_descrip" ColumnName="geo_map_descrip" />
+                <ScalarProperty Name="geo_map_status" ColumnName="geo_map_status" />
+                <ScalarProperty Name="geo_map_create_date" ColumnName="geo_map_create_date" />
+                <ScalarProperty Name="geo_map_usr" ColumnName="geo_map_usr" />
+                <ScalarProperty Name="geo_map_link" ColumnName="geo_map_link" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="geo_map_account">
+            <EntityTypeMapping TypeName="MardisGEOModel.geo_map_account">
+              <MappingFragment StoreEntitySet="geo_map_account">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="idmap" ColumnName="idmap" />
+                <ScalarProperty Name="geo_map_account_name" ColumnName="geo_map_account_name" />
+                <ScalarProperty Name="geo_map_create_date" ColumnName="geo_map_create_date" />
+                <ScalarProperty Name="geo_map_usr" ColumnName="geo_map_usr" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="geo_map_profile">
+            <EntityTypeMapping TypeName="MardisGEOModel.geo_map_profile">
+              <MappingFragment StoreEntitySet="geo_map_profile">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Idprofile" ColumnName="Idprofile" />
+                <ScalarProperty Name="idmap" ColumnName="idmap" />
+                <ScalarProperty Name="geo_map_usr_tpo_decrip" ColumnName="geo_map_usr_tpo_decrip" />
+                <ScalarProperty Name="geo_map_create_date" ColumnName="geo_map_create_date" />
+                <ScalarProperty Name="geo_map_usr" ColumnName="geo_map_usr" />
+                <ScalarProperty Name="geo_profile_map_status" ColumnName="geo_profile_map_status" />
+                <ScalarProperty Name="IdDashboard" ColumnName="IdDashboard" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="geo_profile">
+            <EntityTypeMapping TypeName="MardisGEOModel.geo_profile">
+              <MappingFragment StoreEntitySet="geo_profile">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="idaccount" ColumnName="idaccount" />
+                <ScalarProperty Name="geo_profile_name" ColumnName="geo_profile_name" />
+                <ScalarProperty Name="geo_create_date" ColumnName="geo_create_date" />
+                <ScalarProperty Name="geo_create_usr" ColumnName="geo_create_usr" />
+                <ScalarProperty Name="geo_profile_status" ColumnName="geo_profile_status" />
+                <ScalarProperty Name="geo_permit" ColumnName="geo_permit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="geo_secuencial">
+            <EntityTypeMapping TypeName="MardisGEOModel.geo_secuencial">
+              <MappingFragment StoreEntitySet="geo_secuencial">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="sec" ColumnName="sec" />
+                <ScalarProperty Name="id_geo_ub" ColumnName="id_geo_ub" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="id_geo_ubi" ColumnName="id_geo_ubi" />
+                <ScalarProperty Name="number_sec" ColumnName="number_sec" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="geo_ubicacion">
+            <EntityTypeMapping TypeName="MardisGEOModel.geo_ubicacion">
+              <MappingFragment StoreEntitySet="geo_ubicacion">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_img" ColumnName="id_img" />
+                <ScalarProperty Name="id_sec" ColumnName="id_sec" />
+                <ScalarProperty Name="geo_ubu_des" ColumnName="geo_ubu_des" />
+                <ScalarProperty Name="create_usr" ColumnName="create_usr" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="geo_usr_profile">
+            <EntityTypeMapping TypeName="MardisGEOModel.geo_usr_profile">
+              <MappingFragment StoreEntitySet="geo_usr_profile">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Idprofile" ColumnName="Idprofile" />
+                <ScalarProperty Name="iduser" ColumnName="iduser" />
+                <ScalarProperty Name="geo_usr_profile_decrip" ColumnName="geo_usr_profile_decrip" />
+                <ScalarProperty Name="geo_map_create_date" ColumnName="geo_map_create_date" />
+                <ScalarProperty Name="geo_map_usr" ColumnName="geo_map_usr" />
+                <ScalarProperty Name="geo_usr_profile1" ColumnName="geo_usr_profile" />
+                <ScalarProperty Name="C_status" ColumnName="_status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="si_opc_apl">
+            <EntityTypeMapping TypeName="MardisGEOModel.si_opc_apl">
+              <MappingFragment StoreEntitySet="si_opc_apl">
+                <ScalarProperty Name="si_opc_apl_cod" ColumnName="si_opc_apl_cod" />
+                <ScalarProperty Name="si__si_opc_apl_cod" ColumnName="si__si_opc_apl_cod" />
+                <ScalarProperty Name="si_opc_apl_id" ColumnName="si_opc_apl_id" />
+                <ScalarProperty Name="si_opc_apl_nom_menu" ColumnName="si_opc_apl_nom_menu" />
+                <ScalarProperty Name="si_opc_apl_nom_ventana" ColumnName="si_opc_apl_nom_ventana" />
+                <ScalarProperty Name="si_opc_apl_action" ColumnName="si_opc_apl_action" />
+                <ScalarProperty Name="si_opc_apl_controller" ColumnName="si_opc_apl_controller" />
+                <ScalarProperty Name="si_opc_apl_glifos" ColumnName="si_opc_apl_glifos" />
+                <ScalarProperty Name="usr_hos_web" ColumnName="usr_hos_web" />
+                <ScalarProperty Name="usr_cmb_web" ColumnName="usr_cmb_web" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="si_opc_apl_usr_tipo">
+            <EntityTypeMapping TypeName="MardisGEOModel.si_opc_apl_usr_tipo">
+              <MappingFragment StoreEntitySet="si_opc_apl_usr_tipo">
+                <ScalarProperty Name="si_opc_apl_cod" ColumnName="si_opc_apl_cod" />
+                <ScalarProperty Name="si_tpo_usr_cod" ColumnName="si_tpo_usr_cod" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="si_persona">
+            <EntityTypeMapping TypeName="MardisGEOModel.si_persona">
+              <MappingFragment StoreEntitySet="si_persona">
+                <ScalarProperty Name="si_prs_cod" ColumnName="si_prs_cod" />
+                <ScalarProperty Name="si_tpo_usr_cod" ColumnName="si_tpo_usr_cod" />
+                <ScalarProperty Name="si_prs_nom" ColumnName="si_prs_nom" />
+                <ScalarProperty Name="si_prs_pri_nom" ColumnName="si_prs_pri_nom" />
+                <ScalarProperty Name="si_prs_pri_ape" ColumnName="si_prs_pri_ape" />
+                <ScalarProperty Name="si_prs_lgn" ColumnName="si_prs_lgn" />
+                <ScalarProperty Name="si_prs_pass" ColumnName="si_prs_pass" />
+                <ScalarProperty Name="si_prs_ced" ColumnName="si_prs_ced" />
+                <ScalarProperty Name="usr_hos_web" ColumnName="usr_hos_web" />
+                <ScalarProperty Name="usr_cmb_web" ColumnName="usr_cmb_web" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="si_tpo_usuario">
+            <EntityTypeMapping TypeName="MardisGEOModel.si_tpo_usuario">
+              <MappingFragment StoreEntitySet="si_tpo_usuario">
+                <ScalarProperty Name="si_tpo_usr_cod" ColumnName="si_tpo_usr_cod" />
+                <ScalarProperty Name="si_tpo_usr_nom" ColumnName="si_tpo_usr_nom" />
+                <ScalarProperty Name="usr_hos_web" ColumnName="usr_hos_web" />
+                <ScalarProperty Name="usr_cmb_web" ColumnName="usr_cmb_web" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tpo_usr_geo">
+            <EntityTypeMapping TypeName="MardisGEOModel.tpo_usr_geo">
+              <MappingFragment StoreEntitySet="tpo_usr_geo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="tpo_usr_geo_name" ColumnName="tpo_usr_geo_name" />
+                <ScalarProperty Name="tpo_usr_geo_status" ColumnName="tpo_usr_geo_status" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C_ue_datos_tabla_">
+            <EntityTypeMapping TypeName="MardisGEOModel.C_ue_datos_tabla_">
+              <MappingFragment StoreEntitySet="'ue_datos_tabla'">
+                <ScalarProperty Name="IdUE" ColumnName="IdUE" />
+                <ScalarProperty Name="meta_instanceID" ColumnName="meta:instanceID" />
+                <ScalarProperty Name="Latitud" ColumnName="Latitud" />
+                <ScalarProperty Name="Longitud" ColumnName="Longitud" />
+                <ScalarProperty Name="Coordenadas" ColumnName="Coordenadas" />
+                <ScalarProperty Name="Parroquia" ColumnName="Parroquia" />
+                <ScalarProperty Name="Zona" ColumnName="Zona" />
+                <ScalarProperty Name="Imagen" ColumnName="Imagen" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Tamaño" ColumnName="Tamaño" />
+                <ScalarProperty Name="Tipo_Obra" ColumnName="Tipo_Obra" />
+                <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+                <ScalarProperty Name="Esctructura" ColumnName="Esctructura" />
+                <ScalarProperty Name="Mamposteria" ColumnName="Mamposteria" />
+                <ScalarProperty Name="Acabados" ColumnName="Acabados" />
+                <ScalarProperty Name="Tamano_Obra" ColumnName="Tamano Obra" />
+                <ScalarProperty Name="Tipo_de_Cemento" ColumnName="Tipo de Cemento" />
+                <ScalarProperty Name="Cantidad_cemento" ColumnName="Cantidad_cemento" />
+                <ScalarProperty Name="Cemento_m3_por_ejecutar" ColumnName="Cemento_m3_por_ejecutar" />
+                <ScalarProperty Name="Tipo_mezcla" ColumnName="Tipo_mezcla" />
+                <ScalarProperty Name="Avance_Proyecto" ColumnName="Avance_Proyecto" />
+                <ScalarProperty Name="Porcentaje_Avance" ColumnName="Porcentaje_Avance" />
+                <ScalarProperty Name="fecha_inicio" ColumnName="fecha_inicio" />
+                <ScalarProperty Name="fecha_finalizacion" ColumnName="fecha_finalizacion" />
+                <ScalarProperty Name="Responsable" ColumnName="Responsable" />
+                <ScalarProperty Name="responsable2" ColumnName="responsable2" />
+                <ScalarProperty Name="Constructora" ColumnName="Constructora" />
+                <ScalarProperty Name="marcas_cemento" ColumnName="marcas_cemento" />
+                <ScalarProperty Name="proveedor" ColumnName="proveedor" />
+                <ScalarProperty Name="motivo_compra" ColumnName="motivo_compra" />
+                <ScalarProperty Name="credito" ColumnName="credito" />
+                <ScalarProperty Name="valor_m2" ColumnName="valor_m2" />
+                <ScalarProperty Name="maposteria_otro" ColumnName="maposteria_otro" />
+                <ScalarProperty Name="acabados_otro" ColumnName="acabados_otro" />
+                <ScalarProperty Name="hormigonera" ColumnName="hormigonera" />
+                <ScalarProperty Name="proveedor_otro" ColumnName="proveedor_otro" />
+                <ScalarProperty Name="otras_obras" ColumnName="otras_obras" />
+                <ScalarProperty Name="nombre_1" ColumnName="nombre_1" />
+                <ScalarProperty Name="nombre_2" ColumnName="nombre_2" />
+                <ScalarProperty Name="apellido_1" ColumnName="apellido_1" />
+                <ScalarProperty Name="apellido_2" ColumnName="apellido_2" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="celular" ColumnName="celular" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USER_GEO">
+            <EntityTypeMapping TypeName="MardisGEOModel.USER_GEO">
+              <MappingFragment StoreEntitySet="USER_GEO">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="LOGIN" ColumnName="LOGIN" />
+                <ScalarProperty Name="FULL_NAME" ColumnName="FULL_NAME" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+                <ScalarProperty Name="CREATE_DATE" ColumnName="CREATE_DATE" />
+                <ScalarProperty Name="idtpo" ColumnName="idtpo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Query">
+            <EntityTypeMapping TypeName="MardisGEOModel.Query">
+              <MappingFragment StoreEntitySet="Query">
+                <ScalarProperty Name="C_URI" ColumnName="_URI" />
+                <ScalarProperty Name="C_CREATOR_URI_USER" ColumnName="_CREATOR_URI_USER" />
+                <ScalarProperty Name="C_CREATION_DATE" ColumnName="_CREATION_DATE" />
+                <ScalarProperty Name="C_LAST_UPDATE_URI_USER" ColumnName="_LAST_UPDATE_URI_USER" />
+                <ScalarProperty Name="C_LAST_UPDATE_DATE" ColumnName="_LAST_UPDATE_DATE" />
+                <ScalarProperty Name="C_TOP_LEVEL_AURI" ColumnName="_TOP_LEVEL_AURI" />
+                <ScalarProperty Name="VALUE" ColumnName="VALUE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="respaldo_UE">
+            <EntityTypeMapping TypeName="MardisGEOModel.respaldo_UE">
+              <MappingFragment StoreEntitySet="respaldo_UE">
+                <ScalarProperty Name="meta_instanceID" ColumnName="meta:instanceID" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Latitud" ColumnName="Latitud" />
+                <ScalarProperty Name="Longitud" ColumnName="Longitud" />
+                <ScalarProperty Name="Coordenadas" ColumnName="Coordenadas" />
+                <ScalarProperty Name="Parroquia" ColumnName="Parroquia" />
+                <ScalarProperty Name="Zona" ColumnName="Zona" />
+                <ScalarProperty Name="Dirección" ColumnName="Dirección" />
+                <ScalarProperty Name="Imagen" ColumnName="Imagen" />
+                <ScalarProperty Name="Nombre_de_la_obra" ColumnName="Nombre de la obra" />
+                <ScalarProperty Name="Tipo_Obra" ColumnName="Tipo_Obra" />
+                <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+                <ScalarProperty Name="Esctructura" ColumnName="Esctructura" />
+                <ScalarProperty Name="Tamano_Obra_m2" ColumnName="Tamano Obra m2" />
+                <ScalarProperty Name="Hormigon_total_m3" ColumnName="Hormigon_total_m3" />
+                <ScalarProperty Name="Porcentaje_Avance" ColumnName="Porcentaje_Avance" />
+                <ScalarProperty Name="Hormigon_por_ejecutar_m3" ColumnName="Hormigon_por_ejecutar_m3" />
+                <ScalarProperty Name="Tipo_mezcla" ColumnName="Tipo_mezcla" />
+                <ScalarProperty Name="fecha_inicio" ColumnName="fecha_inicio" />
+                <ScalarProperty Name="fecha_finalizacion" ColumnName="fecha_finalizacion" />
+                <ScalarProperty Name="Constructora" ColumnName="Constructora" />
+                <ScalarProperty Name="marcas_cemento" ColumnName="marcas_cemento" />
+                <ScalarProperty Name="hormigonera__Hormigon_premezclado_" ColumnName="hormigonera_(Hormigon premezclado)" />
+                <ScalarProperty Name="proveedor__sacos_" ColumnName="proveedor_(sacos)" />
+                <ScalarProperty Name="Tipo_de_Responsable" ColumnName="Tipo de Responsable" />
+                <ScalarProperty Name="Responsable" ColumnName="Responsable" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="celular" ColumnName="celular" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="MardisGEOModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetRoles">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+            <EndProperty Name="AspNetUsers">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

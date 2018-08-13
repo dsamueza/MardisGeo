@@ -21,7 +21,9 @@ namespace MardisGeo.Data.@base
         public Nullable<System.DateTime> geo_map_create_date { get; set; }
         public string geo_map_usr { get; set; }
         public string geo_profile_map_status { get; set; }
+        public Nullable<int> IdDashboard { get; set; }
     
+        public virtual geo_dashboard geo_dashboard { get; set; }
         public virtual geo_map geo_map { get; set; }
         public virtual geo_profile geo_profile { get; set; }
     }

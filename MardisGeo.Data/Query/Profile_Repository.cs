@@ -184,6 +184,47 @@ namespace MardisGeo.Data.Query
                 return null;
             }
         }
+
+        public IList<MProfileMap> GetProfileDash(int idmap)
+        {
+
+            try
+            {
+                using (var tran = new MardisGEOEntities())
+                {
+
+                    var pro = tran.geo_map_profile.Where(x => x.IdDashboard == idmap).ToList<geo_map_profile>();
+
+                    IList<MProfileMap> Profile = new List<MProfileMap>();
+                    foreach (geo_map_profile x in pro)
+
+                        Profile.Add(new MProfileMap
+                        {
+                            Id = int.Parse(x.Id.ToString()),
+                            Idprofile = int.Parse(x.Idprofile.ToString()),
+                          
+                            Iddash = int.Parse(x.IdDashboard.ToString()),
+                            descripcion = x.geo_map_usr_tpo_decrip,
+                            fecha_mod = Convert.ToDateTime(x.geo_map_create_date.ToString()),
+                            status = x.geo_profile_map_status
+
+
+                        });
+                    return Profile;
+                }
+
+
+
+            }
+
+
+            catch (Exception ex)
+            {
+                string error;
+                error = ex.ToString();
+                return null;
+            }
+        }
         public int InsertDeleteProfileMap(MProfileMap mmap)
         {
 
@@ -222,7 +263,7 @@ namespace MardisGeo.Data.Query
                         int idppus = int.Parse(profile.First().idmap.ToString());
                         int idppup = int.Parse(profile.First().Idprofile.ToString());
                         var existing = tran.geo_map_profile.Find(idppu);
-                        geo_map_profile profi = new geo_map_profile() { Id = idppu, Idprofile = idppup, idmap = idppup };
+                        geo_map_profile profi = new geo_map_profile() { Id = idppu, Idprofile = idppup, idmap = idppus };
                         tran.Entry(existing).State = System.Data.Entity.EntityState.Deleted;
 
                         tran.SaveChanges();
@@ -242,7 +283,64 @@ namespace MardisGeo.Data.Query
             }
             return 0;
         }
+        public int InsertDeleteProfileDashboard(MProfileMap mmap)
+        {
 
+
+
+            try
+            {
+                using (var tran = new MardisGEOEntities())
+                {
+
+                    DateTime localDate = DateTime.Now;
+                    /// Se debe sacar el secuencial de la tabla porque no existe identity en la tabla base
+
+                    var profile = tran.geo_map_profile.Where(x => x.Idprofile == mmap.Idprofile && x.IdDashboard == mmap.Iddash).ToList<geo_map_profile>();
+
+                    if (profile.Count() == 0)
+                    {
+                        geo_map_profile user = new geo_map_profile();
+                        var Tuser = tran.Set<geo_map_profile>();
+
+
+
+
+                        user.geo_map_create_date = localDate;
+                        user.geo_map_usr = mmap.geo_map_usr;
+                        user.IdDashboard = mmap.Iddash;
+                        user.Idprofile = mmap.Idprofile;
+                        user.geo_profile_map_status = mmap.status;
+                        user.geo_map_usr_tpo_decrip = mmap.descripcion;
+                        Tuser.Add(user);
+                        tran.SaveChanges();
+                    }
+                    else
+                    {
+                        int idppu = profile.First().Id;
+                        int idppus = int.Parse(profile.First().IdDashboard.ToString());
+                        int idppup = int.Parse(profile.First().Idprofile.ToString());
+                        var existing = tran.geo_map_profile.Find(idppu);
+                        geo_map_profile profi = new geo_map_profile() { Id = idppu, Idprofile = idppup, IdDashboard = idppus };
+                        tran.Entry(existing).State = System.Data.Entity.EntityState.Deleted;
+
+                        tran.SaveChanges();
+
+                    }
+
+
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+                string error;
+                error = ex.ToString();
+                return 0;
+            }
+            return 0;
+        }
         public IList<geo_profile> GetProfiletAllData()
         {
 
@@ -350,7 +448,7 @@ namespace MardisGeo.Data.Query
                 error = ex.ToString();
                 return 0;
             }
-            return 0;
+           
         }
         public MProfile GetProfiles(int id)
         {

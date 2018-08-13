@@ -71,7 +71,7 @@ namespace MardisGeo.Data.Query
                             tranbegin.Commit();
                             return sucess;
                         }
-                        catch (Exception ex)
+                        catch (Exception )
                         {
                             tranbegin.Rollback();
 

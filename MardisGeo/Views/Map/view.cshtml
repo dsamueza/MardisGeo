@@ -2,14 +2,24 @@
 @{
 
 
-    Layout = "~/Views/Shared/_MapLayout.cshtml";
+    Layout = "~/Views/Shared/_LayaoutGeo.cshtml";
 
 }
-<div class="text-cod">
+@*<div class="text-cod">
     @Model.geo_map_name
+
+</div>*@
+<style>
+    .frame-map {
+        width: 100%;
+        height: 726px;
+        padding: 10px 3% 0px 3%;
+    }
+</style>
+<div class="col-12">
+    <iframe style="border: none;" class="frame-map" src="@Model.geo_map_link"></iframe>
 
 </div>
 
-<iframe style="border: none;" class="frame-map" src="@Model.geo_map_link"></iframe>
 
         

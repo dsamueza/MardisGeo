@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 using GeoMardis.Model.Mapa;
 using MardisGeo.Data.Query;
 using MardisGeo.Data.@base;
+using AutoMapper;
+
+
 namespace MardisGeo.bussiness.Mapa
 {
    public class MapaGenerador
@@ -26,6 +29,24 @@ namespace MardisGeo.bussiness.Mapa
 
             //}
             return maps;
-        }  
+        }
+
+        public IList<DashboardModelView> Getdashboard(int CodigoUsuario)
+        {
+                 
+
+            Mapper.Reset();
+            Mapper.Initialize(cfg =>
+            {
+                cfg.CreateMap<DashboardModelView, censo_obras>();
+            });
+            var itemResult = new List<DashboardModelView>();
+            var itemResults = map.GetdashboardbyID(CodigoUsuario);
+            itemResult = Mapper.Map<List<DashboardModelView>>(itemResults);
+
+            return itemResult;
+
+           
+        }
     }
 }

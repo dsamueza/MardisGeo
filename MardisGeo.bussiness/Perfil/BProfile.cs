@@ -36,10 +36,22 @@ namespace MardisGeo.bussiness.Perfil
             return profile.GetProfileMap(idpeson);
         }
 
+        public IList<MProfileMap> GetPerfilDash(int idpeson)
+        {
+
+            return profile.GetProfileDash(idpeson);
+        }
+
+
         public int AddRemovePerfilMap(MProfileMap pp)
         {
 
-            return profile.InsertDeleteProfileMap(pp);
+            return profile.InsertDeleteProfileDashboard(pp);
+        }
+        public int AddRemovePerfildash(MProfileMap pp)
+        {
+
+            return profile.InsertDeleteProfileDashboard(pp);
         }
         public IList<MProfile> GetPerfilAccountMap(int Idaccount)
         {

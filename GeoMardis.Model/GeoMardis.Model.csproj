@@ -44,8 +44,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin\DashboardModelRegister.cs" />
+    <Compile Include="Mapa\DashboardModelView.cs" />
     <Compile Include="Admin\ModelMap.cs" />
     <Compile Include="Admin\TipoUsuario.cs" />
+    <Compile Include="Admin\UE.cs" />
     <Compile Include="Admin\Usuario.cs" />
     <Compile Include="Categorias\geo_categoria.cs" />
     <Compile Include="Categorias\geo_des_foto.cs" />

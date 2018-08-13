@@ -31,7 +31,7 @@ namespace MardisGeo.Data.Query
             }
         }
 
-        public IList<u> GetUE()
+        public IList<censo_obras> GetUE()
         {
 
             try
@@ -39,8 +39,8 @@ namespace MardisGeo.Data.Query
                 using (var tran = new MardisGEOEntities())
                 {
 
-                    return tran.geo_categoria.ToList<geo_categoria>();
-
+                    var all = tran.censo_obras;
+                    return all.ToList<censo_obras>();
                 }
 
             }

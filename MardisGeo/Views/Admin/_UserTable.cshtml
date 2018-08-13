@@ -1,4 +1,4 @@
-<div id="responsive" class="modal fade"  tabindex="-1" data-width="760" style="display: none;">
+@*<div id="responsive" class="modal fade" tabindex="-1" data-width="760" style="display: none;">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 class="modal-title">Roles</h4>
@@ -10,25 +10,56 @@
                 <h4>Cuentas:</h4>
                 <fieldset>
                     <legend>
-                        <select class="form-control" data-val="true" data-val-required="El campo Tipo de Usuario es obligatorio." id="idaccount">
-                           
-                        </select>
+                        <select class="form-control" data-val="true" data-val-required="El campo Tipo de Usuario es obligatorio." id="idaccount"></select>
                     </legend>
                     <p>
                         Selecciones los perfiles de usuario:
                     </p>
 
                     <div id="content-chk">
-                      
-                    </div>  
+
+                    </div>
                 </fieldset>
             </div>
         </div>
     </div>
     <div class="modal-footer">
         <button type="button" data-dismiss="modal" class="btn btn-info">Salir</button>
-        <button type="button" data-dismiss="modal"  class="btn btn-success" id="btnm">Guardar</button>
+        <button type="button" data-dismiss="modal" class="btn btn-success" id="btnm">Guardar</button>
     </div>
+</div>*@
+
+<div class="modal fade " id="responsive">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Roles</h4>
+            </div>
+            <div class="modal-body">
+                <fieldset >
+                    <legend>
+                        <select class="form-control" data-val="true" data-val-required="El campo Tipo de Usuario es obligatorio." id="idaccount"></select>
+                    </legend>
+                        <p>
+                            Selecciones los perfiles de usuario:
+                        </p>
+
+                        <div id="content-chk" style="padding-left: 10%;">
+
+                        </div>
+                 
+                </fieldset>
+            </div>
+            <div class="modal-footer">
+                <button type="button" data-dismiss="modal" class="btn btn-info">Salir</button>
+                <button type="button" data-dismiss="modal" class="btn btn-success">Guardar</button>
+
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
 </div>
 
 

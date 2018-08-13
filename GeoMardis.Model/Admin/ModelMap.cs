@@ -17,9 +17,10 @@ namespace GeoMardis.Model.Admin
 
         [Required(ErrorMessage = "Debe ingresar Nombre del Mapa")]
         [DisplayName("Nombre de Mapa")]
+        [MaxLength(25)]
         public String Name { get; set; }
  
-        [DisplayName("Descripcion")]
+        [DisplayName("Descripción")]
         public String Description { get; set; }
         [DisplayName("Estado")]
         public bool Status { get; set; }

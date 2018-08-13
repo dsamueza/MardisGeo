@@ -1,0 +1,290 @@
+@model IEnumerable<GeoMardis.Model.Admin.UE>
+
+@{
+    ViewData["Title"] = "UE";
+   
+}
+
+<h2>UE</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdUE)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.meta_instanceID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Codigo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Latitud)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Longitud)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Coordenadas)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Parroquia)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Zona)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Imagen)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nombre)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Tamaño)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Tipo_Obra)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Categoria)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Esctructura)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Mamposteria)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Acabados)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Tamano_Obra)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Tipo_de_Cemento)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Cantidad_cemento)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Cemento_m3_por_ejecutar)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Tipo_mezcla)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Avance_Proyecto)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Porcentaje_Avance)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.fecha_inicio)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.fecha_finalizacion)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Responsable)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.responsable2)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Constructora)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.marcas_cemento)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.proveedor)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.motivo_compra)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.credito)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.valor_m2)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.maposteria_otro)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.acabados_otro)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.hormigonera)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.proveedor_otro)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.otras_obras)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.nombre_1)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.nombre_2)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.apellido_1)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.apellido_2)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.telefono)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.celular)
+                </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdUE)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.meta_instanceID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Codigo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Latitud)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Longitud)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Coordenadas)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Parroquia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Zona)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Imagen)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tamaño)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tipo_Obra)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Categoria)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Esctructura)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mamposteria)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Acabados)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tamano_Obra)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tipo_de_Cemento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cantidad_cemento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cemento_m3_por_ejecutar)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tipo_mezcla)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Avance_Proyecto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Porcentaje_Avance)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fecha_inicio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fecha_finalizacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Responsable)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.responsable2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Constructora)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.marcas_cemento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.proveedor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.motivo_compra)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.credito)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.valor_m2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.maposteria_otro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.acabados_otro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.hormigonera)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.proveedor_otro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.otras_obras)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nombre_1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nombre_2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.apellido_1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.apellido_2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.telefono)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.celular)
+            </td>
+     
+        </tr>
+}
+    </tbody>
+</table>

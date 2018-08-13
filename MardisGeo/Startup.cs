@@ -88,7 +88,7 @@ namespace MardisGeo
                     name: "default",
                     template: "{controller=Login}/{action=Index}/{id?}");
             });
-
+            app.UseCors(op => op.WithOrigins("http://localhost:9306"));
         }
     }
 }
